@@ -7,8 +7,8 @@ import cors from "cors";
 
 // Import project files
 import { config } from "./config/app-config.js";
-// import authRouter from "./routers/auth.js";
-// import clientRouter from "./routers/client.js";
+import authRouter from "./routers/authRouter.js";
+import userRouter from "./routers/userRouter.js";
 
 const app = express();
 
@@ -17,8 +17,8 @@ app.use(cors({ origin: [config().app.CLIENT_DOMAIN] }));
 app.use(express.json());
 
 // Routers
-// app.use("/", authRouter);
-// app.use("/client", clientRouter);
+app.use("/", authRouter);
+app.use("/user", userRouter);
 
 // Allow "public" folder to serve static files
 app.use(express.static(path.resolve() + "/server/public"));
