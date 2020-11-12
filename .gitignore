@@ -1,0 +1,6 @@
+# Folders to be ignored
+node_modules
+coverage
+
+# Files to be ignored
+.env
