@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
       default: "default.jpg",
     },
-    favourite: {
+    favourites: {
       type: [String],
     },
     likes: {
