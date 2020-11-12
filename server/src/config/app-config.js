@@ -11,6 +11,7 @@ export const config = () => {
       app: {
         MODE: "test",
         PORT: Number(process.env.PORT),
+        SALT_ROUNDS: Number(process.env.SALT_ROUNDS),
         API_KEY: process.env.API_KEY,
         API_TOKEN: process.env.API_TOKEN,
         SECRET: process.env.SECRET,
@@ -28,6 +29,7 @@ export const config = () => {
       app: {
         MODE: "production",
         PORT: Number(process.env.PORT),
+        SALT_ROUNDS: Number(process.env.SALT_ROUNDS),
         API_KEY: process.env.API_KEY,
         API_TOKEN: process.env.API_TOKEN,
         SECRET: process.env.SECRET,
@@ -45,6 +47,7 @@ export const config = () => {
       app: {
         MODE: "development",
         PORT: Number(process.env.PORT),
+        SALT_ROUNDS: Number(process.env.SALT_ROUNDS),
         API_KEY: process.env.API_KEY,
         API_TOKEN: process.env.API_TOKEN,
         SECRET: process.env.SECRET,
