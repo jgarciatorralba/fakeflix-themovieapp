@@ -8,13 +8,15 @@ export const config = () => {
 
   const config = {
     test: {
-      MODE: "test",
-      PORT: Number(process.env.PORT),
-      API_KEY: process.env.API_KEY,
-      API_TOKEN: process.env.API_TOKEN,
-      SECRET: process.env.SECRET,
-      SERVER_DOMAIN: process.env.SERVER_DOMAIN,
-      CLIENT_DOMAIN: process.enf.CLIENT_DOMAIN,
+      app: {
+        MODE: "test",
+        PORT: Number(process.env.PORT),
+        API_KEY: process.env.API_KEY,
+        API_TOKEN: process.env.API_TOKEN,
+        SECRET: process.env.SECRET,
+        SERVER_DOMAIN: process.env.SERVER_DOMAIN,
+        CLIENT_DOMAIN: process.env.CLIENT_DOMAIN,
+      },
       db: {
         CLUSTER: process.env.DB_CLUSTER,
         USER: process.env.DB_USER,
@@ -23,13 +25,15 @@ export const config = () => {
       },
     },
     production: {
-      MODE: "production",
-      PORT: Number(process.env.PORT),
-      API_KEY: process.env.API_KEY,
-      API_TOKEN: process.env.API_TOKEN,
-      SECRET: process.env.SECRET,
-      SERVER_DOMAIN: process.env.SERVER_DOMAIN,
-      CLIENT_DOMAIN: process.enf.CLIENT_DOMAIN,
+      app: {
+        MODE: "production",
+        PORT: Number(process.env.PORT),
+        API_KEY: process.env.API_KEY,
+        API_TOKEN: process.env.API_TOKEN,
+        SECRET: process.env.SECRET,
+        SERVER_DOMAIN: process.env.SERVER_DOMAIN,
+        CLIENT_DOMAIN: process.env.CLIENT_DOMAIN,
+      },
       db: {
         CLUSTER: process.env.DB_CLUSTER,
         USER: process.env.DB_USER,
@@ -38,13 +42,15 @@ export const config = () => {
       },
     },
     development: {
-      MODE: "development",
-      PORT: Number(process.env.PORT),
-      API_KEY: process.env.API_KEY,
-      API_TOKEN: process.env.API_TOKEN,
-      SECRET: process.env.SECRET,
-      SERVER_DOMAIN: process.env.SERVER_DOMAIN,
-      CLIENT_DOMAIN: process.enf.CLIENT_DOMAIN,
+      app: {
+        MODE: "development",
+        PORT: Number(process.env.PORT),
+        API_KEY: process.env.API_KEY,
+        API_TOKEN: process.env.API_TOKEN,
+        SECRET: process.env.SECRET,
+        SERVER_DOMAIN: process.env.SERVER_DOMAIN,
+        CLIENT_DOMAIN: process.env.CLIENT_DOMAIN,
+      },
       db: {
         CLUSTER: process.env.DB_CLUSTER,
         USER: process.env.DB_USER,
