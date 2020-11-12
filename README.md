@@ -13,3 +13,10 @@ The project consists on a movie app with a Netflix-like visual style where, once
 - Add movies to a favourites section
 
 ---
+
+generate random string for token secret:
+
+```
+import crypto from "crypto";
+console.log(crypto.randomBytes(32).toString("hex"));
+```
