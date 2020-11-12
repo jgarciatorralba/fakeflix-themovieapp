@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engine": {
+    "node": "14.3.0",
+    "npm": "6.14.8"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
