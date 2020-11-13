@@ -46,11 +46,11 @@ router.post("/register", async (req, res) => {
       if (Object.keys(error.keyValue).includes("email"))
         return res
           .status(400)
-          .json({ data: null, error: "That email is already taken" });
+          .json({ data: null, error: "That email is already registered" });
       if (Object.keys(error.keyValue).includes("username"))
         return res
           .status(400)
-          .json({ data: null, error: "That username is already taken" });
+          .json({ data: null, error: "That username is already registered" });
     }
     return res.status(500).json({ data: null, error: "Internal Server Error" });
   } else {
