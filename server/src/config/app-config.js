@@ -24,6 +24,12 @@ export const config = () => {
         PWD: process.env.DB_PWD,
         NAME: process.env.DB_NAME,
       },
+      smtp: {
+        HOST: process.env.EMAIL_HOST,
+        PORT: process.env.EMAIL_PORT,
+        USER: process.env.EMAIL_USER,
+        PWD: process.env.EMAIL_PWD,
+      },
     },
     production: {
       app: {
@@ -42,6 +48,12 @@ export const config = () => {
         PWD: process.env.DB_PWD,
         NAME: process.env.DB_NAME,
       },
+      smtp: {
+        HOST: process.env.EMAIL_HOST,
+        PORT: process.env.EMAIL_PORT,
+        USER: process.env.EMAIL_USER,
+        PWD: process.env.EMAIL_PWD,
+      },
     },
     development: {
       app: {
@@ -59,6 +71,12 @@ export const config = () => {
         USER: process.env.DB_USER,
         PWD: process.env.DB_PWD,
         NAME: process.env.DB_NAME,
+      },
+      smtp: {
+        HOST: process.env.EMAIL_HOST,
+        PORT: process.env.EMAIL_PORT,
+        USER: process.env.EMAIL_USER,
+        PWD: process.env.EMAIL_PWD,
       },
     },
   };
