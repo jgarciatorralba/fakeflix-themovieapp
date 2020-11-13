@@ -25,12 +25,15 @@ const UserSchema = new mongoose.Schema(
     },
     favourites: {
       type: [String],
+      default: [],
     },
     likes: {
       type: [String],
+      default: [],
     },
     dislikes: {
       type: [String],
+      default: [],
     },
     comments: [
       {
