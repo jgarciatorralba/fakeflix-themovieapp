@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 import User from "../models/User.js";
 
 // Import config object
-import config from "../config/app-config.js";
+import { config } from "../config/app-config.js";
 
 export default {
   create: async function (userObj) {
