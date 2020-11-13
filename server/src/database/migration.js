@@ -52,4 +52,6 @@ import db from "./connection.js";
       console.log("Error: " + e);
     }
   }
+
+  await db.disconnect();
 })();
