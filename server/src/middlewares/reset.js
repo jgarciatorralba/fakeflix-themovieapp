@@ -14,7 +14,7 @@ export default function (req, res, next) {
       .json({ data: null, error: "Unauthorized: Missing JWT" });
   }
 
-  jwt.verify(token, config.app.resetTokenSecret, (err, user) => {
+  jwt.verify(token, config().app.RESET_SECRET, (err, user) => {
     if (err) {
       return res
         .status(403)
