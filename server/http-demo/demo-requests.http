@@ -43,3 +43,39 @@ Content-Type: application/json
 {
   "password" : "password"
 }
+
+### Get an existing user
+GET http://localhost:3000/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYWViNjY0MzgxMzRlMjBiYTA5YzIzZSIsImlhdCI6MTYwNTI5NzE4Mn0.XaGIoLKKaGpNM0oSqONcxBtrss4qGj6zEeLyL5KlkJk
+Content-Type: application/json
+
+### Update existing user
+PATCH http://localhost:3000/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYWViNjY0MzgxMzRlMjBiYTA5YzIzZSIsImlhdCI6MTYwNTI5NzE4Mn0.XaGIoLKKaGpNM0oSqONcxBtrss4qGj6zEeLyL5KlkJk
+Content-Type: application/json
+
+{
+  "username": "new_demo_http_request",
+  "email": "my_updated_email@emaildomain.com"
+}
+
+### Update existing user's username and avatar
+PATCH http://localhost:3000/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYWViNjY0MzgxMzRlMjBiYTA5YzIzZSIsImlhdCI6MTYwNTI5NzE4Mn0.XaGIoLKKaGpNM0oSqONcxBtrss4qGj6zEeLyL5KlkJk
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="username"
+
+demo_http_request
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="avatar"; filename="any_filename.png"
+Content-Type: image/png
+
+< ./new-profile.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### Soft delete existing user
+DELETE http://localhost:3000/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYWViNjY0MzgxMzRlMjBiYTA5YzIzZSIsImlhdCI6MTYwNTI5NzE4Mn0.XaGIoLKKaGpNM0oSqONcxBtrss4qGj6zEeLyL5KlkJk
+Content-Type: application/json
