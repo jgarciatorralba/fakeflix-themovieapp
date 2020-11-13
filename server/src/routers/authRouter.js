@@ -2,9 +2,13 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import nodemailer from "nodemailer";
 
 // Import controller
 import userController from "../controllers/userController.js";
+
+// Import middlewares
+import resetMiddleware from "../middlewares/reset.js";
 
 // Import config object
 import { config } from "../config/app-config.js";
@@ -87,7 +91,7 @@ router.post("/login", async (req, res) => {
   if (!match)
     return res.status(400).json({ data: null, error: "Password incorrect" });
 
-  const accessToken = jwt.sign({ id: user._id }, config().app.SECRET);
+  const accessToken = jwt.sign({ id: user._id }, config().app.ACCESS_SECRET);
 
   const data = {
     accessToken: accessToken,
@@ -104,6 +108,70 @@ router.post("/login", async (req, res) => {
   };
 
   res.json({ data: data, error: null });
+});
+
+router.post("/password/forgot", async (req, res) => {
+  const email = req.body.email;
+
+  if (email == null) {
+    return res
+      .status(400)
+      .json({ data: null, error: "Bad Request: Missing email attribute" });
+  }
+
+  const user = await userController.findByEmail(email);
+  if (user == null)
+    return res.status(400).json({
+      data: null,
+      error: "That email is not registered or was deactivated",
+    });
+
+  const resetToken = jwt.sign({ id: user._id }, config().app.RESET_SECRET, {
+    expiresIn: "1h",
+  });
+
+  const transporter = nodemailer.createTransport({
+    host: config().smtp.HOST,
+    port: config().smtp.PORT,
+    auth: {
+      user: config().smtp.USER,
+      pass: config().smtp.PWD,
+    },
+  });
+
+  const emailData = {
+    from: "noreply@themovieapp.com",
+    to: email,
+    subject: "Reset your password",
+    html: `
+      <h2>Reset your password</h2>
+      <p>
+        Click 
+        <a href='http://${
+          config().app.CLIENT_DOMAIN
+        }/password/reset?token=${resetToken}'>
+          here
+        </a>
+         to reset your password.
+      </p>`,
+  };
+
+  transporter.sendMail(emailData, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+    res.json({ data: "Email has been sent!", error: null });
+  });
+});
+
+router.post("/password/reset", resetMiddleware, async (req, res) => {
+  const error = await userController.updateUserById(user._id, {
+    password: await bcrypt.hash(req.body.password, config().app.SALT_ROUNDS),
+  });
+  if (error) {
+    res.status(500).json({ data: null, error: "Internal Server Error" });
+  }
+  res.json({ data: "Password updated successfully!", error: null });
 });
 
 export default router;
