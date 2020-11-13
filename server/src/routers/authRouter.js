@@ -87,7 +87,7 @@ router.post("/login", async (req, res) => {
   if (!match)
     return res.status(400).json({ data: null, error: "Password incorrect" });
 
-  const accessToken = jwt.sign({ id: user._id }, config.app.accessTokenSecret);
+  const accessToken = jwt.sign({ id: user._id }, config().app.SECRET);
 
   const data = {
     accessToken: accessToken,
@@ -96,13 +96,6 @@ router.post("/login", async (req, res) => {
       username: user.username,
       avatar: new URL("/img/user/" + user.avatar, config().app.SERVER_DOMAIN)
         .href,
-      // "http://" +
-      // path.posix.join(
-      //   config.app.nodeServerDomain,
-      //   "img",
-      //   "user",
-      //   user.avatar
-      // ),
       favourites: user.favourites,
       likes: user.likes,
       dislikes: user.dislikes,
