@@ -26,3 +26,20 @@ Content-Type: application/json
   "email" : "my_email@emaildomain.com",
   "password" : "123456"
 }
+
+### Send reset password email
+POST http://localhost:3000/password/forgot
+Content-Type: application/json
+
+{
+  "email" : "my_email@emaildomain.com"
+}
+
+### Reset to new password
+POST http://localhost:3000/password/reset
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYWViNjY0MzgxMzRlMjBiYTA5YzIzZSIsImlhdCI6MTYwNTI5MzI4NiwiZXhwIjoxNjA1Mjk2ODg2fQ.bwo0lC21B8eF-jvrL9mlVoD7Ed0SeBIWBt_FB4URwVY
+Content-Type: application/json
+
+{
+  "password" : "password"
+}
