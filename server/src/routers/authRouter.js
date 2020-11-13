@@ -8,7 +8,7 @@ import nodemailer from "nodemailer";
 import userController from "../controllers/userController.js";
 
 // Import middlewares
-import resetMiddleware from "../middlewares/reset.js";
+import resetMiddleware from "../middlewares/resetMiddleware.js";
 
 // Import config object
 import { config } from "../config/app-config.js";
