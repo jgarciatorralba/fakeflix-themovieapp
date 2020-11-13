@@ -60,7 +60,10 @@ export default {
 
   updateUserById: async function (id, userObj) {
     try {
-      await User.updateOne({ _id: id }, userObj);
+      const res = await User.updateOne({ _id: id }, userObj);
+      if (res.nModified == 0) {
+        throw new Error("User not found");
+      }
     } catch (error) {
       return error;
     }
