@@ -146,13 +146,11 @@ router.post("/password/forgot", async (req, res) => {
     html: `
       <h2>Reset your password</h2>
       <p>
-        Click 
-        <a href='http://${
+        Click
+        <a href='${
           config().app.CLIENT_DOMAIN
-        }/password/reset?token=${resetToken}'>
-          here
-        </a>
-         to reset your password.
+        }/password/reset?token=${resetToken}'>here</a>
+        to reset your password.
       </p>`,
   };
 
@@ -165,7 +163,7 @@ router.post("/password/forgot", async (req, res) => {
 });
 
 router.post("/password/reset", resetMiddleware, async (req, res) => {
-  const error = await userController.updateUserById(user._id, {
+  const error = await userController.updateUserById(req.user.id, {
     password: await bcrypt.hash(req.body.password, config().app.SALT_ROUNDS),
   });
   if (error) {
