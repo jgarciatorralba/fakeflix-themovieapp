@@ -23,30 +23,6 @@ const UserSchema = new mongoose.Schema(
       type: String,
       default: "default.jpg",
     },
-    favourites: {
-      type: [String],
-      default: [],
-    },
-    likes: {
-      type: [String],
-      default: [],
-    },
-    dislikes: {
-      type: [String],
-      default: [],
-    },
-    comments: [
-      {
-        movie_id: {
-          type: String,
-          required: true,
-        },
-        body: {
-          type: String,
-          required: true,
-        },
-      },
-    ],
   },
   {
     timestamps: true,
