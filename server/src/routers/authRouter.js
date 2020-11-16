@@ -100,10 +100,10 @@ router.post("/login", async (req, res) => {
       username: user.username,
       avatar: new URL("/img/user/" + user.avatar, config().app.SERVER_DOMAIN)
         .href,
-      favourites: user.favourites,
-      likes: user.likes,
-      dislikes: user.dislikes,
-      comments: user.comments,
+      // favourites: user.favourites,
+      // likes: user.likes,
+      // dislikes: user.dislikes,
+      // comments: user.comments,
     },
   };
 
