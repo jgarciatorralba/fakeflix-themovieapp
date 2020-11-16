@@ -148,3 +148,8 @@ Content-Type: application/json
 GET http://localhost:3000/favourite
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjI4ZTY0MzcyNTdjMjMxNzUzMjFhZSIsImlhdCI6MTYwNTUzODI1OX0.9uoG71J1CsvZjNfDZQ4mnDjrrbBQuJmTFMMlH3y5WLk
 Content-Type: application/json
+
+### Get API configuration details
+GET http://localhost:3000/movie/config
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjI4ZTY0MzcyNTdjMjMxNzUzMjFhZSIsImlhdCI6MTYwNTUzODI1OX0.9uoG71J1CsvZjNfDZQ4mnDjrrbBQuJmTFMMlH3y5WLk
+Content-Type: application/json
