@@ -13,6 +13,7 @@ import commentRouter from "./routers/commentRouter.js";
 import likeRouter from "./routers/likeRouter.js";
 import dislikeRouter from "./routers/dislikeRouter.js";
 import favouriteRouter from "./routers/favouriteRouter.js";
+import movieRouter from "./routers/movieRouter.js";
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use("/comment", commentRouter);
 app.use("/like", likeRouter);
 app.use("/dislike", dislikeRouter);
 app.use("/favourite", favouriteRouter);
+app.use("/movie", movieRouter);
 
 // Allow "public" folder to serve static files
 app.use(express.static(path.resolve() + "/server/public"));
