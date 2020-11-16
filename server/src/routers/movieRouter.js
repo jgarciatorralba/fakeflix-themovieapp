@@ -20,4 +20,20 @@ router.get("/config", async (req, res) => {
   res.json({ data: config, error: null });
 });
 
+// Get random movie details (for the banner)
+
+// Get details for several movies by id (if possible, for favourites)
+
+// Get popular movies (page 1)
+
+// Get top rated movies (page 1)
+
+// Get now playing movies (page 1)
+
+// Get upcoming movies (page 1)
+
+// Get movie details
+
+// Get movie trailers
+
 export default router;
