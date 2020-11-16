@@ -35,10 +35,6 @@ export default {
       "email",
       "username",
       "avatar",
-      "favourites",
-      "likes",
-      "dislikes",
-      "comments",
     ]);
     return user;
   },
