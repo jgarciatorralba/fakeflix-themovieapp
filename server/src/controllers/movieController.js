@@ -60,7 +60,6 @@ export default {
     }
   },
 
-  // Get details for several movies by id (if possible, for favourites)
   getFavouritesDetails: async function (favsArray) {
     let requestsArray = [];
     favsArray.forEach((fav) => {
