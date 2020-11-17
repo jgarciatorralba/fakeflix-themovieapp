@@ -72,7 +72,7 @@ export default {
     });
     try {
       const responses = await axios.all(requestsArray);
-      let data = [];
+      let movies = [];
       responses.forEach((response) => {
         if (response.data.backdrop_path != null) {
           response.data.backdrop_path = new URL(
@@ -88,9 +88,9 @@ export default {
           );
         }
 
-        data.push(response.data);
+        movies.push(response.data);
       });
-      return data;
+      return movies;
     } catch (error) {
       return "error";
     }
