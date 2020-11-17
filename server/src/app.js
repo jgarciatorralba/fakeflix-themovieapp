@@ -5,8 +5,10 @@ import path from "path";
 import express from "express";
 import cors from "cors";
 
-// Import project files
+// Import configuration object
 import { config } from "./config/app-config.js";
+
+// Import routers
 import authRouter from "./routers/authRouter.js";
 import userRouter from "./routers/userRouter.js";
 import commentRouter from "./routers/commentRouter.js";
