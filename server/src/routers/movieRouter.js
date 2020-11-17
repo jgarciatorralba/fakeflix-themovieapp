@@ -30,17 +30,21 @@ router.get("/random", async (req, res) => {
 });
 
 // Get details for several movies by id (if possible, for favourites)
-
-// Get popular movies (page 1)
+router.get("/favourites", async (req, res) => {});
 
 // Get top rated movies (page 1)
+router.get("/toprated", async (req, res) => {});
 
 // Get now playing movies (page 1)
+router.get("/nowplaying", async (req, res) => {});
 
 // Get upcoming movies (page 1)
+router.get("/upcoming", async (req, res) => {});
 
 // Get movie details
+router.get("/details/:movie_id", async (req, res) => {});
 
 // Get movie trailers
+router.get("/trailers/:movie_id", async (req, res) => {});
 
 export default router;
