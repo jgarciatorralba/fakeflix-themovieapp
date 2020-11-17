@@ -23,42 +23,45 @@ export default {
 
   getRandomMovie: async function () {
     try {
-      const respLatestMovie = await axios.get(
-        config().app.API_BASE_URL + "movie/latest",
-        {
-          headers: {
-            Authorization: "Bearer " + config().app.API_TOKEN,
-          },
-        }
-      );
-      const latestMovieId = Number(respLatestMovie.data.id);
-      let randomInt;
-      let response;
+      let randomMovie;
       do {
-        randomInt = Math.floor(Math.random() * latestMovieId) + 1;
-        response = await axios.get(
-          config().app.API_BASE_URL + "movie/" + randomInt,
+        const respPopularMovies = await axios.get(
+          config().app.API_BASE_URL + "movie/popular",
           {
             headers: {
               Authorization: "Bearer " + config().app.API_TOKEN,
             },
           }
         );
+
+        let randomMoviePosition = Math.floor(
+          Math.random() * respPopularMovies.data.results.length
+        );
+
+        randomMovie = respPopularMovies.data.results[randomMoviePosition];
       } while (
-        response.status !== 200 ||
-        response.data.backdrop_path == null ||
-        response.data.poster_path == null
+        randomMovie.adult !== false ||
+        randomMovie.backdrop_path == null ||
+        randomMovie.poster_path == null
       );
 
-      return response.data;
+      randomMovie.backdrop_path = new URL(
+        "t/p/w1280" + randomMovie.backdrop_path,
+        "https://image.tmdb.org/"
+      );
+
+      randomMovie.poster_path = new URL(
+        "t/p/w780" + randomMovie.poster_path,
+        "https://image.tmdb.org/"
+      );
+
+      return randomMovie;
     } catch (error) {
       return "error";
     }
   },
 
   // Get details for several movies by id (if possible, for favourites)
-
-  // Get popular movies (page 1)
 
   // Get top rated movies (page 1)
 
