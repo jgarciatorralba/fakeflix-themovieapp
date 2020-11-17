@@ -163,3 +163,8 @@ Content-Type: application/json
 GET http://localhost:3000/movie/details/11
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjI4ZTYzMzcyNTdjMjMxNzUzMjFhYyIsImlhdCI6MTYwNTYwMzgwM30.yDiG5g3S5Qy0kt-G2ZTGxj4r342c2wdhLBHSHgV8Wjw
 Content-Type: application/json
+
+### Get selected movie trailers
+GET http://localhost:3000/movie/trailers/122
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjI4ZTYzMzcyNTdjMjMxNzUzMjFhYyIsImlhdCI6MTYwNTYwMzgwM30.yDiG5g3S5Qy0kt-G2ZTGxj4r342c2wdhLBHSHgV8Wjw
+Content-Type: application/json

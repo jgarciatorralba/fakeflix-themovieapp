@@ -101,5 +101,26 @@ export default {
   },
 
   // Get movie trailers
-  getMovieTrailers: async function (movie_id) {},
+  getMovieTrailers: async function (movie_id) {
+    try {
+      const response = await axios.get(
+        config().app.API_BASE_URL + "movie/" + movie_id + "/videos",
+        {
+          headers: {
+            Authorization: "Bearer " + config().app.API_TOKEN,
+          },
+        }
+      );
+
+      if (response.data.results.length > 0) {
+        response.data.results.forEach((result) => {
+          result.key = "https://www.youtube.com/watch?v=" + result.key;
+        });
+      }
+
+      return response.data.results;
+    } catch (error) {
+      return "error";
+    }
+  },
 };
