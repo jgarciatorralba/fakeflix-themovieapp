@@ -23,7 +23,7 @@ export const config = () => {
         CLUSTER: process.env.DB_CLUSTER,
         USER: process.env.DB_USER,
         PWD: process.env.DB_PWD,
-        NAME: process.env.DB_NAME,
+        NAME: process.env.DB_TEST_NAME,
       },
       smtp: {
         HOST: process.env.EMAIL_HOST,
