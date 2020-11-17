@@ -29,7 +29,7 @@ router.get("/random", async (req, res) => {
   res.json({ data: movie, error: null });
 });
 
-// Get details for several movies by id (if possible, for favourites)
+// Get details for several movies by id (favourites)
 router.get("/favourites", async (req, res) => {});
 
 // Get top rated movies (page 1)
