@@ -21,7 +21,7 @@ router.get("/config", async (req, res) => {
   res.json({ data: config, error: null });
 });
 
-// Get random movie details (for the banner)
+// Get random movie details (out of the most popular, used for the banner)
 router.get("/random", async (req, res) => {
   const movie = await movieController.getRandomMovie();
   if (movie == "error") {
