@@ -23,7 +23,7 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "email" : "admin@mail.com",
+  "email" : "app_user@mail.com",
   "password" : "123456"
 }
 
@@ -167,4 +167,9 @@ Content-Type: application/json
 ### Get selected movie trailers
 GET http://localhost:3000/movie/trailers/122
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjI4ZTYzMzcyNTdjMjMxNzUzMjFhYyIsImlhdCI6MTYwNTYwMzgwM30.yDiG5g3S5Qy0kt-G2ZTGxj4r342c2wdhLBHSHgV8Wjw
+Content-Type: application/json
+
+### Get movie details for user's favourites
+GET http://localhost:3000/movie/favourites
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjI4ZTY0MzcyNTdjMjMxNzUzMjFhZSIsImlhdCI6MTYwNTYxMjI0OH0.Zg69GG9ROTHmkp87v2BC0f0U0zWQEKmNZ7m7obiU-Wg
 Content-Type: application/json

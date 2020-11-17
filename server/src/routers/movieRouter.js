@@ -3,6 +3,7 @@ import express from "express";
 
 // Import controller
 import movieController from "../controllers/movieController.js";
+import favouriteController from "../controllers/favouriteController.js";
 
 // Import project files
 import authMiddleware from "../middlewares/authMiddleware.js";
@@ -30,7 +31,19 @@ router.get("/random", async (req, res) => {
 });
 
 // Get details for several movies by id (favourites)
-router.get("/favourites", async (req, res) => {});
+router.get("/favourites", async (req, res) => {
+  const favs = await favouriteController.getUserFavourites(req.user.id);
+  let favsArray = [];
+  favs.forEach((fav) => {
+    favsArray.push(fav.movie_id);
+  });
+
+  const movies = await movieController.getFavouritesDetails(favsArray);
+  if (movies == "error") {
+    return res.status(500).json({ data: null, error: "Internal Server Error" });
+  }
+  res.json({ data: movies, error: null });
+});
 
 // Get top rated movies (page 1)
 router.get("/toprated", async (req, res) => {});

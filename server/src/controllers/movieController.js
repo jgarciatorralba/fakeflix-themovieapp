@@ -61,6 +61,41 @@ export default {
   },
 
   // Get details for several movies by id (if possible, for favourites)
+  getFavouritesDetails: async function (favsArray) {
+    let requestsArray = [];
+    favsArray.forEach((fav) => {
+      let request = axios.get(config().app.API_BASE_URL + "movie/" + fav, {
+        headers: {
+          Authorization: "Bearer " + config().app.API_TOKEN,
+        },
+      });
+      requestsArray.push(request);
+    });
+    try {
+      const responses = await axios.all(requestsArray);
+      let data = [];
+      responses.forEach((response) => {
+        if (response.data.backdrop_path != null) {
+          response.data.backdrop_path = new URL(
+            "t/p/w1280" + response.data.backdrop_path,
+            "https://image.tmdb.org/"
+          );
+        }
+
+        if (response.data.poster_path != null) {
+          response.data.poster_path = new URL(
+            "t/p/w780" + response.data.poster_path,
+            "https://image.tmdb.org/"
+          );
+        }
+
+        data.push(response.data);
+      });
+      return data;
+    } catch (error) {
+      return "error";
+    }
+  },
 
   // Get top rated movies (page 1)
 
@@ -68,7 +103,6 @@ export default {
 
   // Get upcoming movies (page 1)
 
-  // Get movie details
   getMovieDetails: async function (movie_id) {
     try {
       const response = await axios.get(
@@ -100,7 +134,6 @@ export default {
     }
   },
 
-  // Get movie trailers
   getMovieTrailers: async function (movie_id) {
     try {
       const response = await axios.get(
