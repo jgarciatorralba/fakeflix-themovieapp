@@ -96,7 +96,39 @@ export default {
     }
   },
 
-  // Get top rated movies (page 1)
+  getTopRated: async function (page) {
+    try {
+      const response = await axios.get(
+        config().app.API_BASE_URL + "movie/top_rated?page=" + page,
+        {
+          headers: {
+            Authorization: "Bearer " + config().app.API_TOKEN,
+          },
+        }
+      );
+
+      if (response.data.results.length > 0) {
+        response.data.results.forEach((result) => {
+          if (result.backdrop_path != null) {
+            result.backdrop_path = new URL(
+              "t/p/w1280" + result.backdrop_path,
+              "https://image.tmdb.org/"
+            );
+          }
+
+          if (result.poster_path != null) {
+            result.poster_path = new URL(
+              "t/p/w780" + result.poster_path,
+              "https://image.tmdb.org/"
+            );
+          }
+        });
+      }
+      return response.data.results;
+    } catch (error) {
+      return "error";
+    }
+  },
 
   // Get now playing movies (page 1)
 
