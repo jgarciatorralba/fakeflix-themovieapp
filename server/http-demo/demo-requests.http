@@ -153,3 +153,8 @@ Content-Type: application/json
 GET http://localhost:3000/movie/config
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjI4ZTY0MzcyNTdjMjMxNzUzMjFhZSIsImlhdCI6MTYwNTUzODI1OX0.9uoG71J1CsvZjNfDZQ4mnDjrrbBQuJmTFMMlH3y5WLk
 Content-Type: application/json
+
+### Get random movie details (for the banner)
+GET http://localhost:3000/movie/random
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjI4ZTYzMzcyNTdjMjMxNzUzMjFhYyIsImlhdCI6MTYwNTYwMzgwM30.yDiG5g3S5Qy0kt-G2ZTGxj4r342c2wdhLBHSHgV8Wjw
+Content-Type: application/json

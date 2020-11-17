@@ -21,6 +21,13 @@ router.get("/config", async (req, res) => {
 });
 
 // Get random movie details (for the banner)
+router.get("/random", async (req, res) => {
+  const movie = await movieController.getRandomMovie();
+  if (movie == "error") {
+    return res.status(500).json({ data: null, error: "Internal Server Error" });
+  }
+  res.json({ data: movie, error: null });
+});
 
 // Get details for several movies by id (if possible, for favourites)
 

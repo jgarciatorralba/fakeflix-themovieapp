@@ -21,7 +21,40 @@ export default {
     }
   },
 
-  // Get random movie details (for the banner)
+  getRandomMovie: async function () {
+    try {
+      const respLatestMovie = await axios.get(
+        config().app.API_BASE_URL + "movie/latest",
+        {
+          headers: {
+            Authorization: "Bearer " + config().app.API_TOKEN,
+          },
+        }
+      );
+      const latestMovieId = Number(respLatestMovie.data.id);
+      let randomInt;
+      let response;
+      do {
+        randomInt = Math.floor(Math.random() * latestMovieId) + 1;
+        response = await axios.get(
+          config().app.API_BASE_URL + "movie/" + randomInt,
+          {
+            headers: {
+              Authorization: "Bearer " + config().app.API_TOKEN,
+            },
+          }
+        );
+      } while (
+        response.status !== 200 ||
+        response.data.backdrop_path == null ||
+        response.data.poster_path == null
+      );
+
+      return response.data;
+    } catch (error) {
+      return "error";
+    }
+  },
 
   // Get details for several movies by id (if possible, for favourites)
 
