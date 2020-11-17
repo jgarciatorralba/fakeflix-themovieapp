@@ -46,7 +46,7 @@ router.get("/favourites", async (req, res) => {
 });
 
 // Get top rated movies (with pagination)
-router.get("/toprated", async (req, res) => {
+router.get("/top-rated", async (req, res) => {
   const page = req.query.page || 1;
 
   const movies = await movieController.getTopRated(page);
@@ -57,7 +57,7 @@ router.get("/toprated", async (req, res) => {
 });
 
 // Get now playing movies (page 1)
-router.get("/nowplaying", async (req, res) => {});
+router.get("/now-playing", async (req, res) => {});
 
 // Get upcoming movies (page 1)
 router.get("/upcoming", async (req, res) => {});
