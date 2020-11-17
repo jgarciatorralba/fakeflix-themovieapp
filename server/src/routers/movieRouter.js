@@ -42,7 +42,13 @@ router.get("/nowplaying", async (req, res) => {});
 router.get("/upcoming", async (req, res) => {});
 
 // Get movie details
-router.get("/details/:movie_id", async (req, res) => {});
+router.get("/details/:movie_id", async (req, res) => {
+  const movie = await movieController.getMovieDetails(req.params.movie_id);
+  if (movie == "error") {
+    return res.status(500).json({ data: null, error: "Internal Server Error" });
+  }
+  res.json({ data: movie, error: null });
+});
 
 // Get movie trailers
 router.get("/trailers/:movie_id", async (req, res) => {});

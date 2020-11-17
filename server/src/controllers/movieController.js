@@ -69,6 +69,37 @@ export default {
   // Get upcoming movies (page 1)
 
   // Get movie details
+  getMovieDetails: async function (movie_id) {
+    try {
+      const response = await axios.get(
+        config().app.API_BASE_URL + "movie/" + movie_id,
+        {
+          headers: {
+            Authorization: "Bearer " + config().app.API_TOKEN,
+          },
+        }
+      );
+
+      if (response.data.backdrop_path != null) {
+        response.data.backdrop_path = new URL(
+          "t/p/w1280" + response.data.backdrop_path,
+          "https://image.tmdb.org/"
+        );
+      }
+
+      if (response.data.poster_path != null) {
+        response.data.poster_path = new URL(
+          "t/p/w780" + response.data.poster_path,
+          "https://image.tmdb.org/"
+        );
+      }
+
+      return response.data;
+    } catch (error) {
+      return "error";
+    }
+  },
 
   // Get movie trailers
+  getMovieTrailers: async function (movie_id) {},
 };
