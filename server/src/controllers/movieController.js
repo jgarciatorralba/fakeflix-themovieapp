@@ -24,16 +24,15 @@ export default {
   getRandomMovie: async function () {
     try {
       let randomMovie;
+      const respPopularMovies = await axios.get(
+        config().app.API_BASE_URL + "movie/popular",
+        {
+          headers: {
+            Authorization: "Bearer " + config().app.API_TOKEN,
+          },
+        }
+      );
       do {
-        const respPopularMovies = await axios.get(
-          config().app.API_BASE_URL + "movie/popular",
-          {
-            headers: {
-              Authorization: "Bearer " + config().app.API_TOKEN,
-            },
-          }
-        );
-
         let randomMoviePosition = Math.floor(
           Math.random() * respPopularMovies.data.results.length
         );
