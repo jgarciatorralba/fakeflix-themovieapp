@@ -178,3 +178,13 @@ Content-Type: application/json
 GET http://localhost:3000/movie/top-rated?page=2
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjI4ZTY0MzcyNTdjMjMxNzUzMjFhZSIsImlhdCI6MTYwNTYxMjI0OH0.Zg69GG9ROTHmkp87v2BC0f0U0zWQEKmNZ7m7obiU-Wg
 Content-Type: application/json
+
+### Get now playing movies
+GET http://localhost:3000/movie/now-playing
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjI4ZTY0MzcyNTdjMjMxNzUzMjFhZSIsImlhdCI6MTYwNTYxMjI0OH0.Zg69GG9ROTHmkp87v2BC0f0U0zWQEKmNZ7m7obiU-Wg
+Content-Type: application/json
+
+### Get upcoming movies
+GET http://localhost:3000/movie/upcoming?page=3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjI4ZTY0MzcyNTdjMjMxNzUzMjFhZSIsImlhdCI6MTYwNTYxMjI0OH0.Zg69GG9ROTHmkp87v2BC0f0U0zWQEKmNZ7m7obiU-Wg
+Content-Type: application/json

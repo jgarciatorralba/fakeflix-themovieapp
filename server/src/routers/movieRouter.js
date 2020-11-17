@@ -56,11 +56,27 @@ router.get("/top-rated", async (req, res) => {
   res.json({ data: movies, error: null });
 });
 
-// Get now playing movies (page 1)
-router.get("/now-playing", async (req, res) => {});
+// Get now playing movies (with pagination)
+router.get("/now-playing", async (req, res) => {
+  const page = req.query.page || 1;
 
-// Get upcoming movies (page 1)
-router.get("/upcoming", async (req, res) => {});
+  const movies = await movieController.getNowPlaying(page);
+  if (movies == "error") {
+    return res.status(500).json({ data: null, error: "Internal Server Error" });
+  }
+  res.json({ data: movies, error: null });
+});
+
+// Get upcoming movies (with pagination)
+router.get("/upcoming", async (req, res) => {
+  const page = req.query.page || 1;
+
+  const movies = await movieController.getUpcoming(page);
+  if (movies == "error") {
+    return res.status(500).json({ data: null, error: "Internal Server Error" });
+  }
+  res.json({ data: movies, error: null });
+});
 
 // Get movie details
 router.get("/details/:movie_id", async (req, res) => {
