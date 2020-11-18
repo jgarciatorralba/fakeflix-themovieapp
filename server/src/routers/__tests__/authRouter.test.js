@@ -22,7 +22,7 @@ let spyMethodFindByEmail = null;
 let spyMethodBcryptCompare = null;
 let spyMethodJWTSign = null;
 
-describe("Testing auth routes", () => {
+describe("Testing auth routes...", () => {
   beforeAll(async () => {
     userController.create = jest.fn().mockResolvedValue(null);
     userController.findByEmail = jest.fn().mockResolvedValue({
