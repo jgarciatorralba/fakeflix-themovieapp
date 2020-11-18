@@ -134,20 +134,20 @@ describe("Testing auth routes...", () => {
         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjI4ZTY0MzcyNTdjMjMxNzUzMjFhZSIsImlhdCI6MTYwNTY4OTE2NCwiZXhwIjoxNjA1NjkyNzY0fQ.4yAKKcZinU5OAR9vHM-9fFeJoEQpV5sT0_Pv8dl8wvg"
       );
 
-    // expect.assertions(1);
-    // expect(response.status).toEqual(403);
+    expect.assertions(1);
+    expect(response.status).toEqual(403);
 
     /**
      * If the reset token is freshly created,
      * uncomment below and test these values.
      */
-    expect.assertions(4);
-    expect(response.status).toEqual(200);
-    expect(userController.updateUserById).toHaveBeenCalledTimes(1);
-    expect(bcrypt.hash).toHaveBeenCalledTimes(1);
-    expect(JSON.parse(response.text)).toMatchObject({
-      error: null,
-      data: "Password updated successfully!",
-    });
+    // expect.assertions(4);
+    // expect(response.status).toEqual(200);
+    // expect(userController.updateUserById).toHaveBeenCalledTimes(1);
+    // expect(bcrypt.hash).toHaveBeenCalledTimes(1);
+    // expect(JSON.parse(response.text)).toMatchObject({
+    //   error: null,
+    //   data: "Password updated successfully!",
+    // });
   });
 });
