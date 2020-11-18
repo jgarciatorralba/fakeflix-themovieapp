@@ -28,11 +28,11 @@ describe("Performing CRUD over Comment controller in test database", () => {
       );
 
       await Comment.deleteMany({});
-      await User.deleteMany({});
+      await User.deleteOne({ email: "test-comment-controller@domain.com" });
 
       const newUser = new User({
-        username: "test-db-user",
-        email: "test-db-user@domain.com",
+        username: "test-comment-controller",
+        email: "test-comment-controller@domain.com",
         password: "123456",
       });
       await newUser.save();
@@ -59,12 +59,14 @@ describe("Performing CRUD over Comment controller in test database", () => {
 
   afterAll(async () => {
     await Comment.deleteMany({});
-    await User.deleteMany({});
+    await User.deleteOne({ email: "test-comment-controller@domain.com" });
     await mongoose.connection.close();
   });
 
   test("Insert a new comment", async () => {
-    const user = await User.findOne({ email: "test-db-user@domain.com" });
+    const user = await User.findOne({
+      email: "test-comment-controller@domain.com",
+    });
 
     const comment = {
       user_id: user._id,
@@ -86,7 +88,9 @@ describe("Performing CRUD over Comment controller in test database", () => {
   });
 
   test("Get existing comments for a given movie", async () => {
-    const user = await User.findOne({ email: "test-db-user@domain.com" });
+    const user = await User.findOne({
+      email: "test-comment-controller@domain.com",
+    });
     const comments = await commentController.getCommentsByMovie(122);
 
     expect.assertions(3);
