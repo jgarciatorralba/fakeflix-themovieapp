@@ -19,12 +19,14 @@ app.use("/movie-test", movieRouter);
 let spyMethodGetConfig = null;
 let spyMethodGetRandomMovie = null;
 let spyMethodGetUserFavourites = null;
+let spyMethodGetFavouritesDetails = null;
 
 describe("Testing movie routes...", () => {
   beforeAll(async () => {
     movieController.getConfig = jest.fn().mockResolvedValue({});
     movieController.getRandomMovie = jest.fn().mockResolvedValue({});
     favouriteController.getUserFavourites = jest.fn().mockResolvedValue([]);
+    movieController.getFavouritesDetails = jest.fn().mockResolvedValue([]);
 
     spyMethodGetConfig = jest.spyOn(movieController, "getConfig");
     spyMethodGetRandomMovie = jest.spyOn(movieController, "getRandomMovie");
@@ -32,12 +34,17 @@ describe("Testing movie routes...", () => {
       favouriteController,
       "getUserFavourites"
     );
+    spyMethodGetFavouritesDetails = jest.spyOn(
+      movieController,
+      "getFavouritesDetails"
+    );
   });
 
   afterAll(async () => {
     spyMethodGetConfig.mockClear();
     spyMethodGetRandomMovie.mockClear();
     spyMethodGetUserFavourites.mockClear();
+    spyMethodGetFavouritesDetails.mockClear();
   });
 
   test("GET - get configuration details", async () => {
@@ -71,7 +78,7 @@ describe("Testing movie routes...", () => {
   });
 
   test("GET - get favourite movies for a given user", async () => {
-    expect.assertions(3);
+    expect.assertions(4);
 
     const response = await request(app)
       .get("/movie-test/favourites")
@@ -82,6 +89,7 @@ describe("Testing movie routes...", () => {
 
     expect(response.status).toEqual(200);
     expect(favouriteController.getUserFavourites).toHaveBeenCalledTimes(1);
+    expect(movieController.getFavouritesDetails).toHaveBeenCalledTimes(1);
     expect(JSON.parse(response.text)).toMatchObject({ error: null, data: [] });
   });
 });
