@@ -58,6 +58,7 @@ describe("Testing user routes", () => {
         "Authorization",
         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjI4ZmU1NzBmZDg5MjQwNmFmM2YwOSIsImlhdCI6MTYwNTUzNzc5OH0.3u9o6DTXLexUDV8nSHqsRp32d42R6m3VawNIdjssxY4"
       );
+
     expect(response.status).toEqual(200);
     expect(userController.findById).toHaveBeenCalledTimes(1);
     expect(JSON.parse(response.text)).toMatchObject({ error: null, data: {} });
