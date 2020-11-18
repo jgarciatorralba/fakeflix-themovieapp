@@ -42,6 +42,8 @@ describe("Testing auth routes...", () => {
   afterAll(async () => {
     spyMethodCreate.mockClear();
     spyMethodFindByEmail.mockClear();
+    spyMethodBcryptCompare.mockClear();
+    spyMethodJWTSign.mockClear();
   });
 
   test("POST - register a new user", async () => {
