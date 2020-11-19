@@ -1,0 +1,190 @@
+### Register new user successfully
+POST http://localhost:3000/api/register
+Content-Type: application/json
+
+{
+  "email" : "my_email@emaildomain.com",
+  "username" : "demo_http_request",
+  "password" : "123456"
+}
+
+### Register new user with invalid email format (check validator is working)
+POST http://localhost:3000/api/register
+Content-Type: application/json
+
+{
+  "email" : "invalid-email-format",
+  "username" : "any-given-username",
+  "password" : "123456"
+}
+
+### Login existing user
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+  "email" : "admin@mail.com",
+  "password" : "123456"
+}
+
+### Send reset password email
+POST http://localhost:3000/api/password/forgot
+Content-Type: application/json
+
+{
+  "email" : "my_email@emaildomain.com"
+}
+
+### Reset to new password
+POST http://localhost:3000/api/password/reset
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhODFkOTVjYTM1MTgyZTlkZGExYiIsImlhdCI6MTYwNTgwNjI2MywiZXhwIjoxNjA1ODA5ODYzfQ.yxiRgjPhRzU3BG4u8g7lipW5y8FUtQBmpkg7cOpiN_o
+Content-Type: application/json
+
+{
+  "password" : "password"
+}
+
+### Get an existing user
+GET http://localhost:3000/api/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhODFkOTVjYTM1MTgyZTlkZGExYiIsImlhdCI6MTYwNTgwNjM5MH0.YH3ku7-UoLUdbas96B6C3n-7YxEiNBCzGuUVYWweiR4
+Content-Type: application/json
+
+### Update existing user
+PATCH http://localhost:3000/api/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhODFkOTVjYTM1MTgyZTlkZGExYiIsImlhdCI6MTYwNTgwNjM5MH0.YH3ku7-UoLUdbas96B6C3n-7YxEiNBCzGuUVYWweiR4
+Content-Type: application/json
+
+{
+  "username": "new_demo_http_request",
+  "email": "my_updated_email@emaildomain.com"
+}
+
+### Update existing user's username and avatar
+PATCH http://localhost:3000/api/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhODFkOTVjYTM1MTgyZTlkZGExYiIsImlhdCI6MTYwNTgwNjM5MH0.YH3ku7-UoLUdbas96B6C3n-7YxEiNBCzGuUVYWweiR4
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="username"
+
+demo_http_request
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="avatar"; filename="any_filename.png"
+Content-Type: image/png
+
+< ./new-profile.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### Soft delete existing user
+DELETE http://localhost:3000/api/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhODFkOTVjYTM1MTgyZTlkZGExYiIsImlhdCI6MTYwNTgwNjM5MH0.YH3ku7-UoLUdbas96B6C3n-7YxEiNBCzGuUVYWweiR4
+Content-Type: application/json
+
+### Add a new comment to a movie
+POST http://localhost:3000/api/comment/12
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+{
+  "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet nisl in ante suscipit vestibulum vitae laoreet ligula. Ut volutpat diam sit amet dapibus scelerisque. Curabitur lobortis consectetur massa id interdum. Nam non varius nulla. Quisque vitae pellentesque mauris, in hendrerit neque. Maecenas ac lacinia velit. Duis nec nisi vel metus pulvinar ornare."
+}
+
+### Remove a comment from a movie
+DELETE http://localhost:3000/api/comment/5fb6aa0895ca35182e9dda1d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+### Get all comments for a registered movie
+GET http://localhost:3000/api/comment/12
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+### Get all comments for a non-registered movie (empty array)
+GET http://localhost:3000/api/comment/11
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+### Add like to a movie
+POST http://localhost:3000/api/like/99
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+### Remove like from a movie
+DELETE http://localhost:3000/api/like/99
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+### Get movie likes
+GET http://localhost:3000/api/like/99
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+### Add dislike to a movie
+POST http://localhost:3000/api/dislike/99
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+### Remove dislike from a movie
+DELETE http://localhost:3000/api/dislike/99
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+### Get movie dislikes
+GET http://localhost:3000/api/dislike/99
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+### Add movie to user's favourites
+POST http://localhost:3000/api/favourite/123
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+### Remove movie from user's favourites
+DELETE http://localhost:3000/api/favourite/123
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+### Get user's favourite movies
+GET http://localhost:3000/api/favourite
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+### Get API configuration details
+GET http://localhost:3000/api/movie/config
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+### Get random movie details (for the banner)
+GET http://localhost:3000/api/movie/random
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+### Get selected movie details
+GET http://localhost:3000/api/movie/details/11
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+### Get selected movie trailers
+GET http://localhost:3000/api/movie/trailers/122
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+### Get movie details for user's favourites
+GET http://localhost:3000/api/movie/favourites
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+### Get top rated movies
+GET http://localhost:3000/api/movie/top-rated?page=2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+### Get now playing movies
+GET http://localhost:3000/api/movie/now-playing
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
+
+### Get upcoming movies
+GET http://localhost:3000/api/movie/upcoming?page=3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Content-Type: application/json
