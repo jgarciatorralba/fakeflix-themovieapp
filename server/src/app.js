@@ -24,13 +24,13 @@ app.use(cors({ origin: [config().app.CLIENT_DOMAIN] }));
 app.use(express.json());
 
 // Routers
-app.use("/", authRouter);
-app.use("/user", userRouter);
-app.use("/comment", commentRouter);
-app.use("/like", likeRouter);
-app.use("/dislike", dislikeRouter);
-app.use("/favourite", favouriteRouter);
-app.use("/movie", movieRouter);
+app.use("/api/", authRouter);
+app.use("/api/user", userRouter);
+app.use("/api/comment", commentRouter);
+app.use("/api/like", likeRouter);
+app.use("/api/dislike", dislikeRouter);
+app.use("/api/favourite", favouriteRouter);
+app.use("/api/movie", movieRouter);
 
 // Allow "public" folder to serve static files
 app.use(express.static(path.join(path.resolve(), "server", "public")));
