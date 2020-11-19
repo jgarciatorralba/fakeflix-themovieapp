@@ -1,5 +1,5 @@
 ### Register new user successfully
-POST http://localhost:3000/api/register
+POST http://localhost:5000/api/register
 Content-Type: application/json
 
 {
@@ -9,7 +9,7 @@ Content-Type: application/json
 }
 
 ### Register new user with invalid email format (check validator is working)
-POST http://localhost:3000/api/register
+POST http://localhost:5000/api/register
 Content-Type: application/json
 
 {
@@ -19,7 +19,7 @@ Content-Type: application/json
 }
 
 ### Login existing user
-POST http://localhost:3000/api/login
+POST http://localhost:5000/api/login
 Content-Type: application/json
 
 {
@@ -28,7 +28,7 @@ Content-Type: application/json
 }
 
 ### Send reset password email
-POST http://localhost:3000/api/password/forgot
+POST http://localhost:5000/api/password/forgot
 Content-Type: application/json
 
 {
@@ -36,7 +36,7 @@ Content-Type: application/json
 }
 
 ### Reset to new password
-POST http://localhost:3000/api/password/reset
+POST http://localhost:5000/api/password/reset
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhODFkOTVjYTM1MTgyZTlkZGExYiIsImlhdCI6MTYwNTgwNjI2MywiZXhwIjoxNjA1ODA5ODYzfQ.yxiRgjPhRzU3BG4u8g7lipW5y8FUtQBmpkg7cOpiN_o
 Content-Type: application/json
 
@@ -45,12 +45,12 @@ Content-Type: application/json
 }
 
 ### Get an existing user
-GET http://localhost:3000/api/user
+GET http://localhost:5000/api/user
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhODFkOTVjYTM1MTgyZTlkZGExYiIsImlhdCI6MTYwNTgwNjM5MH0.YH3ku7-UoLUdbas96B6C3n-7YxEiNBCzGuUVYWweiR4
 Content-Type: application/json
 
 ### Update existing user
-PATCH http://localhost:3000/api/user
+PATCH http://localhost:5000/api/user
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhODFkOTVjYTM1MTgyZTlkZGExYiIsImlhdCI6MTYwNTgwNjM5MH0.YH3ku7-UoLUdbas96B6C3n-7YxEiNBCzGuUVYWweiR4
 Content-Type: application/json
 
@@ -60,7 +60,7 @@ Content-Type: application/json
 }
 
 ### Update existing user's username and avatar
-PATCH http://localhost:3000/api/user
+PATCH http://localhost:5000/api/user
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhODFkOTVjYTM1MTgyZTlkZGExYiIsImlhdCI6MTYwNTgwNjM5MH0.YH3ku7-UoLUdbas96B6C3n-7YxEiNBCzGuUVYWweiR4
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
@@ -76,12 +76,12 @@ Content-Type: image/png
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
 ### Soft delete existing user
-DELETE http://localhost:3000/api/user
+DELETE http://localhost:5000/api/user
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhODFkOTVjYTM1MTgyZTlkZGExYiIsImlhdCI6MTYwNTgwNjM5MH0.YH3ku7-UoLUdbas96B6C3n-7YxEiNBCzGuUVYWweiR4
 Content-Type: application/json
 
 ### Add a new comment to a movie
-POST http://localhost:3000/api/comment/12
+POST http://localhost:5000/api/comment/12
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
@@ -90,101 +90,101 @@ Content-Type: application/json
 }
 
 ### Remove a comment from a movie
-DELETE http://localhost:3000/api/comment/5fb6aa0895ca35182e9dda1d
+DELETE http://localhost:5000/api/comment/5fb6aa0895ca35182e9dda1d
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
 ### Get all comments for a registered movie
-GET http://localhost:3000/api/comment/12
+GET http://localhost:5000/api/comment/12
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
 ### Get all comments for a non-registered movie (empty array)
-GET http://localhost:3000/api/comment/11
+GET http://localhost:5000/api/comment/11
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
 ### Add like to a movie
-POST http://localhost:3000/api/like/99
+POST http://localhost:5000/api/like/99
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
 ### Remove like from a movie
-DELETE http://localhost:3000/api/like/99
+DELETE http://localhost:5000/api/like/99
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
 ### Get movie likes
-GET http://localhost:3000/api/like/99
+GET http://localhost:5000/api/like/99
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
 ### Add dislike to a movie
-POST http://localhost:3000/api/dislike/99
+POST http://localhost:5000/api/dislike/99
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
 ### Remove dislike from a movie
-DELETE http://localhost:3000/api/dislike/99
+DELETE http://localhost:5000/api/dislike/99
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
 ### Get movie dislikes
-GET http://localhost:3000/api/dislike/99
+GET http://localhost:5000/api/dislike/99
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
 ### Add movie to user's favourites
-POST http://localhost:3000/api/favourite/123
+POST http://localhost:5000/api/favourite/123
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
 ### Remove movie from user's favourites
-DELETE http://localhost:3000/api/favourite/123
+DELETE http://localhost:5000/api/favourite/123
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
 ### Get user's favourite movies
-GET http://localhost:3000/api/favourite
+GET http://localhost:5000/api/favourite
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
 ### Get API configuration details
-GET http://localhost:3000/api/movie/config
+GET http://localhost:5000/api/movie/config
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
 ### Get random movie details (for the banner)
-GET http://localhost:3000/api/movie/random
+GET http://localhost:5000/api/movie/random
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
 ### Get selected movie details
-GET http://localhost:3000/api/movie/details/11
+GET http://localhost:5000/api/movie/details/11
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
 ### Get selected movie trailers
-GET http://localhost:3000/api/movie/trailers/122
+GET http://localhost:5000/api/movie/trailers/122
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
 ### Get movie details for user's favourites
-GET http://localhost:3000/api/movie/favourites
+GET http://localhost:5000/api/movie/favourites
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
 ### Get top rated movies
-GET http://localhost:3000/api/movie/top-rated?page=2
+GET http://localhost:5000/api/movie/top-rated?page=2
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
 ### Get now playing movies
-GET http://localhost:3000/api/movie/now-playing
+GET http://localhost:5000/api/movie/now-playing
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
 
 ### Get upcoming movies
-GET http://localhost:3000/api/movie/upcoming?page=3
+GET http://localhost:5000/api/movie/upcoming?page=3
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
 Content-Type: application/json
