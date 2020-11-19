@@ -33,6 +33,7 @@ app.use("/favourite", favouriteRouter);
 app.use("/movie", movieRouter);
 
 // Allow "public" folder to serve static files
-app.use(express.static(path.resolve() + "/server/public"));
+app.use(express.static(path.join(path.resolve(), "server", "public")));
+// app.use(express.static(path.resolve() + "/server/public"));
 
 export default app;
