@@ -33,7 +33,17 @@ app.use("/api/favourite", favouriteRouter);
 app.use("/api/movie", movieRouter);
 
 // Allow "public" folder to serve static files
-app.use(express.static(path.join(path.resolve(), "server", "public")));
-// app.use(express.static(path.resolve() + "/server/public"));
+app.use(express.static(path.resolve("server", "public")));
+
+// Serve React static assets if in production
+if (config().app.MODE === "production") {
+  // Allow "build" folder to serve static files
+  app.use(express.static(path.resolve("client", "build")));
+
+  // File "index.html" for all page routes
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve("client", "build", "index.html"));
+  });
+}
 
 export default app;
