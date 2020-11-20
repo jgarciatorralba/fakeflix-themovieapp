@@ -23,7 +23,7 @@ POST http://localhost:5000/api/login
 Content-Type: application/json
 
 {
-  "email" : "admin@mail.com",
+  "email" : "a-dummy-username@mail.com",
   "password" : "123456"
 }
 
@@ -37,7 +37,7 @@ Content-Type: application/json
 
 ### Reset to new password
 POST http://localhost:5000/api/password/reset
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhODFkOTVjYTM1MTgyZTlkZGExYiIsImlhdCI6MTYwNTgwNjI2MywiZXhwIjoxNjA1ODA5ODYzfQ.yxiRgjPhRzU3BG4u8g7lipW5y8FUtQBmpkg7cOpiN_o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiYTcyNGI2ZmIwMTVlMTQ3MGJiMCIsImlhdCI6MTYwNTg3NjQxNSwiZXhwIjoxNjA1ODgwMDE1fQ.91LBTG8cW4vvXjsU4c6CqB37sW7aSi0rvyMalt3oiok
 Content-Type: application/json
 
 {
@@ -46,12 +46,12 @@ Content-Type: application/json
 
 ### Get an existing user
 GET http://localhost:5000/api/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhODFkOTVjYTM1MTgyZTlkZGExYiIsImlhdCI6MTYwNTgwNjM5MH0.YH3ku7-UoLUdbas96B6C3n-7YxEiNBCzGuUVYWweiR4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiYTcyNGI2ZmIwMTVlMTQ3MGJiMCIsImlhdCI6MTYwNTg3NjQ5NH0.nw0-fmqvtLbaEj80knYIaXoHlQwU9robwudOiJJZM7M
 Content-Type: application/json
 
 ### Update existing user
 PATCH http://localhost:5000/api/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhODFkOTVjYTM1MTgyZTlkZGExYiIsImlhdCI6MTYwNTgwNjM5MH0.YH3ku7-UoLUdbas96B6C3n-7YxEiNBCzGuUVYWweiR4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiYTcyNGI2ZmIwMTVlMTQ3MGJiMCIsImlhdCI6MTYwNTg3NjQ5NH0.nw0-fmqvtLbaEj80knYIaXoHlQwU9robwudOiJJZM7M
 Content-Type: application/json
 
 {
@@ -61,7 +61,7 @@ Content-Type: application/json
 
 ### Update existing user's username and avatar
 PATCH http://localhost:5000/api/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhODFkOTVjYTM1MTgyZTlkZGExYiIsImlhdCI6MTYwNTgwNjM5MH0.YH3ku7-UoLUdbas96B6C3n-7YxEiNBCzGuUVYWweiR4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiYTcyNGI2ZmIwMTVlMTQ3MGJiMCIsImlhdCI6MTYwNTg3NjQ5NH0.nw0-fmqvtLbaEj80knYIaXoHlQwU9robwudOiJJZM7M
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -77,12 +77,12 @@ Content-Type: image/png
 
 ### Soft delete existing user
 DELETE http://localhost:5000/api/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhODFkOTVjYTM1MTgyZTlkZGExYiIsImlhdCI6MTYwNTgwNjM5MH0.YH3ku7-UoLUdbas96B6C3n-7YxEiNBCzGuUVYWweiR4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiYTcyNGI2ZmIwMTVlMTQ3MGJiMCIsImlhdCI6MTYwNTg3NjQ5NH0.nw0-fmqvtLbaEj80knYIaXoHlQwU9robwudOiJJZM7M
 Content-Type: application/json
 
 ### Add a new comment to a movie
 POST http://localhost:5000/api/comment/12
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
 
 {
@@ -90,101 +90,101 @@ Content-Type: application/json
 }
 
 ### Remove a comment from a movie
-DELETE http://localhost:5000/api/comment/5fb6aa0895ca35182e9dda1d
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+DELETE http://localhost:5000/api/comment/5fb7bc044b6fb015e1470bb2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZSIsImlhdCI6MTYwNTg3NzAzMX0.LM0jW00Rr7xbBCpudP4TJTANKO_hs3rkvCBXwxXdnOo
 Content-Type: application/json
 
 ### Get all comments for a registered movie
 GET http://localhost:5000/api/comment/12
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
 
 ### Get all comments for a non-registered movie (empty array)
 GET http://localhost:5000/api/comment/11
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
 
 ### Add like to a movie
 POST http://localhost:5000/api/like/99
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
 
 ### Remove like from a movie
 DELETE http://localhost:5000/api/like/99
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
 
 ### Get movie likes
 GET http://localhost:5000/api/like/99
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
 
 ### Add dislike to a movie
 POST http://localhost:5000/api/dislike/99
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
 
 ### Remove dislike from a movie
 DELETE http://localhost:5000/api/dislike/99
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
 
 ### Get movie dislikes
 GET http://localhost:5000/api/dislike/99
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
 
 ### Add movie to user's favourites
 POST http://localhost:5000/api/favourite/123
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
 
 ### Remove movie from user's favourites
 DELETE http://localhost:5000/api/favourite/123
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
 
 ### Get user's favourite movies
 GET http://localhost:5000/api/favourite
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
 
 ### Get API configuration details
 GET http://localhost:5000/api/movie/config
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
 
 ### Get random movie details (for the banner)
 GET http://localhost:5000/api/movie/random
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
 
 ### Get selected movie details
 GET http://localhost:5000/api/movie/details/11
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
 
 ### Get selected movie trailers
 GET http://localhost:5000/api/movie/trailers/122
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
 
 ### Get movie details for user's favourites
 GET http://localhost:5000/api/movie/favourites
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
 
 ### Get top rated movies
 GET http://localhost:5000/api/movie/top-rated?page=2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
 
 ### Get now playing movies
 GET http://localhost:5000/api/movie/now-playing
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
 
 ### Get upcoming movies
 GET http://localhost:5000/api/movie/upcoming?page=3
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjZhN2NiOGI2OGIxMTgxMDA0ZWVkNyIsImlhdCI6MTYwNTgwNjU2N30.yxOc78I680o2punXkjx24N2pI2guVMMqaSNxNA7-NCM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
