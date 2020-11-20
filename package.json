@@ -2,45 +2,32 @@
   "name": "tfm-movie-app",
   "version": "1.0.0",
   "description": "Final project: The Movie App",
-  "main": "server/server.js",
-  "type": "module",
   "engine": {
     "node": "14.3.0",
     "npm": "6.14.8"
   },
   "scripts": {
-    "start": "node server/server.js",
-    "build": "npm install && (cd client && npm run build)",
-    "dev": "npx nodemon",
-    "migrate": "node server/src/database/migration.js",
-    "test": "jest --testEnvironment=node --verbose --watchAll",
-    "test-coverage": "jest --testEnvironment=node --verbose --coverage"
+    "start": "cd server && npm run start",
+    "build": "(cd server && npm install) && (cd ..) && (cd client && npm run build)"
   },
   "repository": {
     "type": "git",
     "url": "https://code.assemblerschool.com/jorge-garcia/tfm-movie-app.git"
   },
-  "keywords": [],
+  "keywords": [
+    "React",
+    "Redux",
+    "Axios",
+    "Jest",
+    "Javascript",
+    "node.js",
+    "Express",
+    "MongoDB",
+    "Mongoose",
+    "JWT",
+    "TMDb API",
+    "Heroku"
+  ],
   "author": "Jorge García Torralba",
-  "license": "ISC",
-  "dependencies": {
-    "axios": "^0.21.0",
-    "bcrypt": "^5.0.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.13",
-    "mongoose-delete": "^0.5.2",
-    "multer": "^1.4.2",
-    "nodemailer": "^6.4.16",
-    "validator": "^13.1.17"
-  },
-  "devDependencies": {
-    "@babel/preset-env": "^7.12.1",
-    "babel-jest": "^26.6.3",
-    "jest": "^26.6.3",
-    "nodemon": "^2.0.6",
-    "supertest": "^6.0.1"
-  }
+  "license": "ISC"
 }
