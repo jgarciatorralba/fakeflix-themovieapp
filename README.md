@@ -1,6 +1,6 @@
 # 🎬 The movie app
 
-_React, Redux, Axios, Jest, Javascript, node.js, Express, MongoDB, Mongoose, JWT, Jest, TMDb API, Heroku_
+_React, Redux, Axios, Javascript, node.js, Express, MongoDB, Mongoose, JWT, Jest, TMDb API, Heroku_
 
 ## Description
 
