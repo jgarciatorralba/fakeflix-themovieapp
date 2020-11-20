@@ -20,7 +20,9 @@ import movieRouter from "./routers/movieRouter.js";
 const app = express();
 
 // General use middlewares
-app.use(cors({ origin: [config().app.CLIENT_DOMAIN] }));
+if (config().app.MODE !== "production") {
+  app.use(cors({ origin: [config().app.CLIENT_DOMAIN] }));
+}
 app.use(express.json());
 
 // Routers
