@@ -23,7 +23,7 @@ POST http://localhost:5000/api/login
 Content-Type: application/json
 
 {
-  "email" : "a-dummy-username@mail.com",
+  "email" : "admin@mail.com",
   "password" : "123456"
 }
 
@@ -82,7 +82,7 @@ Content-Type: application/json
 
 ### Add a new comment to a movie
 POST http://localhost:5000/api/comment/12
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZSIsImlhdCI6MTYwNTg4NzE1OH0.1DcI3nrLMR4v-bFJH70bgqIxXB02efAPiL1aCnBr8BM
 Content-Type: application/json
 
 {
@@ -90,8 +90,8 @@ Content-Type: application/json
 }
 
 ### Remove a comment from a movie
-DELETE http://localhost:5000/api/comment/5fb7bc044b6fb015e1470bb2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZSIsImlhdCI6MTYwNTg3NzAzMX0.LM0jW00Rr7xbBCpudP4TJTANKO_hs3rkvCBXwxXdnOo
+DELETE http://localhost:5000/api/comment/5fb7e5d111bd471fbad6ebf8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZSIsImlhdCI6MTYwNTg4NzE1OH0.1DcI3nrLMR4v-bFJH70bgqIxXB02efAPiL1aCnBr8BM
 Content-Type: application/json
 
 ### Get all comments for a registered movie
