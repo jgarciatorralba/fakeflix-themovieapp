@@ -28,20 +28,39 @@ router.post("/:movie_id", async (req, res) => {
   const movie_id = req.params.movie_id;
   const content = req.body.content;
 
-  const error = await commentController.add({
+  const comment = await commentController.add({
     user_id,
     movie_id,
     content,
   });
-  if (error) {
+  if (comment == "error") {
     return res.status(500).json({ data: null, error: "Internal Server Error" });
   }
-  res.json({ data: "Comment added successfully!", error: null });
+  res.json({ data: comment, error: null });
 });
 
 // Remove comment from a given movie
 router.delete("/:comment_id", async (req, res) => {
   const comment_id = req.params.comment_id;
+  const comment = await commentController.getCommentById(comment_id);
+
+  if (!comment) {
+    return res.json({
+      data: "No comment found for the given comment_id",
+      error: null,
+    });
+  }
+
+  if (comment == "error") {
+    return res.status(500).json({ data: null, error: "Internal Server Error" });
+  }
+
+  if (comment.user_id != req.user.id) {
+    return res.status(403).json({
+      data: null,
+      error: "Forbidden: Invalid JWT",
+    });
+  }
 
   const error = await commentController.remove(comment_id);
   if (error) {
