@@ -1,7 +1,10 @@
+// Import native node modules
+import path from "path";
+
 // Import dependencies
 import dotenv from "dotenv";
 
-dotenv.config();
+dotenv.config({ path: path.resolve("..", ".env") });
 
 export const config = () => {
   const MODE = process.env.NODE_ENV || "production";
