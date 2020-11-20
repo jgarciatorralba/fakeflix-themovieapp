@@ -12,10 +12,10 @@ export default {
     try {
       await newComment.save();
     } catch (error) {
-      return error;
+      return "error";
     }
 
-    return null;
+    return newComment;
   },
 
   remove: async function (comment_id) {
@@ -28,6 +28,15 @@ export default {
     }
 
     return null;
+  },
+
+  getCommentById: async function (comment_id) {
+    try {
+      const comment = await Comment.findById(comment_id);
+      return comment;
+    } catch (error) {
+      return "error";
+    }
   },
 
   getCommentsByMovie: async function (movie_id) {
