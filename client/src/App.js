@@ -1,8 +1,37 @@
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+
+import ROUTES from "./utils/routes";
+
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import Movie from "./pages/Movie/Movie";
+import Register from "./pages/Register/Register";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
+
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
+    <Switch>
+      <Route path={ROUTES.LOGIN}>
+        <Login />
+      </Route>
+      <Route path={ROUTES.REGISTER}>
+        <Register />
+      </Route>
+      <Route path={ROUTES.PASS_FORGOT}>
+        <ForgotPassword />
+      </Route>
+      <Route path={ROUTES.PASS_RESET}>
+        <ResetPassword />
+      </Route>
+      <Route path={ROUTES.MOVIE}>
+        <Movie />
+      </Route>
+      <Route path={ROUTES.HOME} exact>
+        <Home />
+      </Route>
+    </Switch>
   );
 }
 
