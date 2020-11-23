@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+
+@import "../../styles/settings/variables";
+
+.cont-login {
+  height: 100vh;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  .form-login {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+    .logo {
+      color: $netflix-red;
+      font-family: "Monoton", cursive;
+      font-size: 2.75rem;
+      animation-name: brokenBulb;
+      animation-timing-function: linear;
+      animation-duration: 15s;
+      animation-iteration-count: infinite;
+      pointer-events: none;
+    }
+    a {
+      b {
+        color: $font-color !important;
+      }
+    }
+    .form-control {
+      position: relative;
+      box-sizing: border-box;
+      height: auto;
+      padding: 10px;
+      font-size: 16px;
+      &:focus {
+        z-index: 2;
+        border: 1px solid $input-focus-border !important;
+        box-shadow: 0 0 0 0.1rem $input-focus-shadow !important;
+      }
+      &[type="email"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      &[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+    .btn {
+      background-color: $netflix-red !important;
+      color: $font-color !important;
+    }
+    .alert {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@keyframes brokenBulb {
+  0% {
+    text-shadow: none;
+  }
+
+  5% {
+    text-shadow: 0 0 2px $netflix-red;
+  }
+
+  10% {
+    text-shadow: 0 0 2px $netflix-red;
+  }
+
+  15% {
+    text-shadow: 0 0 2px $netflix-red;
+  }
+
+  20% {
+    text-shadow: 0 0 2px $netflix-red;
+  }
+
+  25% {
+    text-shadow: 0 0 2px $netflix-red;
+  }
+
+  30% {
+    text-shadow: 0 0 2px $netflix-red;
+  }
+
+  35% {
+    text-shadow: 0 0 2px $netflix-red;
+  }
+
+  40% {
+    text-shadow: 0 0 2px $netflix-red;
+  }
+
+  45% {
+    text-shadow: 0 0 2px $netflix-red;
+  }
+
+  50% {
+    text-shadow: 0 0 2px $netflix-red;
+  }
+
+  55% {
+    text-shadow: 0 0 2px $netflix-red;
+  }
+
+  60% {
+    text-shadow: 0 0 2px $netflix-red;
+  }
+
+  65% {
+    text-shadow: 0 0 2px $netflix-red;
+  }
+
+  70% {
+    text-shadow: 0 0 2px $netflix-red;
+  }
+
+  74% {
+    text-shadow: none;
+  }
+
+  75% {
+    text-shadow: 0 0 2px $netflix-red;
+  }
+
+  76% {
+    text-shadow: none;
+  }
+
+  77% {
+    text-shadow: 0 0 2px $netflix-red;
+  }
+
+  78% {
+    text-shadow: 0 0 2px $netflix-red;
+  }
+
+  79% {
+    text-shadow: 0 0 2px $netflix-red;
+  }
+
+  85% {
+    text-shadow: none;
+  }
+
+  98% {
+    text-shadow: none;
+  }
+
+  99% {
+    text-shadow: 0 0 2px $netflix-red;
+  }
+
+  100% {
+    text-shadow: none;
+  }
+}
