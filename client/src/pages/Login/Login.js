@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Alert from "react-bootstrap/Alert";
+
 import Logo from "../../components/Logo/Logo";
+import Label from "../../components/Label/Label";
 import Input from "../../components/Input/Input";
+import Alert from "react-bootstrap/Alert";
 
 import "./Login.scss";
 
@@ -17,9 +19,7 @@ function Login() {
         <form className="form-login" autoComplete="off">
           <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
 
-          <label htmlFor="loginEmail" className="sr-only">
-            Email address
-          </label>
+          <Label htmlFor="loginEmail">Email address</Label>
           <Input
             htmlType="email"
             id="loginEmail"
@@ -30,9 +30,7 @@ function Login() {
             autoFocus
           />
 
-          <label htmlFor="loginPassword" className="sr-only">
-            Password
-          </label>
+          <Label htmlFor="loginPassword">Password</Label>
           <Input
             htmlType="password"
             id="loginPassword"
