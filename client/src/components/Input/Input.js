@@ -17,16 +17,14 @@ function Input({
   );
 
   return (
-    <div>
-      <input
-        type={htmlType}
-        id={id}
-        name={name}
-        className={classes}
-        placeholder={placeholder}
-        {...props}
-      />
-    </div>
+    <input
+      type={htmlType}
+      id={id}
+      name={name}
+      className={classes}
+      placeholder={placeholder}
+      {...props}
+    />
   );
 }
 
