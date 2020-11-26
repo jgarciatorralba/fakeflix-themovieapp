@@ -8,6 +8,7 @@
   padding: 10px;
   font-size: 16px;
   &:focus {
+    background-color: $input-bg-color;
     z-index: 2;
     border: 1px solid $input-focus-border !important;
     box-shadow: 0 0 0 0.1rem $input-focus-shadow !important;
