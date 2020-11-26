@@ -14,67 +14,68 @@ function Login() {
   const [show, setShow] = useState(true);
 
   return (
-    <main className="container cont-login">
+    <div className="cont-login">
       <div className="text-center w-100">
-        <Logo fontSize="2.75rem" />
+        <main>
+          <Logo fontSize="2.75rem" />
 
-        <form className="form-login" autoComplete="off">
-          <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+          <form className="form-login" autoComplete="off">
+            <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
 
-          <Label htmlFor="loginEmail">Email address</Label>
-          <Input
-            htmlType="email"
-            id="loginEmail"
-            name="loginEmail"
-            additionalClasses="upper"
-            placeholder="Email address"
-            required
-            autoFocus
-          />
+            <Label htmlFor="loginEmail">Email address</Label>
+            <Input
+              htmlType="email"
+              id="loginEmail"
+              name="loginEmail"
+              additionalClasses="upper"
+              placeholder="Email address"
+              required
+              autoFocus
+            />
 
-          <Label htmlFor="loginPassword">Password</Label>
-          <Input
-            htmlType="password"
-            id="loginPassword"
-            name="loginPassword"
-            additionalClasses="lower"
-            placeholder="Password"
-            required
-          />
+            <Label htmlFor="loginPassword">Password</Label>
+            <Input
+              htmlType="password"
+              id="loginPassword"
+              name="loginPassword"
+              additionalClasses="lower"
+              placeholder="Password"
+              required
+            />
 
-          {show && (
-            <Alert
-              show={true}
-              onClose={() => setShow(false)}
-              variant="danger"
-              closeLabel="Close Alert"
-              dismissible
-              fade="true"
-            >
-              Dismissible alert!
-            </Alert>
-          )}
+            {show && (
+              <Alert
+                show={true}
+                onClose={() => setShow(false)}
+                variant="danger"
+                closeLabel="Close Alert"
+                dismissible
+                fade="true"
+              >
+                Dismissible alert!
+              </Alert>
+            )}
 
-          <Button htmlType="button" additionalClasses="btn-lg btn-block">
-            Sign in
-          </Button>
+            <Button htmlType="button" additionalClasses="btn-lg btn-block">
+              Sign in
+            </Button>
 
-          <HelperParagraph
-            helperText="Forgot your password?"
-            linkTo="/password/forgot"
-            boldText="Reset here"
-          />
+            <HelperParagraph
+              helperText="Forgot your password?"
+              linkTo="/password/forgot"
+              boldText="Reset here"
+            />
 
-          <HelperParagraph
-            helperText="Don't have an account?"
-            linkTo="/register"
-            boldText="Register here"
-          />
-        </form>
-
+            <HelperParagraph
+              helperText="Don't have an account?"
+              linkTo="/register"
+              boldText="Register here"
+            />
+          </form>
+        </main>
         <Footer />
       </div>
-    </main>
+    </div>
   );
 }
 

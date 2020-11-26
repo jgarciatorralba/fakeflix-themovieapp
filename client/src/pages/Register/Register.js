@@ -14,72 +14,73 @@ function Register() {
   const [show, setShow] = useState(true);
 
   return (
-    <main className="container cont-register">
+    <div className="cont-register">
       <div className="text-center w-100">
-        <Logo fontSize="2.75rem" />
+        <main>
+          <Logo fontSize="2.75rem" />
 
-        <form className="form-register" autoComplete="off">
-          <h1 className="h3 mb-3 font-weight-normal">User registration</h1>
+          <form className="form-register" autoComplete="off">
+            <h1 className="h3 mb-3 font-weight-normal">User registration</h1>
 
-          <Label htmlFor="registerName">Username</Label>
-          <Input
-            htmlType="text"
-            id="registerName"
-            name="registerName"
-            additionalClasses="upper"
-            placeholder="Username"
-            required
-            autoFocus
-          />
+            <Label htmlFor="registerName">Username</Label>
+            <Input
+              htmlType="text"
+              id="registerName"
+              name="registerName"
+              additionalClasses="upper"
+              placeholder="Username"
+              required
+              autoFocus
+            />
 
-          <Label htmlFor="registerEmail">Email address</Label>
-          <Input
-            htmlType="email"
-            id="registerEmail"
-            name="registerEmail"
-            additionalClasses="mid"
-            placeholder="Email address"
-            required
-          />
+            <Label htmlFor="registerEmail">Email address</Label>
+            <Input
+              htmlType="email"
+              id="registerEmail"
+              name="registerEmail"
+              additionalClasses="mid"
+              placeholder="Email address"
+              required
+            />
 
-          <Label htmlFor="registerPassword">Password</Label>
-          <Input
-            htmlType="password"
-            id="registerPassword"
-            name="registerPassword"
-            additionalClasses="lower"
-            placeholder="Password"
-            minLength="6"
-            required
-          />
+            <Label htmlFor="registerPassword">Password</Label>
+            <Input
+              htmlType="password"
+              id="registerPassword"
+              name="registerPassword"
+              additionalClasses="lower"
+              placeholder="Password"
+              minLength="6"
+              required
+            />
 
-          {show && (
-            <Alert
-              show={true}
-              onClose={() => setShow(false)}
-              variant="danger"
-              closeLabel="Close Alert"
-              dismissible
-              fade="true"
-            >
-              Dismissible alert!
-            </Alert>
-          )}
+            {show && (
+              <Alert
+                show={true}
+                onClose={() => setShow(false)}
+                variant="danger"
+                closeLabel="Close Alert"
+                dismissible
+                fade="true"
+              >
+                Dismissible alert!
+              </Alert>
+            )}
 
-          <Button htmlType="button" additionalClasses="btn-lg btn-block">
-            Create account
-          </Button>
+            <Button htmlType="button" additionalClasses="btn-lg btn-block">
+              Create account
+            </Button>
 
-          <HelperParagraph
-            helperText="Back to"
-            linkTo="/login"
-            boldText="login"
-          />
-        </form>
-
+            <HelperParagraph
+              helperText="Back to"
+              linkTo="/login"
+              boldText="login"
+            />
+          </form>
+        </main>
         <Footer />
       </div>
-    </main>
+    </div>
   );
 }
 
