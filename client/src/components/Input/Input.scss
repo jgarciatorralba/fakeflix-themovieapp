@@ -19,9 +19,10 @@
     border-bottom-left-radius: 0;
   }
   &.mid {
-    margin-bottom: 10px;
+    border-radius: 0;
   }
   &.lower {
+    margin-top: -2px;
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
