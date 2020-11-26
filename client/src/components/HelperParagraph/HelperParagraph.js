@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./HelperParagraph.scss";
 
-function HelperParagraph({ helperText, boldText, linkTo }) {
+function HelperParagraph({ helperText = "", boldText, linkTo }) {
   return (
     <div className="helper-text">
       <p className="my-1">
