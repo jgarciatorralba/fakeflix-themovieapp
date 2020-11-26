@@ -5,6 +5,7 @@ import Logo from "../../components/Logo/Logo";
 import Label from "../../components/Label/Label";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
+import Footer from "../../components/Footer/Footer";
 import Alert from "react-bootstrap/Alert";
 
 import "./Login.scss";
@@ -73,10 +74,9 @@ function Login() {
               <b>Register here</b>.
             </Link>
           </p>
-          <p className="mt-5 mb-3 text-muted">
-            &copy; The Movie App {new Date().getFullYear()}
-          </p>
         </form>
+
+        <Footer />
       </div>
     </main>
   );
