@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
 
 import Logo from "../../components/Logo/Logo";
@@ -7,6 +6,7 @@ import Label from "../../components/Label/Label";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import Footer from "../../components/Footer/Footer";
+import HelperParagraph from "../../components/HelperParagraph/HelperParagraph";
 
 import "./Login.scss";
 
@@ -59,21 +59,17 @@ function Login() {
             Sign in
           </Button>
 
-          <p className="my-1">
-            Forgot your password?{" "}
-            <Link
-              to="/password/forgot"
-              className="text-decoration-none text-body"
-            >
-              <b>Reset here</b>.
-            </Link>
-          </p>
-          <p className="my-1">
-            Don't have an account?{" "}
-            <Link to="/register" className="text-decoration-none text-body">
-              <b>Register here</b>.
-            </Link>
-          </p>
+          <HelperParagraph
+            helperText="Forgot your password?"
+            linkTo="/password/forgot"
+            boldText="Reset here"
+          />
+
+          <HelperParagraph
+            helperText="Don't have an account?"
+            linkTo="/register"
+            boldText="Register here"
+          />
         </form>
 
         <Footer />
