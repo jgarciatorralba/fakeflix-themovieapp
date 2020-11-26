@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
+import Logo from "../../components/Logo/Logo";
+import Input from "../../components/Input/Input";
 
 import "./Login.scss";
 
@@ -10,19 +12,18 @@ function Login() {
   return (
     <div className="container cont-login">
       <div className="text-center w-100">
+        <Logo fontSize="2.75rem" />
         <form className="form-login" autoComplete="off">
-          <p className="logo my-0">FAKEFLIX</p>
-
           <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
 
           <label htmlFor="loginEmail" className="sr-only">
             Email address
           </label>
-          <input
-            type="email"
+          <Input
+            htmlType="email"
             id="loginEmail"
             name="loginEmail"
-            className="form-control"
+            additionalClasses="upper"
             placeholder="Email address"
             required
             autoFocus
@@ -31,11 +32,11 @@ function Login() {
           <label htmlFor="loginPassword" className="sr-only">
             Password
           </label>
-          <input
-            type="password"
+          <Input
+            htmlType="password"
             id="loginPassword"
             name="loginPassword"
-            className="form-control"
+            additionalClasses="lower"
             placeholder="Password"
             required
           />
@@ -44,7 +45,7 @@ function Login() {
             <Alert
               show={true}
               onClose={() => setShow(false)}
-              variant="warning"
+              variant="danger"
               closeLabel="Close Alert"
               dismissible
               fade="true"
