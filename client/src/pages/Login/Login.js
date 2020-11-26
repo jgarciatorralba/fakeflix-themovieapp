@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Logo from "../../components/Logo/Logo";
 import Label from "../../components/Label/Label";
 import Input from "../../components/Input/Input";
+import Button from "../../components/Button/Button";
 import Alert from "react-bootstrap/Alert";
 
 import "./Login.scss";
@@ -12,7 +13,7 @@ function Login() {
   const [show, setShow] = useState(true);
 
   return (
-    <div className="container cont-login">
+    <main className="container cont-login">
       <div className="text-center w-100">
         <Logo fontSize="2.75rem" />
 
@@ -53,9 +54,9 @@ function Login() {
             </Alert>
           )}
 
-          <button className="btn btn-lg btn-block" type="submit">
+          <Button htmlType="button" additionalClasses="btn-lg btn-block">
             Sign in
-          </button>
+          </Button>
 
           <p className="my-1">
             Forgot your password?{" "}
@@ -77,7 +78,7 @@ function Login() {
           </p>
         </form>
       </div>
-    </div>
+    </main>
   );
 }
 
