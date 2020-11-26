@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Alert from "react-bootstrap/Alert";
 
 import Logo from "../../components/Logo/Logo";
 import Label from "../../components/Label/Label";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import Footer from "../../components/Footer/Footer";
-import Alert from "react-bootstrap/Alert";
 
 import "./Login.scss";
 
