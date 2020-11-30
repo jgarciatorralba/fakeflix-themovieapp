@@ -1,11 +1,15 @@
 // Import dependencies
 import express from "express";
 
-// Import controller
+// Import controllers
 import commentController from "../controllers/commentController.js";
+import userController from "../controllers/userController.js";
 
-// Import project files
+// Import middlewares
 import authMiddleware from "../middlewares/authMiddleware.js";
+
+// Import config object
+import { config } from "../config/app-config.js";
 
 const router = express.Router();
 
@@ -15,10 +19,28 @@ router.use(authMiddleware);
 router.get("/:movie_id", async (req, res) => {
   const movie_id = req.params.movie_id;
   const comments = await commentController.getCommentsByMovie(movie_id);
-  if (comments !== "error") {
-    res.json({ data: comments, error: null });
-  } else {
+
+  if (comments == "error") {
     return res.status(500).json({ data: null, error: "Internal Server Error" });
+  } else {
+    let users = await userController.findAllWithDeleted();
+    users.forEach((user) => {
+      user._doc.avatar = new URL(
+        "/img/user/" + user._doc.avatar,
+        config().app.SERVER_DOMAIN
+      ).href;
+    });
+
+    comments.forEach((comment) => {
+      users.forEach((user) => {
+        if (user._id.id.toString("hex") == comment.user_id) {
+          comment._doc.user = user;
+          delete comment._doc.user_id;
+        }
+      });
+    });
+
+    res.json({ data: comments, error: null });
   }
 });
 
