@@ -31,6 +31,7 @@ function ForgotPassword() {
               additionalClasses="single"
               placeholder="Email address"
               required
+              autoFocus
             />
 
             {show && (
