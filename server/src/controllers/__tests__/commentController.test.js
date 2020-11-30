@@ -77,8 +77,8 @@ describe("Performing CRUD over Comment controller in test database", () => {
 
     expect.assertions(3);
 
-    const error = await commentController.add(comment);
-    expect(error).toBeNull();
+    const insertedComment = await commentController.add(comment);
+    expect(insertedComment).not.toEqual("error");
 
     const savedComment = await Comment.findOne({ movie_id: 11 });
     expect(savedComment).not.toBeNull();
