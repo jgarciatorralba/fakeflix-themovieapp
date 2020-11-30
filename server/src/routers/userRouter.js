@@ -90,4 +90,23 @@ router.delete("/", async (req, res) => {
   }
 });
 
+// Logout user
+router.post("/logout", async (req, res) => {
+  const user = await userController.findById(req.user.id);
+  if (user) {
+    const error = await userController.updateUserById(req.user.id, {
+      token: "",
+    });
+    if (error) {
+      return res
+        .status(500)
+        .json({ data: null, error: "Internal Server Error" });
+    } else {
+      res.json({ data: "User logged out!", error: null });
+    }
+  } else {
+    return res.status(400).json({ data: null, error: "User not found" });
+  }
+});
+
 export default router;
