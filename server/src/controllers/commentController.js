@@ -41,7 +41,9 @@ export default {
 
   getCommentsByMovie: async function (movie_id) {
     try {
-      const comments = await Comment.find({ movie_id: movie_id });
+      const comments = await Comment.find({ movie_id: movie_id }, null, {
+        sort: { createdAt: -1 },
+      });
       return comments;
     } catch (error) {
       return "error";
