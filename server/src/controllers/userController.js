@@ -50,7 +50,10 @@ export default {
   },
 
   findAllWithDeleted: async function () {
-    const allUsers = await User.findWithDeleted({});
+    const allUsers = await User.findWithDeleted(
+      {},
+      "_id username email avatar"
+    );
     return allUsers;
   },
 
