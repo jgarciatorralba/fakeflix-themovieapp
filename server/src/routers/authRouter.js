@@ -93,21 +93,23 @@ router.post("/login", async (req, res) => {
 
   const accessToken = jwt.sign({ id: user._id }, config().app.ACCESS_SECRET);
 
-  const data = {
-    accessToken: accessToken,
-    user: {
+  const error = await userController.updateUserById(user._id, {
+    token: accessToken,
+  });
+
+  if (error) {
+    return res.status(500).json({ data: null, error: "Internal Server Error" });
+  } else {
+    const retrievedUser = {
       email: user.email,
       username: user.username,
       avatar: new URL("/img/user/" + user.avatar, config().app.SERVER_DOMAIN)
         .href,
-      // favourites: user.favourites,
-      // likes: user.likes,
-      // dislikes: user.dislikes,
-      // comments: user.comments,
-    },
-  };
+      token: accessToken,
+    };
 
-  res.json({ data: data, error: null });
+    res.json({ data: retrievedUser, error: null });
+  }
 });
 
 router.post("/password/forgot", async (req, res) => {
