@@ -5,7 +5,7 @@ import ROUTES from "./utils/routes";
 
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import Home from "./pages/Home/Home";
-import Login from "./pages/Login/Login";
+import LoginContainer from "./redux/containers/pages/LoginContainer";
 import Movie from "./pages/Movie/Movie";
 import Register from "./pages/Register/Register";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
@@ -14,7 +14,7 @@ function App() {
   return (
     <Switch>
       <Route path={ROUTES.LOGIN}>
-        <Login />
+        <LoginContainer />
       </Route>
       <Route path={ROUTES.REGISTER}>
         <Register />
