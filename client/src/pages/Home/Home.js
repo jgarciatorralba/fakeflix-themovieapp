@@ -1,13 +1,13 @@
 import React from "react";
 
-import Header from "../../components/Header/Header";
+import HeaderContainer from "../../redux/containers/components/HeaderContainer";
 
 import "./Home.scss";
 
 function Home() {
   return (
     <div className="Home">
-      <Header />
+      <HeaderContainer />
     </div>
   );
 }
