@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import Alert from "react-bootstrap/Alert";
+import { Redirect } from "react-router-dom";
 
+import ROUTES from "../../utils/routes";
+
+import Alert from "react-bootstrap/Alert";
 import Logo from "../../components/Logo/Logo";
 import Label from "../../components/Label/Label";
 import Input from "../../components/Input/Input";
@@ -10,8 +13,26 @@ import HelperParagraph from "../../components/HelperParagraph/HelperParagraph";
 
 import "./Login.scss";
 
-function Login() {
+function Login({ isAuthenticated, loginError, isLoggingIn, login }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [show, setShow] = useState(true);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (email !== "" && password !== "") {
+      login({ email, password });
+    }
+  }
+
+  console.log(isAuthenticated);
+  console.log(loginError);
+  console.log(isLoggingIn);
+
+  if (isAuthenticated) {
+    return <Redirect to={ROUTES.HOME} />;
+  }
 
   return (
     <div className="cont-login">
@@ -19,7 +40,11 @@ function Login() {
         <main>
           <Logo fontSize="2.75rem" />
 
-          <form className="form-login" autoComplete="off">
+          <form
+            className="form-login"
+            autoComplete="off"
+            onSubmit={handleSubmit}
+          >
             <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
 
             <Label htmlFor="loginEmail">Email address</Label>
@@ -31,6 +56,8 @@ function Login() {
               placeholder="Email address"
               required
               autoFocus
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <Label htmlFor="loginPassword">Password</Label>
@@ -41,9 +68,11 @@ function Login() {
               additionalClasses="lower"
               placeholder="Password"
               required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
 
-            {show && (
+            {show && loginError && (
               <Alert
                 show={true}
                 onClose={() => setShow(false)}
@@ -52,11 +81,15 @@ function Login() {
                 dismissible
                 fade="true"
               >
-                Dismissible alert!
+                {loginError}
               </Alert>
             )}
 
-            <Button htmlType="button" additionalClasses="btn-lg btn-block">
+            <Button
+              htmlType="submit"
+              additionalClasses="btn-lg btn-block"
+              disabled={isLoggingIn}
+            >
               Sign in
             </Button>
 
