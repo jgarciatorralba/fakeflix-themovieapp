@@ -39,6 +39,8 @@ export function fetchRandomMovie() {
           dispatch(fetchRandomError({ errorMessage: data.error }));
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) =>
+        dispatch(fetchRandomError({ errorMessage: error.message }))
+      );
   };
 }
