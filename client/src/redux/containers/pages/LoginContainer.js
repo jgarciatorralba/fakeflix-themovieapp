@@ -8,6 +8,8 @@ const mapStateToProps = (state) => ({
   isLoggingIn: state.user.isLoggingIn,
   isAuthenticated: state.user.isAuthenticated,
   loginError: state.user.loginError,
+  logoutError: state.user.logoutError,
+  logoutSuccess: state.user.logoutSuccess,
 });
 
 const mapDispatchToProps = (dispatch) => ({
