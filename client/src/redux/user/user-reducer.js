@@ -157,6 +157,20 @@ const UserReducer = (state = UserInitialState, action) => {
         logoutSuccess: null,
       };
     }
+    case UserTypes.RESET_MESSAGES: {
+      return {
+        ...state,
+        loginError: null,
+        logoutError: null,
+        logoutSuccess: null,
+        registerError: null,
+        registerSuccess: null,
+        resetPasswordError: null,
+        resetPasswordSuccess: null,
+        forgetPasswordError: null,
+        forgetPasswordSuccess: null,
+      };
+    }
     default: {
       return state;
     }
