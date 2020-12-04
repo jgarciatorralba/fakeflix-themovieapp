@@ -5,13 +5,7 @@ import Logo from "../../components/Logo/Logo";
 
 import "./Header.scss";
 
-function Header({
-  isLoggingOut,
-  currentUser,
-  logoutError,
-  logoutSuccess,
-  logout,
-}) {
+function Header({ isLoggingOut, currentUser, logout }) {
   return (
     <div className="Header">
       <Navbar sticky="top" bg="black" variant="dark" expand="lg">
@@ -20,7 +14,7 @@ function Header({
         </Navbar.Brand>
         <img
           className="border rounded ml-auto mr-1"
-          src="http://localhost:5000/img/user/default.jpg"
+          src={currentUser.avatar}
           alt="Profile"
         />
         <NavDropdown title="" id="basic-nav-dropdown">
@@ -28,7 +22,7 @@ function Header({
             {currentUser.username}
           </NavDropdown.Item>
           <NavDropdown.Item href="">Profile</NavDropdown.Item>
-          <NavDropdown.Item onClick={logout} href="">
+          <NavDropdown.Item onClick={logout} disabled={isLoggingOut} href="">
             Logout
           </NavDropdown.Item>
         </NavDropdown>
