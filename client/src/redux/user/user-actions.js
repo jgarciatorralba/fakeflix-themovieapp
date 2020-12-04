@@ -79,7 +79,7 @@ export function register({ username, email, password }) {
   return function registerThunk(dispatch) {
     dispatch(registerRequest());
 
-    fetch("http://localhost:5000/api/register", {
+    fetch("/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -92,9 +92,17 @@ export function register({ username, email, password }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        dispatch(registerSuccess(data.data));
+        if (data.data) {
+          dispatch(
+            registerSuccess({
+              successMessage: data.data,
+            })
+          );
+        } else {
+          dispatch(registerError({ errorMessage: data.error }));
+        }
       })
-      .catch((error) => dispatch(registerError(error.error)));
+      .catch((error) => console.log(error));
   };
 }
 
@@ -114,16 +122,20 @@ export function login({ email, password }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        dispatch(
-          loginSuccess({
-            username: data.data.username,
-            email: data.data.email,
-            avatar: data.data.avatar,
-            token: data.data.token,
-          })
-        );
+        if (data.data) {
+          dispatch(
+            loginSuccess({
+              username: data.data.username,
+              email: data.data.email,
+              avatar: data.data.avatar,
+              token: data.data.token,
+            })
+          );
+        } else {
+          dispatch(loginError({ errorMessage: data.error }));
+        }
       })
-      .catch((error) => dispatch(loginError(error.error)));
+      .catch((error) => console.log(error));
   };
 }
 
@@ -142,9 +154,17 @@ export function forgotPassword({ email }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        dispatch(forgotPassSuccess(data.data));
+        if (data.data) {
+          dispatch(
+            forgotPassSuccess({
+              successMessage: data.data,
+            })
+          );
+        } else {
+          dispatch(forgotPassError({ errorMessage: data.error }));
+        }
       })
-      .catch((error) => dispatch(forgotPassError(error.error)));
+      .catch((error) => console.log(error));
   };
 }
 
@@ -170,9 +190,17 @@ export function resetPassword({ password }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        dispatch(resetPassSuccess(data.data));
+        if (data.data) {
+          dispatch(
+            resetPassSuccess({
+              successMessage: data.data,
+            })
+          );
+        } else {
+          dispatch(resetPassError({ errorMessage: data.error }));
+        }
       })
-      .catch((error) => dispatch(resetPassError(error.error)));
+      .catch((error) => console.log(error));
   };
 }
 
@@ -180,23 +208,27 @@ export function logout() {
   return function logoutThunk(dispatch, getState) {
     const token = getState().user.currentUser.token;
 
-    if (token) {
-      dispatch(logoutRequest());
+    dispatch(logoutRequest());
 
-      fetch("/api/user/logout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
+    fetch("/api/user/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          dispatch(
+            logoutSuccess({
+              successMessage: data.data,
+            })
+          );
+        } else {
+          dispatch(logoutError({ errorMessage: data.error }));
+        }
       })
-        .then((res) => res.json())
-        .then((data) => {
-          dispatch(logoutSuccess(data.data));
-        })
-        .catch((error) => dispatch(logoutError(error.error)));
-    } else {
-      dispatch(logoutError("Missing access token"));
-    }
+      .catch((error) => console.log(error));
   };
 }
