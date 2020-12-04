@@ -5,7 +5,7 @@ import "./Footer.scss";
 function Footer() {
   return (
     <footer>
-      <p className="text-muted mt-4 mb-1">
+      <p className="text-muted mt-4 mb-1 text-center">
         &copy; The Movie App {new Date().getFullYear()}
       </p>
     </footer>
