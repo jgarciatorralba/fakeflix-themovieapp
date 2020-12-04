@@ -5,6 +5,7 @@ import ROUTES from "../../utils/routes";
 
 import HeaderContainer from "../../redux/containers/components/HeaderContainer";
 import RandomMovieContainer from "../../redux/containers/components/RandomMovieContainer";
+import Footer from "../../components/Footer/Footer";
 
 import "./Home.scss";
 
@@ -17,6 +18,7 @@ function Home({ isAuthenticated }) {
     <div className="Home">
       <HeaderContainer />
       <RandomMovieContainer />
+      <Footer />
     </div>
   );
 }
