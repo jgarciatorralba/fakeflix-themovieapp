@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import ROUTES from "../../utils/routes";
 
 import HeaderContainer from "../../redux/containers/components/HeaderContainer";
+import RandomMovieContainer from "../../redux/containers/components/RandomMovieContainer";
 
 import "./Home.scss";
 
@@ -15,6 +16,7 @@ function Home({ isAuthenticated }) {
   return (
     <div className="Home">
       <HeaderContainer />
+      <RandomMovieContainer />
     </div>
   );
 }
