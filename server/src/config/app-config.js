@@ -54,10 +54,9 @@ export const config = () => {
         NAME: process.env.DB_NAME,
       },
       smtp: {
-        HOST: process.env.EMAIL_HOST,
-        PORT: Number(process.env.EMAIL_PORT),
-        USER: process.env.EMAIL_USER,
-        PWD: process.env.EMAIL_PWD,
+        SERVICE: process.env.EMAIL_PROD_SERVICE,
+        USER: process.env.EMAIL_PROD_USER,
+        PWD: process.env.EMAIL_PROD_PWD,
       },
     },
     development: {
