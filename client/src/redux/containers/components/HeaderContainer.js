@@ -7,8 +7,6 @@ import Header from "../../../components/Header/Header";
 const mapStateToProps = (state) => ({
   isLoggingOut: state.user.isLoggingOut,
   currentUser: state.user.currentUser,
-  logoutError: state.user.logoutError,
-  logoutSuccess: state.user.logoutSuccess,
 });
 
 const mapDispatchToProps = (dispatch) => ({
