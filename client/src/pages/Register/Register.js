@@ -29,6 +29,7 @@ function Register() {
               name="registerName"
               additionalClasses="upper"
               placeholder="Username"
+              maxLength="18"
               required
               autoFocus
             />
