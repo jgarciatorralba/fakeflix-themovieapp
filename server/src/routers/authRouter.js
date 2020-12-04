@@ -50,11 +50,11 @@ router.post("/register", async (req, res) => {
       if (Object.keys(error.keyValue).includes("email"))
         return res
           .status(400)
-          .json({ data: null, error: "That email is already registered" });
+          .json({ data: null, error: "Email already registered" });
       if (Object.keys(error.keyValue).includes("username"))
         return res
           .status(400)
-          .json({ data: null, error: "That username is already registered" });
+          .json({ data: null, error: "Username already registered" });
     }
     return res.status(500).json({ data: null, error: "Internal Server Error" });
   } else {
@@ -84,7 +84,7 @@ router.post("/login", async (req, res) => {
   if (user == null)
     return res.status(400).json({
       data: null,
-      error: "That email is not registered or was deactivated",
+      error: "Email not found!",
     });
 
   const match = await bcrypt.compare(credentials.password, user.password);
