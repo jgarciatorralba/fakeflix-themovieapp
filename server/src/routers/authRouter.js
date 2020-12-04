@@ -125,7 +125,7 @@ router.post("/password/forgot", async (req, res) => {
   if (user == null)
     return res.status(400).json({
       data: null,
-      error: "That email is not registered or was deactivated",
+      error: "Email not found!",
     });
 
   const resetToken = jwt.sign({ id: user._id }, config().app.RESET_SECRET, {
