@@ -102,7 +102,7 @@ export function login({ email, password }) {
   return function loginThunk(dispatch) {
     dispatch(loginRequest());
 
-    fetch("http://localhost:5000/api/login", {
+    fetch("/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -131,7 +131,7 @@ export function forgotPassword({ email }) {
   return function forgotPasswordThunk(dispatch) {
     dispatch(forgotPassRequest());
 
-    fetch("http://localhost:5000/api/password/forgot", {
+    fetch("/api/password/forgot", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -158,7 +158,7 @@ export function resetPassword({ password }) {
       localStorage.removeItem("resetToken");
     }
 
-    fetch("http://localhost:5000/api/password/reset", {
+    fetch("/api/password/reset", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -183,7 +183,7 @@ export function logout() {
     if (token) {
       dispatch(logoutRequest());
 
-      fetch("http://localhost:5000/api/user/logout", {
+      fetch("/api/user/logout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
