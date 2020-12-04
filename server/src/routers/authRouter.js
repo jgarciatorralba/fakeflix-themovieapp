@@ -202,7 +202,7 @@ router.post("/password/reset", resetMiddleware, async (req, res) => {
   if (error) {
     res.status(500).json({ data: null, error: "Internal Server Error" });
   }
-  res.json({ data: "Password updated successfully!", error: null });
+  res.json({ data: "Password updated!", error: null });
 });
 
 export default router;
