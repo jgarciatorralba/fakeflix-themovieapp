@@ -7,7 +7,7 @@
 .dropdown-menu {
   background-color: $bg-color !important;
   position: absolute;
-  left: -8rem;
+  left: -12rem;
   top: 3.75rem;
   direction: rtl !important;
 }
@@ -17,7 +17,7 @@
     color: $font-color !important;
   }
   margin-right: 0 !important;
-  min-width: 10rem !important;
+  width: 14rem !important;
   text-align: right !important;
   padding-right: 1rem !important;
   background-color: $bg-color !important;
