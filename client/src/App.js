@@ -5,7 +5,7 @@ import ROUTES from "./utils/routes";
 
 import RegisterContainer from "./redux/containers/pages/RegisterContainer";
 import LoginContainer from "./redux/containers/pages/LoginContainer";
-import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import ForgotPasswordContainer from "./redux/containers/pages/ForgotPasswordContainer";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 
 import HomeContainer from "./redux/containers/pages/HomeContainer";
@@ -21,7 +21,7 @@ function App() {
         <RegisterContainer />
       </Route>
       <Route path={ROUTES.PASS_FORGOT}>
-        <ForgotPassword />
+        <ForgotPasswordContainer />
       </Route>
       <Route path={ROUTES.PASS_RESET}>
         <ResetPassword />
