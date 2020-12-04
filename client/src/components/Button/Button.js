@@ -9,7 +9,10 @@ function Button({
   additionalClasses,
   ...props
 }) {
-  const classes = cn("btn", additionalClasses && additionalClasses.split(" "));
+  const classes = cn(
+    "btn btn-netflix",
+    additionalClasses && additionalClasses.split(" ")
+  );
 
   return (
     <button className={classes} type={htmlType} {...props}>
