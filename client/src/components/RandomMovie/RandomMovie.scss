@@ -12,6 +12,10 @@
   height: 40vh;
 }
 
+.movie-title {
+  cursor: default;
+}
+
 @media screen and (max-width: 484px) {
   .movie-title {
     padding: 0.375rem 0.75rem;
