@@ -26,10 +26,6 @@ function Login({ isAuthenticated, loginError, isLoggingIn, login }) {
     }
   }
 
-  console.log(isAuthenticated);
-  console.log(loginError);
-  console.log(isLoggingIn);
-
   if (isAuthenticated) {
     return <Redirect to={ROUTES.HOME} />;
   }
