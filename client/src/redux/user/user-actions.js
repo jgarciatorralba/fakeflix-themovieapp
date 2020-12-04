@@ -75,6 +75,10 @@ export const logoutError = ({ errorMessage }) => ({
   payload: errorMessage,
 });
 
+export const resetMessages = () => ({
+  type: UserTypes.RESET_MESSAGES,
+});
+
 export function register({ username, email, password }) {
   return function registerThunk(dispatch) {
     dispatch(registerRequest());
