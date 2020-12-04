@@ -12,7 +12,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  resetPassword: ({ password }) => dispatch(resetPassword({ password })),
+  resetPassword: ({ password, token }) =>
+    dispatch(resetPassword({ password, token })),
   resetMessages: () => dispatch(resetMessages()),
 });
 

@@ -172,20 +172,15 @@ export function forgotPassword({ email }) {
   };
 }
 
-export function resetPassword({ password }) {
+export function resetPassword({ password, token }) {
   return function resetPasswordThunk(dispatch) {
     dispatch(resetPassRequest());
-
-    let resetToken = "";
-    if (localStorage.getItem("resetToken") !== null) {
-      resetToken = localStorage.getItem("resetToken");
-    }
 
     fetch("/api/password/reset", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + resetToken,
+        Authorization: "Bearer " + token,
       },
       body: JSON.stringify({
         password,

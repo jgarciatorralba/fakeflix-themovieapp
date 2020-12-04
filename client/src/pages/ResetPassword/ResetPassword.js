@@ -25,13 +25,13 @@ function ResetPassword({
   const [password, setPassword] = useState("");
 
   let query = new URLSearchParams(useLocation().search);
-  localStorage.setItem("resetToken", query.get("token"));
+  let token = query.get("token");
 
   function handleSubmit(e) {
     e.preventDefault();
 
     if (password !== "") {
-      resetPassword({ password });
+      resetPassword({ password, token });
     }
   }
 
