@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import { login } from "../../user/user-actions";
+import { login, resetMessages } from "../../user/user-actions";
 
 import Login from "../../../pages/Login/Login";
 
@@ -14,6 +14,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   login: ({ email, password }) => dispatch(login({ email, password })),
+  resetMessages: () => dispatch(resetMessages()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
