@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
+
+import ROUTES from "../../utils/routes";
+
 import Alert from "react-bootstrap/Alert";
 
 import Logo from "../../components/Logo/Logo";
@@ -10,8 +14,29 @@ import HelperParagraph from "../../components/HelperParagraph/HelperParagraph";
 
 import "./Register.scss";
 
-function Register() {
-  const [show, setShow] = useState(true);
+function Register({
+  isAuthenticated,
+  isRegistering,
+  register,
+  registerError,
+  registerSuccess,
+  resetMessages,
+}) {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (username !== "" && email !== "" && password !== "") {
+      register({ username, email, password });
+    }
+  }
+
+  if (isAuthenticated) {
+    return <Redirect to={ROUTES.HOME} />;
+  }
 
   return (
     <div className="cont-register">
@@ -19,7 +44,11 @@ function Register() {
         <main>
           <Logo fontSize="2.75rem" />
 
-          <form className="form-register" autoComplete="off">
+          <form
+            className="form-register"
+            autoComplete="off"
+            onSubmit={handleSubmit}
+          >
             <h1 className="h3 mb-3 font-weight-normal">User registration</h1>
 
             <Label htmlFor="registerName">Username</Label>
@@ -32,6 +61,8 @@ function Register() {
               maxLength="18"
               required
               autoFocus
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
 
             <Label htmlFor="registerEmail">Email address</Label>
@@ -42,6 +73,8 @@ function Register() {
               additionalClasses="mid"
               placeholder="Email address"
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <Label htmlFor="registerPassword">Password</Label>
@@ -53,22 +86,41 @@ function Register() {
               placeholder="Password"
               minLength="6"
               required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
 
-            {show && (
+            {registerError && (
               <Alert
                 show={true}
-                onClose={() => setShow(false)}
+                onClose={resetMessages}
                 variant="danger"
                 closeLabel="Close Alert"
                 dismissible
                 fade="true"
               >
-                Dismissible alert!
+                {registerError}
               </Alert>
             )}
 
-            <Button htmlType="button" additionalClasses="btn-lg btn-block">
+            {registerSuccess && (
+              <Alert
+                show={true}
+                onClose={resetMessages}
+                variant="success"
+                closeLabel="Close Alert"
+                dismissible
+                fade="true"
+              >
+                {registerSuccess}
+              </Alert>
+            )}
+
+            <Button
+              htmlType="submit"
+              additionalClasses="btn-lg btn-block"
+              disabled={isRegistering}
+            >
               Create account
             </Button>
 
