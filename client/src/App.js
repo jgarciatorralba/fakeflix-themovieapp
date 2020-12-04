@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import ROUTES from "./utils/routes";
 
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
-import Home from "./pages/Home/Home";
+import HomeContainer from "./redux/containers/pages/HomeContainer";
 import LoginContainer from "./redux/containers/pages/LoginContainer";
 import Movie from "./pages/Movie/Movie";
 import Register from "./pages/Register/Register";
@@ -29,7 +29,7 @@ function App() {
         <Movie />
       </Route>
       <Route path={ROUTES.HOME} exact>
-        <Home />
+        <HomeContainer />
       </Route>
     </Switch>
   );
