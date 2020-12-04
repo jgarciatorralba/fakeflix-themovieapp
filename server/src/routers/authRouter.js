@@ -59,7 +59,7 @@ router.post("/register", async (req, res) => {
     return res.status(500).json({ data: null, error: "Internal Server Error" });
   } else {
     res.json({
-      data: "Congratulations, you have been successfully registered!",
+      data: "Register was successful!",
       error: null,
     });
   }
