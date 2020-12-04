@@ -1,6 +1,10 @@
 import MoviesTypes from "./movies-types";
 
 export const MoviesInitialState = {
+  randomMovieLoading: false,
+  randomMovieLoadingError: null,
+  randomMovieFetched: false,
+
   topRatedMoviesLoading: false,
   topRatedMoviesLoadingError: null,
   topRatedMoviesFetched: false,
@@ -12,10 +16,6 @@ export const MoviesInitialState = {
   upcomingMoviesLoading: false,
   upcomingMoviesLoadingError: null,
   upcomingMoviesFetched: false,
-
-  randomMovieLoading: false,
-  randomMovieLoadingError: null,
-  randomMovieFetched: false,
 
   movieDetailsLoading: false,
   movieDetailsLoadingError: null,
