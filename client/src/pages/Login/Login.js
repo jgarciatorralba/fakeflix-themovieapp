@@ -20,10 +20,10 @@ function Login({
   login,
   logoutError,
   logoutSuccess,
+  resetMessages,
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [show, setShow] = useState(true);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -75,10 +75,10 @@ function Login({
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            {show && loginError && (
+            {loginError && (
               <Alert
                 show={true}
-                onClose={() => setShow(false)}
+                onClose={resetMessages}
                 variant="danger"
                 closeLabel="Close Alert"
                 dismissible
@@ -88,10 +88,10 @@ function Login({
               </Alert>
             )}
 
-            {show && logoutError && (
+            {logoutError && (
               <Alert
                 show={true}
-                onClose={() => setShow(false)}
+                onClose={resetMessages}
                 variant="danger"
                 closeLabel="Close Alert"
                 dismissible
@@ -101,10 +101,10 @@ function Login({
               </Alert>
             )}
 
-            {show && logoutSuccess && (
+            {logoutSuccess && (
               <Alert
                 show={true}
-                onClose={() => setShow(false)}
+                onClose={resetMessages}
                 variant="success"
                 closeLabel="Close Alert"
                 dismissible
