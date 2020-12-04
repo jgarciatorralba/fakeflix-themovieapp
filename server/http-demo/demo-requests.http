@@ -61,13 +61,13 @@ Content-Type: application/json
 
 ### Update existing user's username and avatar
 PATCH http://localhost:5000/api/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYzUyNzMxZjJmNjY3NGNlZmYwNjg5YSIsImlhdCI6MTYwNjc1NjQ4MH0.eyVNROR7vjJe3KNlU0qnJ-0YFQAJjldVov7Pfc1b6PE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYzUyM2MzOTU1NzliNGI2ZGM2MDc0ZiIsImlhdCI6MTYwNzA4MjI4OX0.hYdR8x_HzzCLnkfx5Z4SUDCg4oHXIjo0zV1Yu8N8kRg
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="username"
 
-demo_http_request
+new-dummy-username
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="avatar"; filename="any_filename.png"
 Content-Type: image/png
@@ -77,7 +77,7 @@ Content-Type: image/png
 
 ### Logout user
 POST http://localhost:5000/api/user/logout
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYzUyNzMxZjJmNjY3NGNlZmYwNjg5YSIsImlhdCI6MTYwNjc1NjQ4MH0.eyVNROR7vjJe3KNlU0qnJ-0YFQAJjldVov7Pfc1b6PE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYzUyM2MzOTU1NzliNGI2ZGM2MDc0ZiIsImlhdCI6MTYwNzA4MjI4OX0.hYdR8x_HzzCLnkfx5Z4SUDCg4oHXIjo0zV1Yu8N8kRg
 Content-Type: application/json
 
 ### Soft delete existing user
