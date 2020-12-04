@@ -132,33 +132,64 @@ router.post("/password/forgot", async (req, res) => {
     expiresIn: "1h",
   });
 
-  const transporter = nodemailer.createTransport({
-    host: config().smtp.HOST,
-    port: config().smtp.PORT,
-    auth: {
-      user: config().smtp.USER,
-      pass: config().smtp.PWD,
-    },
-  });
+  let transporter;
+  let emailData;
 
-  const emailData = {
-    from: "noreply@themovieapp.com",
-    to: email,
-    subject: "Reset your password",
-    html: `
-      <h2>Reset your password</h2>
-      <p>
-        Click
-        <a href='${
-          config().app.CLIENT_DOMAIN
-        }/password/reset?token=${resetToken}'>here</a>
-        to reset your password.
-      </p>`,
-  };
+  if (config().app.MODE == "production") {
+    transporter = nodemailer.createTransport({
+      service: config().smtp.SERVICE,
+      auth: {
+        user: config().smtp.USER,
+        pass: config().smtp.PWD,
+      },
+    });
+
+    emailData = {
+      from: config().smtp.USER,
+      to: email,
+      subject: "Reset your password",
+      html: `
+        <h2>Reset your password</h2>
+        <p>
+          Click
+          <a href='${
+            config().app.CLIENT_DOMAIN
+          }/password/reset?token=${resetToken}'>here</a>
+          to reset your password.
+        </p>`,
+    };
+  } else {
+    transporter = nodemailer.createTransport({
+      host: config().smtp.HOST,
+      port: config().smtp.PORT,
+      auth: {
+        user: config().smtp.USER,
+        pass: config().smtp.PWD,
+      },
+    });
+
+    emailData = {
+      from: "noreply@themovieapp.com",
+      to: email,
+      subject: "Reset your password",
+      html: `
+        <h2>Reset your password</h2>
+        <p>
+          Click
+          <a href='${
+            config().app.CLIENT_DOMAIN
+          }/password/reset?token=${resetToken}'>here</a>
+          to reset your password.
+        </p>`,
+    };
+  }
 
   transporter.sendMail(emailData, (error, info) => {
     if (error) {
-      return console.log(error);
+      console.log(error);
+      return res
+        .status(500)
+        .json({ data: null, error: "Internal Server Error" });
     }
     res.json({ data: "Email has been sent!", error: null });
   });
