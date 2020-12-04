@@ -106,7 +106,9 @@ export function register({ username, email, password }) {
           dispatch(registerError({ errorMessage: data.error }));
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) =>
+        dispatch(registerError({ errorMessage: error.message }))
+      );
   };
 }
 
@@ -139,7 +141,7 @@ export function login({ email, password }) {
           dispatch(loginError({ errorMessage: data.error }));
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => dispatch(loginError({ errorMessage: error.message })));
   };
 }
 
@@ -168,7 +170,9 @@ export function forgotPassword({ email }) {
           dispatch(forgotPassError({ errorMessage: data.error }));
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) =>
+        dispatch(forgotPassError({ errorMessage: error.message }))
+      );
   };
 }
 
@@ -198,7 +202,9 @@ export function resetPassword({ password, token }) {
           dispatch(resetPassError({ errorMessage: data.error }));
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) =>
+        dispatch(resetPassError({ errorMessage: error.message }))
+      );
   };
 }
 
@@ -227,6 +233,6 @@ export function logout() {
           dispatch(logoutError({ errorMessage: data.error }));
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => dispatch(logoutError({ errorMessage: error.message })));
   };
 }
