@@ -4,6 +4,7 @@ export const MoviesInitialState = {
   randomMovieLoading: false,
   randomMovieLoadingError: null,
   randomMovieFetched: false,
+  randomMovie: {},
 
   topRatedMoviesLoading: false,
   topRatedMoviesLoadingError: null,
@@ -53,7 +54,6 @@ export const MoviesInitialState = {
   favouriteUpdating: false,
   favouriteUpdatingError: null,
 
-  randomMovie: {},
   favouriteMovies: [],
   topRatedMovies: [],
   nowPlayingMovies: [],
@@ -68,6 +68,34 @@ export const MoviesInitialState = {
 
 function MoviesReducer(state = MoviesInitialState, action) {
   switch (action.type) {
+    case MoviesTypes.FETCH_RANDOM_REQUEST: {
+      return {
+        ...state,
+        randomMovieLoading: true,
+        randomMovieLoadingError: null,
+        randomMovieFetched: false,
+        randomMovie: {},
+      };
+    }
+    case MoviesTypes.FETCH_RANDOM_SUCCESS: {
+      return {
+        ...state,
+        randomMovieLoading: false,
+        randomMovieLoadingError: null,
+        randomMovieFetched: true,
+        randomMovie: action.payload,
+      };
+    }
+    case MoviesTypes.FETCH_RANDOM_ERROR: {
+      return {
+        ...state,
+        randomMovieLoading: false,
+        randomMovieLoadingError: action.payload,
+        randomMovieFetched: false,
+        randomMovie: {},
+      };
+    }
+
     case MoviesTypes.FETCH_TOP_RATED_REQUEST: {
       return {
         ...state,
