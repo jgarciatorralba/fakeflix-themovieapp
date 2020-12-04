@@ -179,7 +179,6 @@ export function resetPassword({ password }) {
     let resetToken = "";
     if (localStorage.getItem("resetToken") !== null) {
       resetToken = localStorage.getItem("resetToken");
-      localStorage.removeItem("resetToken");
     }
 
     fetch("/api/password/reset", {
