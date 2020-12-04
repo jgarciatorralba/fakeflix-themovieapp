@@ -7,7 +7,7 @@ import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import HomeContainer from "./redux/containers/pages/HomeContainer";
 import LoginContainer from "./redux/containers/pages/LoginContainer";
 import Movie from "./pages/Movie/Movie";
-import Register from "./pages/Register/Register";
+import RegisterContainer from "./redux/containers/pages/RegisterContainer";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
         <LoginContainer />
       </Route>
       <Route path={ROUTES.REGISTER}>
-        <Register />
+        <RegisterContainer />
       </Route>
       <Route path={ROUTES.PASS_FORGOT}>
         <ForgotPassword />
