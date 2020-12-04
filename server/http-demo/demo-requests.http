@@ -161,7 +161,7 @@ Content-Type: application/json
 
 ### Get random movie details (for the banner)
 GET http://localhost:5000/api/movie/random
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYzUyM2MzOTU1NzliNGI2ZGM2MDc0ZSIsImlhdCI6MTYwNzA5NTMzMH0.H2hWEo9qXRhOu0ZCAcv7vSbJgO6hHwZf1H7PZcocdwE
 Content-Type: application/json
 
 ### Get selected movie details
