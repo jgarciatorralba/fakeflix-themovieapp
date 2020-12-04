@@ -3,12 +3,13 @@ import { Switch, Route } from "react-router-dom";
 
 import ROUTES from "./utils/routes";
 
-import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
-import HomeContainer from "./redux/containers/pages/HomeContainer";
-import LoginContainer from "./redux/containers/pages/LoginContainer";
-import Movie from "./pages/Movie/Movie";
 import RegisterContainer from "./redux/containers/pages/RegisterContainer";
+import LoginContainer from "./redux/containers/pages/LoginContainer";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
+
+import HomeContainer from "./redux/containers/pages/HomeContainer";
+import Movie from "./pages/Movie/Movie";
 
 function App() {
   return (
