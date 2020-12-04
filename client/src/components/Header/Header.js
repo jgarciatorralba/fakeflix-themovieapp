@@ -13,7 +13,7 @@ function Header({ isLoggingOut, currentUser, logout }) {
           <Logo fontSize="1.5rem" />
         </Navbar.Brand>
         <img
-          className="border rounded ml-auto mr-1"
+          className="rounded ml-auto mr-1"
           src={currentUser.avatar}
           alt="Profile"
         />
