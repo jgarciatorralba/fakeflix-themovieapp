@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { Redirect, useLocation } from "react-router-dom";
+
+import ROUTES from "../../utils/routes";
+
 import Alert from "react-bootstrap/Alert";
 
 import Logo from "../../components/Logo/Logo";
@@ -10,8 +14,30 @@ import HelperParagraph from "../../components/HelperParagraph/HelperParagraph";
 
 import "./ResetPassword.scss";
 
-function ResetPassword() {
-  const [show, setShow] = useState(true);
+function ResetPassword({
+  isAuthenticated,
+  isResetingPassword,
+  resetPassword,
+  resetPasswordError,
+  resetPasswordSuccess,
+  resetMessages,
+}) {
+  const [password, setPassword] = useState("");
+
+  let query = new URLSearchParams(useLocation().search);
+  localStorage.setItem("resetToken", query.get("token"));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (password !== "") {
+      resetPassword({ password });
+    }
+  }
+
+  if (isAuthenticated) {
+    return <Redirect to={ROUTES.HOME} />;
+  }
 
   return (
     <div className="cont-reset">
@@ -19,7 +45,11 @@ function ResetPassword() {
         <main>
           <Logo fontSize="2.75rem" />
 
-          <form className="form-reset" autoComplete="off">
+          <form
+            className="form-reset"
+            autoComplete="off"
+            onSubmit={handleSubmit}
+          >
             <h1 className="h3 font-weight-normal">Reset your password</h1>
             <p className="mb-3">Enter a new password.</p>
 
@@ -33,22 +63,41 @@ function ResetPassword() {
               minLength="6"
               required
               autoFocus
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
 
-            {show && (
+            {resetPasswordError && (
               <Alert
                 show={true}
-                onClose={() => setShow(false)}
+                onClose={resetMessages}
                 variant="danger"
                 closeLabel="Close Alert"
                 dismissible
                 fade="true"
               >
-                Dismissible alert!
+                {resetPasswordError}
               </Alert>
             )}
 
-            <Button htmlType="button" additionalClasses="btn-lg btn-block">
+            {resetPasswordSuccess && (
+              <Alert
+                show={true}
+                onClose={resetMessages}
+                variant="success"
+                closeLabel="Close Alert"
+                dismissible
+                fade="true"
+              >
+                {resetPasswordSuccess}
+              </Alert>
+            )}
+
+            <Button
+              htmlType="submit"
+              additionalClasses="btn-lg btn-block"
+              disabled={isResetingPassword}
+            >
               Reset password
             </Button>
 
