@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import "./RandomMovie.scss";
 
@@ -42,7 +43,10 @@ function RandomMovie({
           <p className="bg-dark border border-dark d-inline-block rounded movie-title my-0">
             <b>Recommended movie:</b> {randomMovie.title}
           </p>
-          <button className="btn btn-light btn-more-info">
+          <Link
+            to={`/movie/${randomMovie.id}`}
+            className="btn btn-light btn-more-info"
+          >
             <svg
               width="1em"
               height="1em"
@@ -59,7 +63,7 @@ function RandomMovie({
               <circle cx="8" cy="4.5" r="1" />
             </svg>
             More information
-          </button>
+          </Link>
         </div>
       )}
     </div>
