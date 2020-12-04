@@ -13,7 +13,14 @@ import HelperParagraph from "../../components/HelperParagraph/HelperParagraph";
 
 import "./Login.scss";
 
-function Login({ isAuthenticated, loginError, isLoggingIn, login }) {
+function Login({
+  isAuthenticated,
+  loginError,
+  isLoggingIn,
+  login,
+  logoutError,
+  logoutSuccess,
+}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(true);
@@ -78,6 +85,32 @@ function Login({ isAuthenticated, loginError, isLoggingIn, login }) {
                 fade="true"
               >
                 {loginError}
+              </Alert>
+            )}
+
+            {show && logoutError && (
+              <Alert
+                show={true}
+                onClose={() => setShow(false)}
+                variant="danger"
+                closeLabel="Close Alert"
+                dismissible
+                fade="true"
+              >
+                {logoutError}
+              </Alert>
+            )}
+
+            {show && logoutSuccess && (
+              <Alert
+                show={true}
+                onClose={() => setShow(false)}
+                variant="success"
+                closeLabel="Close Alert"
+                dismissible
+                fade="true"
+              >
+                {logoutSuccess}
               </Alert>
             )}
 
