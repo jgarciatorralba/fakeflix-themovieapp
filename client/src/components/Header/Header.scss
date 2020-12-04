@@ -1,7 +1,14 @@
 @import "../../styles/settings/variables";
 
-.navbar img {
-  height: 30px;
+.Header {
+  display: initial;
+}
+
+.navbar {
+  background-color: $bg-color !important;
+  img {
+    height: 30px;
+  }
 }
 
 .dropdown-menu {
@@ -10,6 +17,9 @@
   left: -12rem;
   top: 3.75rem;
   direction: rtl !important;
+  &.show {
+    border: 1px solid rgba(0, 0, 0, 0.6) !important;
+  }
 }
 
 .dropdown-item {
