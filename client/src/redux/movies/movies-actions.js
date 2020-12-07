@@ -44,3 +44,48 @@ export function fetchRandomMovie() {
       );
   };
 }
+
+export const fetchTopRatedRequest = () => ({
+  type: MoviesTypes.FETCH_TOP_RATED_REQUEST,
+});
+
+export const fetchTopRatedError = ({ errorMessage }) => ({
+  type: MoviesTypes.FETCH_TOP_RATED_ERROR,
+  payload: errorMessage,
+});
+
+export const fetchTopRatedSuccess = ({ topRatedMovies }) => ({
+  type: MoviesTypes.FETCH_TOP_RATED_SUCCESS,
+  payload: topRatedMovies,
+});
+
+export function fetchTopRated({ page }) {
+  return function fetchTopRatedThunk(dispatch, getState) {
+    const token = getState().user.currentUser.token;
+
+    dispatch(fetchTopRatedRequest());
+
+    fetch(`/api/movie/top-rated?page=${page}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          dispatch(
+            fetchTopRatedSuccess({
+              topRatedMovies: data.data,
+            })
+          );
+        } else {
+          dispatch(fetchTopRatedError({ errorMessage: data.error }));
+        }
+      })
+      .catch((error) =>
+        dispatch(fetchTopRatedError({ errorMessage: error.message }))
+      );
+  };
+}
