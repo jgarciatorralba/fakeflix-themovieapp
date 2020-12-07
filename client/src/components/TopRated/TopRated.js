@@ -19,7 +19,9 @@ function TopRated({
   useEffect(() => {
     setTimeout(() => {
       let hiderContainer = document.querySelector(".hider-cont");
-      hiderContainer.classList.remove("invisible");
+      if (hiderContainer) {
+        hiderContainer.classList.remove("invisible");
+      }
     }, 700);
   });
 
