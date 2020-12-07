@@ -6,10 +6,12 @@
   position: relative;
 }
 
-.loading-cont,
-.error-cont {
-  width: 95% !important;
-  height: 40vh;
+.RandomMovie {
+  .loading-cont,
+  .error-cont {
+    width: 95% !important;
+    height: 40vh;
+  }
 }
 
 .movie-title {
