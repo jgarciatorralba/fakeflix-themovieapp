@@ -95,12 +95,31 @@ function MoviesReducer(state = MoviesInitialState, action) {
         randomMovie: {},
       };
     }
-
     case MoviesTypes.FETCH_TOP_RATED_REQUEST: {
       return {
         ...state,
         topRatedMoviesLoading: true,
         topRatedMoviesLoadingError: null,
+        topRatedMoviesFetched: false,
+        topRatedMovies: [],
+      };
+    }
+    case MoviesTypes.FETCH_TOP_RATED_SUCCESS: {
+      return {
+        ...state,
+        topRatedMoviesLoading: false,
+        topRatedMoviesLoadingError: null,
+        topRatedMoviesFetched: true,
+        topRatedMovies: action.payload,
+      };
+    }
+    case MoviesTypes.FETCH_TOP_RATED_ERROR: {
+      return {
+        ...state,
+        topRatedMoviesLoading: false,
+        topRatedMoviesLoadingError: action.payload,
+        topRatedMoviesFetched: false,
+        topRatedMovies: [],
       };
     }
     default: {
