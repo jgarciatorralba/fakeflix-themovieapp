@@ -54,12 +54,12 @@ export const fetchTopRatedError = ({ errorMessage }) => ({
   payload: errorMessage,
 });
 
-export const fetchTopRatedSuccess = ({ topRatedMovies }) => ({
+export const fetchTopRatedSuccess = ({ topRatedMovies, topRatedPages }) => ({
   type: MoviesTypes.FETCH_TOP_RATED_SUCCESS,
-  payload: topRatedMovies,
+  payload: { topRatedMovies, topRatedPages },
 });
 
-export function fetchTopRated({ page }) {
+export function fetchTopRated(page) {
   return function fetchTopRatedThunk(dispatch, getState) {
     const token = getState().user.currentUser.token;
 
@@ -77,7 +77,8 @@ export function fetchTopRated({ page }) {
         if (data.data) {
           dispatch(
             fetchTopRatedSuccess({
-              topRatedMovies: data.data,
+              topRatedMovies: data.data.results,
+              topRatedPages: data.data.totalPages,
             })
           );
         } else {
