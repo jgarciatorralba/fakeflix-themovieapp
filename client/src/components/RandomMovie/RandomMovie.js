@@ -51,7 +51,7 @@ function RandomMovie({
               width="1em"
               height="1em"
               viewBox="0 0 16 16"
-              className="bi bi-info-circle mr-2"
+              className="bi bi-info-circle mr-1 mr-sm-2"
               fill="currentColor"
               xmlns="http://www.w3.org/2000/svg"
             >
