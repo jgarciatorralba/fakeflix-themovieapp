@@ -9,6 +9,7 @@ export const MoviesInitialState = {
   topRatedMoviesLoading: false,
   topRatedMoviesLoadingError: null,
   topRatedMoviesFetched: false,
+  topRatedMovies: [],
 
   nowPlayingMoviesLoading: false,
   nowPlayingMoviesLoadingError: null,
@@ -55,7 +56,6 @@ export const MoviesInitialState = {
   favouriteUpdatingError: null,
 
   favouriteMovies: [],
-  topRatedMovies: [],
   nowPlayingMovies: [],
   upcomingMovies: [],
 
