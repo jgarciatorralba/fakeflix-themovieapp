@@ -10,6 +10,7 @@ export const MoviesInitialState = {
   topRatedMoviesLoadingError: null,
   topRatedMoviesFetched: false,
   topRatedMovies: [],
+  topRatedPages: null,
 
   nowPlayingMoviesLoading: false,
   nowPlayingMoviesLoadingError: null,
@@ -102,6 +103,7 @@ function MoviesReducer(state = MoviesInitialState, action) {
         topRatedMoviesLoadingError: null,
         topRatedMoviesFetched: false,
         topRatedMovies: [],
+        topRatedPages: null,
       };
     }
     case MoviesTypes.FETCH_TOP_RATED_SUCCESS: {
@@ -110,7 +112,8 @@ function MoviesReducer(state = MoviesInitialState, action) {
         topRatedMoviesLoading: false,
         topRatedMoviesLoadingError: null,
         topRatedMoviesFetched: true,
-        topRatedMovies: action.payload,
+        topRatedMovies: action.payload.topRatedMovies,
+        topRatedPages: action.payload.topRatedPages,
       };
     }
     case MoviesTypes.FETCH_TOP_RATED_ERROR: {
@@ -120,6 +123,7 @@ function MoviesReducer(state = MoviesInitialState, action) {
         topRatedMoviesLoadingError: action.payload,
         topRatedMoviesFetched: false,
         topRatedMovies: [],
+        topRatedPages: null,
       };
     }
     default: {
