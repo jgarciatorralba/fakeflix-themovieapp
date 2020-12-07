@@ -85,7 +85,7 @@ describe("Testing auth routes...", () => {
     expect(userController.create).toHaveBeenCalledTimes(1);
     expect(JSON.parse(response.text)).toMatchObject({
       error: null,
-      data: "Congratulations, you have been successfully registered!",
+      data: "Register was successful!",
     });
   });
 
