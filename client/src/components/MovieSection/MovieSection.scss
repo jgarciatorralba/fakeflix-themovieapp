@@ -34,14 +34,21 @@
         0 6px 20px 0 rgba(255, 255, 255, 0.19);
     }
     &:disabled {
-      color: $font-color;
+      color: $font-color-disabled;
     }
   }
   .error-cont,
   .loading-cont,
   .empty-cont,
   .hider-cont {
-    height: 100%;
+    height: 94%;
+  }
+
+  .empty-cont {
+    border: 1px solid $font-color-disabled;
+    p {
+      color: $font-color-disabled;
+    }
   }
 }
 
