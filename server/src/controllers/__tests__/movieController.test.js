@@ -68,8 +68,8 @@ describe("Testing responses from external API (TMDb)...", () => {
     expect.assertions(4);
     expect(axios.get).toHaveBeenCalledTimes(1);
     expect(response).toBeDefined();
-    expect(response).toHaveLength(20);
-    expect(response[Math.floor(Math.random() * 20)]).toHaveProperty(
+    expect(response.results).toHaveLength(20);
+    expect(response.results[Math.floor(Math.random() * 20)]).toHaveProperty(
       "poster_path"
     );
   });
@@ -80,8 +80,8 @@ describe("Testing responses from external API (TMDb)...", () => {
     expect.assertions(4);
     expect(axios.get).toHaveBeenCalledTimes(1);
     expect(response).toBeDefined();
-    expect(response).toHaveLength(20);
-    expect(response[Math.floor(Math.random() * 20)]).toHaveProperty(
+    expect(response.results).toHaveLength(20);
+    expect(response.results[Math.floor(Math.random() * 20)]).toHaveProperty(
       "release_date"
     );
   });
