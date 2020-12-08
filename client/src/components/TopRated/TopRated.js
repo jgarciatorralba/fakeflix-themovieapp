@@ -27,7 +27,7 @@ function TopRated({
 
   return (
     <div className="TopRated">
-      <div className="mt-3 mt-sm-3 px-3">
+      <div className="my-3 mt-sm-3 px-3">
         <h5 className="section-title my-0">Top Rated</h5>
         <div className="movie-cont my-0 pt-2 pb-3">
           {topRatedMoviesLoadingError && (
