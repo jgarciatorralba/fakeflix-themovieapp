@@ -90,3 +90,48 @@ export function fetchTopRated(page) {
       );
   };
 }
+
+export const fetchFavouritesRequest = () => ({
+  type: MoviesTypes.FETCH_FAVOURITES_REQUEST,
+});
+
+export const fetchFavouritesError = ({ errorMessage }) => ({
+  type: MoviesTypes.FETCH_FAVOURITES_ERROR,
+  payload: errorMessage,
+});
+
+export const fetchFavouritesSuccess = ({ favouriteMovies }) => ({
+  type: MoviesTypes.FETCH_FAVOURITES_SUCCESS,
+  payload: favouriteMovies,
+});
+
+export function fetchFavourites() {
+  return function fetchFavouritesThunk(dispatch, getState) {
+    const token = getState().user.currentUser.token;
+
+    dispatch(fetchFavouritesRequest());
+
+    fetch("/api/movie/favourites", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          dispatch(
+            fetchFavouritesSuccess({
+              favouriteMovies: data.data,
+            })
+          );
+        } else {
+          dispatch(fetchFavouritesError({ errorMessage: data.error }));
+        }
+      })
+      .catch((error) =>
+        dispatch(fetchFavouritesError({ errorMessage: error.message }))
+      );
+  };
+}
