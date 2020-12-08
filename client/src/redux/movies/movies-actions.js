@@ -135,3 +135,98 @@ export function fetchFavourites() {
       );
   };
 }
+
+export const fetchNowPlayingRequest = () => ({
+  type: MoviesTypes.FETCH_NOW_PLAYING_REQUEST,
+});
+
+export const fetchNowPlayingError = ({ errorMessage }) => ({
+  type: MoviesTypes.FETCH_NOW_PLAYING_ERROR,
+  payload: errorMessage,
+});
+
+export const fetchNowPlayingSuccess = ({
+  nowPlayingMovies,
+  nowPlayingPages,
+}) => ({
+  type: MoviesTypes.FETCH_NOW_PLAYING_SUCCESS,
+  payload: { nowPlayingMovies, nowPlayingPages },
+});
+
+export function fetchNowPlaying(page) {
+  return function fetchNowPlayingThunk(dispatch, getState) {
+    const token = getState().user.currentUser.token;
+
+    dispatch(fetchNowPlayingRequest());
+
+    fetch(`/api/movie/now-playing?page=${page}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          dispatch(
+            fetchNowPlayingSuccess({
+              nowPlayingMovies: data.data.results,
+              nowPlayingPages: data.data.totalPages,
+            })
+          );
+        } else {
+          dispatch(fetchNowPlayingError({ errorMessage: data.error }));
+        }
+      })
+      .catch((error) =>
+        dispatch(fetchNowPlayingError({ errorMessage: error.message }))
+      );
+  };
+}
+
+export const fetchUpcomingRequest = () => ({
+  type: MoviesTypes.FETCH_UPCOMING_REQUEST,
+});
+
+export const fetchUpcomingError = ({ errorMessage }) => ({
+  type: MoviesTypes.FETCH_UPCOMING_ERROR,
+  payload: errorMessage,
+});
+
+export const fetchUpcomingSuccess = ({ upcomingMovies, upcomingPages }) => ({
+  type: MoviesTypes.FETCH_UPCOMING_SUCCESS,
+  payload: { upcomingMovies, upcomingPages },
+});
+
+export function fetchUpcoming(page) {
+  return function fetchUpcomingThunk(dispatch, getState) {
+    const token = getState().user.currentUser.token;
+
+    dispatch(fetchUpcomingRequest());
+
+    fetch(`/api/movie/upcoming?page=${page}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          dispatch(
+            fetchUpcomingSuccess({
+              upcomingMovies: data.data.results,
+              upcomingPages: data.data.totalPages,
+            })
+          );
+        } else {
+          dispatch(fetchUpcomingError({ errorMessage: data.error }));
+        }
+      })
+      .catch((error) =>
+        dispatch(fetchUpcomingError({ errorMessage: error.message }))
+      );
+  };
+}
