@@ -12,6 +12,11 @@ export const MoviesInitialState = {
   topRatedMovies: [],
   topRatedPages: null,
 
+  favouritesLoading: false,
+  favouritesLoadingError: null,
+  favouritesFetched: false,
+  favouriteMovies: [],
+
   nowPlayingMoviesLoading: false,
   nowPlayingMoviesLoadingError: null,
   nowPlayingMoviesFetched: false,
@@ -49,14 +54,9 @@ export const MoviesInitialState = {
   dislikeUpdating: false,
   dislikeUpdatingError: null,
 
-  favouritesLoading: false,
-  favouritesLoadingError: null,
-  favouritesFetched: false,
-
   favouriteUpdating: false,
   favouriteUpdatingError: null,
 
-  favouriteMovies: [],
   nowPlayingMovies: [],
   upcomingMovies: [],
 
@@ -124,6 +124,33 @@ function MoviesReducer(state = MoviesInitialState, action) {
         topRatedMoviesFetched: false,
         topRatedMovies: [],
         topRatedPages: null,
+      };
+    }
+    case MoviesTypes.FETCH_FAVOURITES_REQUEST: {
+      return {
+        ...state,
+        favouritesLoading: true,
+        favouritesLoadingError: null,
+        favouritesFetched: false,
+        favouriteMovies: [],
+      };
+    }
+    case MoviesTypes.FETCH_FAVOURITES_SUCCESS: {
+      return {
+        ...state,
+        favouritesLoading: false,
+        favouritesLoadingError: null,
+        favouritesFetched: true,
+        favouriteMovies: action.payload,
+      };
+    }
+    case MoviesTypes.FETCH_FAVOURITES_ERROR: {
+      return {
+        ...state,
+        favouritesLoading: false,
+        favouritesLoadingError: action.payload,
+        favouritesFetched: false,
+        favouriteMovies: [],
       };
     }
     default: {
