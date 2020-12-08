@@ -20,22 +20,29 @@ export const MoviesInitialState = {
   nowPlayingMoviesLoading: false,
   nowPlayingMoviesLoadingError: null,
   nowPlayingMoviesFetched: false,
+  nowPlayingMovies: [],
+  nowPlayingPages: null,
 
   upcomingMoviesLoading: false,
   upcomingMoviesLoadingError: null,
   upcomingMoviesFetched: false,
+  upcomingMovies: [],
+  upcomingPages: null,
 
   movieDetailsLoading: false,
   movieDetailsLoadingError: null,
   movieDetailsFetched: false,
+  movieDetails: {},
 
   movieTrailersLoading: false,
   movieTrailersLoadingError: null,
   movieTrailersFetched: false,
+  movieTrailers: [],
 
   commentsLoading: false,
   commentsLoadingError: null,
   commentsFetched: false,
+  comments: [],
 
   commentUpdating: false,
   commentUpdatingError: null,
@@ -43,6 +50,7 @@ export const MoviesInitialState = {
   likesLoading: false,
   likesLoadingError: null,
   likesFetched: false,
+  likes: [],
 
   likeUpdating: false,
   likeUpdatingError: null,
@@ -50,21 +58,13 @@ export const MoviesInitialState = {
   dislikesLoading: false,
   dislikesLoadingError: null,
   dislikesFetched: false,
+  dislikes: [],
 
   dislikeUpdating: false,
   dislikeUpdatingError: null,
 
   favouriteUpdating: false,
   favouriteUpdatingError: null,
-
-  nowPlayingMovies: [],
-  upcomingMovies: [],
-
-  movieDetails: {},
-  movieTrailers: [],
-  comments: [],
-  likes: [],
-  dislikes: [],
 };
 
 function MoviesReducer(state = MoviesInitialState, action) {
@@ -151,6 +151,66 @@ function MoviesReducer(state = MoviesInitialState, action) {
         favouritesLoadingError: action.payload,
         favouritesFetched: false,
         favouriteMovies: [],
+      };
+    }
+    case MoviesTypes.FETCH_NOW_PLAYING_REQUEST: {
+      return {
+        ...state,
+        nowPlayingMoviesLoading: true,
+        nowPlayingMoviesLoadingError: null,
+        nowPlayingMoviesFetched: false,
+        nowPlayingMovies: [],
+        nowPlayingPages: null,
+      };
+    }
+    case MoviesTypes.FETCH_NOW_PLAYING_SUCCESS: {
+      return {
+        ...state,
+        nowPlayingMoviesLoading: false,
+        nowPlayingMoviesLoadingError: null,
+        nowPlayingMoviesFetched: true,
+        nowPlayingMovies: action.payload.nowPlayingMovies,
+        nowPlayingPages: action.payload.nowPlayingPages,
+      };
+    }
+    case MoviesTypes.FETCH_NOW_PLAYING_ERROR: {
+      return {
+        ...state,
+        nowPlayingMoviesLoading: false,
+        nowPlayingMoviesLoadingError: action.payload,
+        nowPlayingMoviesFetched: false,
+        nowPlayingMovies: [],
+        nowPlayingPages: null,
+      };
+    }
+    case MoviesTypes.FETCH_UPCOMING_REQUEST: {
+      return {
+        ...state,
+        upcomingMoviesLoading: true,
+        upcomingMoviesLoadingError: null,
+        upcomingMoviesFetched: false,
+        upcomingMovies: [],
+        upcomingPages: null,
+      };
+    }
+    case MoviesTypes.FETCH_UPCOMING_SUCCESS: {
+      return {
+        ...state,
+        upcomingMoviesLoading: false,
+        upcomingMoviesLoadingError: null,
+        upcomingMoviesFetched: true,
+        upcomingMovies: action.payload.upcomingMovies,
+        upcomingPages: action.payload.upcomingPages,
+      };
+    }
+    case MoviesTypes.FETCH_UPCOMING_ERROR: {
+      return {
+        ...state,
+        upcomingMoviesLoading: false,
+        upcomingMoviesLoadingError: action.payload,
+        upcomingMoviesFetched: false,
+        upcomingMovies: [],
+        upcomingPages: null,
       };
     }
     default: {
