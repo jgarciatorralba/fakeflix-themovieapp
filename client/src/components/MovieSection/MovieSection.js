@@ -67,7 +67,9 @@ function MovieSection({
             !sectionLoading &&
             (movies.length === 0 ? (
               <div className="d-flex justify-content-center align-items-center m-1 w-100 mx-auto empty-cont rounded">
-                <p className="p-3 my-0">No movies added to favourites yet...</p>
+                <p className="p-3 my-0">
+                  No movies added to your favourites yet...
+                </p>
               </div>
             ) : (
               <div className="hider-cont invisible">
