@@ -86,6 +86,11 @@ export default {
             "t/p/w780" + response.data.poster_path,
             "https://image.tmdb.org/"
           );
+        } else {
+          response.data.poster_path = new URL(
+            "/img/movie/default-poster.png",
+            config().app.SERVER_DOMAIN
+          );
         }
 
         movies.push(response.data);
@@ -120,6 +125,11 @@ export default {
             result.poster_path = new URL(
               "t/p/w780" + result.poster_path,
               "https://image.tmdb.org/"
+            );
+          } else {
+            result.poster_path = new URL(
+              "/img/movie/default-poster.png",
+              config().app.SERVER_DOMAIN
             );
           }
         });
@@ -158,6 +168,11 @@ export default {
               "t/p/w780" + result.poster_path,
               "https://image.tmdb.org/"
             );
+          } else {
+            result.poster_path = new URL(
+              "/img/movie/default-poster.png",
+              config().app.SERVER_DOMAIN
+            );
           }
         });
       }
@@ -195,6 +210,11 @@ export default {
               "t/p/w780" + result.poster_path,
               "https://image.tmdb.org/"
             );
+          } else {
+            result.poster_path = new URL(
+              "/img/movie/default-poster.png",
+              config().app.SERVER_DOMAIN
+            );
           }
         });
       }
@@ -229,6 +249,11 @@ export default {
         response.data.poster_path = new URL(
           "t/p/w780" + response.data.poster_path,
           "https://image.tmdb.org/"
+        );
+      } else {
+        response.data.poster_path = new URL(
+          "/img/movie/default-poster.png",
+          config().app.SERVER_DOMAIN
         );
       }
 
