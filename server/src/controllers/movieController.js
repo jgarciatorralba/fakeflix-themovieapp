@@ -161,7 +161,10 @@ export default {
           }
         });
       }
-      return response.data.results;
+      return {
+        results: response.data.results,
+        totalPages: response.data.total_pages,
+      };
     } catch (error) {
       return "error";
     }
@@ -195,7 +198,10 @@ export default {
           }
         });
       }
-      return response.data.results;
+      return {
+        results: response.data.results,
+        totalPages: response.data.total_pages,
+      };
     } catch (error) {
       return "error";
     }
