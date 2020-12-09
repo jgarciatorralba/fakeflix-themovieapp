@@ -1,0 +1,19 @@
+@import "../../styles/settings/variables";
+
+@media screen and (max-width: 484px) {
+  .cover {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 484px) and (orientation: landscape) {
+  .cover {
+    height: 60vh;
+  }
+}
+
+@media (min-width: 768px) {
+  .cover {
+    height: 70vh;
+  }
+}
