@@ -49,11 +49,11 @@ function MovieDetails({ details, loading, loadingError }) {
               <div className="col-8 col-md-9 pl-0">
                 <div className="d-flex justify-content-start align-items-center h-100">
                   <div className="movie-info">
-                    <h1 className="my-2">
+                    <h1 className="my-1 my-md-2">
                       <b>{details.title}</b>
                     </h1>
-                    <p className="my-1">({releaseDate})</p>
-                    <p className="my-1">
+                    <p className="my-0 my-md-1">({releaseDate})</p>
+                    <p className="my-0 my-md-1">
                       {details.genres.length > 0 &&
                         details.genres.map((genre, i, arr) => {
                           if (arr.length - 1 === i) {
