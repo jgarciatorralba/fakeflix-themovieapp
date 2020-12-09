@@ -44,7 +44,9 @@ function MovieDetails({ details, loading, loadingError }) {
           >
             <div className="row">
               <div className="col-4 col-md-3">
-                <img alt="Movie poster" src={details.poster_path} />
+                <div className="d-flex justify-content-start align-items-center h-100">
+                  <img alt="Movie poster" src={details.poster_path} />
+                </div>
               </div>
               <div className="col-8 col-md-9 pl-0">
                 <div className="d-flex justify-content-start align-items-center h-100">
@@ -53,6 +55,7 @@ function MovieDetails({ details, loading, loadingError }) {
                       <b>{details.title}</b>
                     </h1>
                     <p className="my-0 my-md-1">{releaseDate}</p>
+                    <p className="my-0 my-md-1">{details.runtime} min</p>
                     <p className="my-0 my-md-1">
                       {details.genres.length > 0 &&
                         details.genres.map((genre, i, arr) => {
@@ -85,6 +88,10 @@ function MovieDetails({ details, loading, loadingError }) {
                           }
                         })}
                     </p>
+                    <p className="mt-2 mb-0 mb-md-1">
+                      <b>Overview</b>
+                    </p>
+                    <p className="my-0 my-md-1">{details.overview}</p>
                   </div>
                 </div>
               </div>
