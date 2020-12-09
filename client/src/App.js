@@ -10,6 +10,7 @@ import ResetPasswordContainer from "./redux/containers/pages/ResetPasswordContai
 
 import HomeContainer from "./redux/containers/pages/HomeContainer";
 import Movie from "./pages/Movie/Movie";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
       </Route>
       <Route path={ROUTES.HOME} exact>
         <HomeContainer />
+      </Route>
+      <Route>
+        <NotFound />
       </Route>
     </Switch>
   );
