@@ -46,13 +46,25 @@ function MovieDetails({ details, loading, loadingError }) {
               <div className="col-4 col-md-3">
                 <img alt="Movie poster" src={details.poster_path} />
               </div>
-              <div className="col-8 col-md-9">
+              <div className="col-8 col-md-9 pl-0">
                 <div className="d-flex justify-content-start align-items-center h-100">
                   <div className="movie-info">
                     <h1 className="my-2">
                       <b>{details.title}</b>
                     </h1>
                     <p className="my-1">({releaseDate})</p>
+                    <p className="my-1">
+                      {details.genres.length > 0 &&
+                        details.genres.map((genre, i, arr) => {
+                          if (arr.length - 1 === i) {
+                            return <span key={genre.id}> {genre.name}</span>;
+                          } else {
+                            return (
+                              <span key={genre.id}> {genre.name} &#8226;</span>
+                            );
+                          }
+                        })}
+                    </p>
                   </div>
                 </div>
               </div>
