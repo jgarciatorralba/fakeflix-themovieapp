@@ -1,8 +1,14 @@
 import React from "react";
 
+import moment from "moment";
+
 import "./MovieDetails.scss";
 
 function MovieDetails({ details, loading, loadingError }) {
+  console.log(details);
+
+  const releaseDate = new moment(details.release_date).format("MMMM Do, YYYY");
+
   return (
     <div className="MovieDetails">
       <div className="details-cont">
@@ -27,15 +33,31 @@ function MovieDetails({ details, loading, loadingError }) {
 
         {!loadingError && !loading && (
           <div
-            className="cover"
+            className="cover p-3"
             style={{
               backgroundColor: "#141414",
-              backgroundImage: `linear-gradient(rgba(20, 20, 20, 0.8), rgba(20, 20, 20, 0.8)), url(${details.backdrop_path})`,
+              backgroundImage: `linear-gradient(rgba(20, 20, 20, 0.9), rgba(20, 20, 20, 0.9)), url(${details.backdrop_path})`,
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
             }}
-          ></div>
+          >
+            <div className="row">
+              <div className="col-4 col-md-3">
+                <img alt="Movie poster" src={details.poster_path} />
+              </div>
+              <div className="col-8 col-md-9">
+                <div className="d-flex justify-content-start align-items-center h-100">
+                  <div className="movie-info">
+                    <h1 className="my-2">
+                      <b>{details.title}</b>
+                    </h1>
+                    <p className="my-1">({releaseDate})</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </div>

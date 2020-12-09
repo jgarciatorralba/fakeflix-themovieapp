@@ -5,12 +5,25 @@
   .loading-cont {
     width: 95% !important;
   }
+
+  .cover {
+    height: 100%;
+    img {
+      width: 100%;
+      height: auto;
+      border: 1px solid $font-color;
+    }
+  }
 }
 
 @media screen and (max-width: 484px) {
   .details-cont {
-    font-size: 0.5rem;
-    .cover,
+    p {
+      font-size: 0.5rem;
+    }
+    h1 {
+      font-size: 0.75rem;
+    }
     .error-cont,
     .loading-cont {
       height: 50vh;
@@ -20,7 +33,6 @@
 
 @media (max-width: 484px) and (orientation: landscape) {
   .details-cont {
-    .cover,
     .error-cont,
     .loading-cont {
       height: 60vh;
@@ -30,13 +42,17 @@
 
 @media screen and (min-width: 485px) {
   .details-cont {
-    font-size: 1rem;
+    p {
+      font-size: 1rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
   }
 }
 
 @media (min-width: 768px) {
   .details-cont {
-    .cover,
     .error-cont,
     .loading-cont {
       height: 70vh;
