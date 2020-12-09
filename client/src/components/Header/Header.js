@@ -9,7 +9,7 @@ function Header({ isLoggingOut, currentUser, logout }) {
   return (
     <div className="Header">
       <Navbar sticky="top" bg="black" variant="dark" expand="lg">
-        <Navbar.Brand>
+        <Navbar.Brand href="/">
           <Logo fontSize="1.5rem" />
         </Navbar.Brand>
         <img
