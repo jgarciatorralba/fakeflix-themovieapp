@@ -230,3 +230,48 @@ export function fetchUpcoming(page) {
       );
   };
 }
+
+export const fetchMovieDetailsRequest = () => ({
+  type: MoviesTypes.FETCH_MOVIE_DETAILS_REQUEST,
+});
+
+export const fetchMovieDetailsError = ({ errorMessage }) => ({
+  type: MoviesTypes.FETCH_MOVIE_DETAILS_ERROR,
+  payload: errorMessage,
+});
+
+export const fetchMovieDetailsSuccess = ({ movieDetails }) => ({
+  type: MoviesTypes.FETCH_MOVIE_DETAILS_SUCCESS,
+  payload: movieDetails,
+});
+
+export function fetchMovieDetails(movie_id) {
+  return function fetchMovieDetailsThunk(dispatch, getState) {
+    const token = getState().user.currentUser.token;
+
+    dispatch(fetchMovieDetailsRequest());
+
+    fetch(`/api/movie/details/${movie_id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          dispatch(
+            fetchMovieDetailsSuccess({
+              movieDetails: data.data,
+            })
+          );
+        } else {
+          dispatch(fetchMovieDetailsError({ errorMessage: data.error }));
+        }
+      })
+      .catch((error) =>
+        dispatch(fetchMovieDetailsError({ errorMessage: error.message }))
+      );
+  };
+}
