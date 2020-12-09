@@ -213,6 +213,33 @@ function MoviesReducer(state = MoviesInitialState, action) {
         upcomingPages: null,
       };
     }
+    case MoviesTypes.FETCH_MOVIE_DETAILS_REQUEST: {
+      return {
+        ...state,
+        movieDetailsLoading: true,
+        movieDetailsLoadingError: null,
+        movieDetailsFetched: false,
+        movieDetails: {},
+      };
+    }
+    case MoviesTypes.FETCH_MOVIE_DETAILS_SUCCESS: {
+      return {
+        ...state,
+        movieDetailsLoading: false,
+        movieDetailsLoadingError: null,
+        movieDetailsFetched: true,
+        movieDetails: action.payload,
+      };
+    }
+    case MoviesTypes.FETCH_MOVIE_DETAILS_ERROR: {
+      return {
+        ...state,
+        movieDetailsLoading: false,
+        movieDetailsLoadingError: action.payload,
+        movieDetailsFetched: false,
+        movieDetails: {},
+      };
+    }
     default: {
       return state;
     }
