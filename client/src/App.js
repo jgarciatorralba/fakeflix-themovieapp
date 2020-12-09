@@ -9,7 +9,7 @@ import ForgotPasswordContainer from "./redux/containers/pages/ForgotPasswordCont
 import ResetPasswordContainer from "./redux/containers/pages/ResetPasswordContainer";
 
 import HomeContainer from "./redux/containers/pages/HomeContainer";
-import Movie from "./pages/Movie/Movie";
+import MovieContainer from "./redux/containers/pages/MovieContainer";
 import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
         <ResetPasswordContainer />
       </Route>
       <Route path={ROUTES.MOVIE}>
-        <Movie />
+        <MovieContainer />
       </Route>
       <Route path={ROUTES.HOME} exact>
         <HomeContainer />
