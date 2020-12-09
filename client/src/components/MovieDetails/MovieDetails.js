@@ -52,7 +52,7 @@ function MovieDetails({ details, loading, loadingError }) {
                     <h1 className="my-1 my-md-2">
                       <b>{details.title}</b>
                     </h1>
-                    <p className="my-0 my-md-1">({releaseDate})</p>
+                    <p className="my-0 my-md-1">{releaseDate}</p>
                     <p className="my-0 my-md-1">
                       {details.genres.length > 0 &&
                         details.genres.map((genre, i, arr) => {
@@ -61,6 +61,26 @@ function MovieDetails({ details, loading, loadingError }) {
                           } else {
                             return (
                               <span key={genre.id}> {genre.name} &#8226;</span>
+                            );
+                          }
+                        })}
+                    </p>
+                    <p className="my-0 my-md-1">
+                      {details.production_countries.length > 0 &&
+                        details.production_countries.map((country, i, arr) => {
+                          if (arr.length - 1 === i) {
+                            return (
+                              <span key={country.iso_3166_1}>
+                                {" "}
+                                {country.name}
+                              </span>
+                            );
+                          } else {
+                            return (
+                              <span key={country.iso_3166_1}>
+                                {" "}
+                                {country.name} &#8226;
+                              </span>
                             );
                           }
                         })}
