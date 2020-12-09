@@ -30,7 +30,11 @@ function Movie({
   return (
     <div className="Movie">
       <HeaderContainer />
-      <MovieDetails details={movieDetails} />
+      <MovieDetails
+        details={movieDetails}
+        loading={movieDetailsLoading}
+        loadingError={movieDetailsLoadingError}
+      />
       <Footer />
     </div>
   );
