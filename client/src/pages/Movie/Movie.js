@@ -16,12 +16,22 @@ function Movie({
   movieDetailsLoadingError,
   movieDetails,
   fetchMovieDetails,
+
+  favouriteMovies,
+  fetchFavourites,
+  addFavourite,
+  removeFavourite,
+  favouriteUpdating,
+  favouriteUpdatingError,
+  favouriteAdded,
+  favouriteRemoved,
 }) {
   let { movie_id } = useParams();
 
   useEffect(() => {
     fetchMovieDetails(movie_id);
-  }, [fetchMovieDetails, movie_id]);
+    fetchFavourites();
+  }, [fetchMovieDetails, fetchFavourites, movie_id]);
 
   if (!isAuthenticated) {
     return <Redirect to={ROUTES.LOGIN} />;
@@ -34,6 +44,13 @@ function Movie({
         details={movieDetails}
         loading={movieDetailsLoading}
         loadingError={movieDetailsLoadingError}
+        favourites={favouriteMovies}
+        addFavourite={addFavourite}
+        removeFavourite={removeFavourite}
+        favouriteUpdating={favouriteUpdating}
+        favouriteUpdatingError={favouriteUpdatingError}
+        favouriteAdded={favouriteAdded}
+        favouriteRemoved={favouriteRemoved}
       />
       <Footer />
     </div>
