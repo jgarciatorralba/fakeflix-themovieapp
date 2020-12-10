@@ -35,14 +35,16 @@ function MovieDetails({
 }) {
   const releaseDate = new moment(details.release_date).format("MMMM Do, YYYY");
 
-  let movieIsInFavs;
-  let favBtnActive = "";
-  if (Object.entries(details).length > 0) {
-    movieIsInFavs = favourites.find((movie) => movie.id === details.id);
-    if (movieIsInFavs) {
-      favBtnActive = "active";
-    }
-  }
+  console.log(details);
+
+  // let movieIsInFavs;
+  // let favBtnActive = "";
+  // if (Object.entries(details).length > 0) {
+  //   movieIsInFavs = favourites.find((movie) => movie.id === details.id);
+  //   if (movieIsInFavs) {
+  //     favBtnActive = "active";
+  //   }
+  // }
 
   function handleFav(e) {
     if (e.currentTarget.classList.contains("active")) {
@@ -129,7 +131,9 @@ function MovieDetails({
                     <button
                       className={
                         "btn btn-outline-light btn-sm btn-favourite " +
-                        favBtnActive
+                        (favourites.find((movie) => movie.id === details.id)
+                          ? "active"
+                          : "")
                       }
                       onClick={(e) => handleFav(e)}
                       disabled={favouriteUpdating || favouritesLoading}
