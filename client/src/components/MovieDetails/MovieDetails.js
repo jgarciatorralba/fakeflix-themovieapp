@@ -4,10 +4,40 @@ import moment from "moment";
 
 import "./MovieDetails.scss";
 
-function MovieDetails({ details, loading, loadingError }) {
-  console.log(details);
-
+function MovieDetails({
+  details,
+  loading,
+  loadingError,
+  favourites,
+  addFavourite,
+  removeFavourite,
+  favouriteUpdating,
+  favouriteUpdatingError,
+  favouriteAdded,
+  favouriteRemoved,
+}) {
   const releaseDate = new moment(details.release_date).format("MMMM Do, YYYY");
+
+  let movieIsInFavs;
+  let favBtnActive = "";
+  if (Object.entries(details).length > 0) {
+    movieIsInFavs = favourites.find((movie) => movie.id === details.id);
+    if (movieIsInFavs) {
+      favBtnActive = "active";
+    }
+  }
+
+  function handleFav(e) {
+    if (e.currentTarget.classList.contains("active")) {
+      removeFavourite(details.id);
+    } else {
+      addFavourite(details.id);
+    }
+    if (favouriteAdded || favouriteRemoved) {
+      e.currentTarget.classList.toggle("active");
+    }
+    if (favouriteUpdatingError) console.log(favouriteUpdatingError);
+  }
 
   return (
     <div className="MovieDetails">
@@ -47,7 +77,14 @@ function MovieDetails({ details, loading, loadingError }) {
                 <div className="d-flex justify-content-start align-items-center h-100">
                   <div className="movie-poster">
                     <img alt="Movie poster" src={details.poster_path} />
-                    <button className="btn btn-outline-light btn-sm btn-favourite">
+                    <button
+                      className={
+                        "btn btn-outline-light btn-sm btn-favourite " +
+                        favBtnActive
+                      }
+                      onClick={(e) => handleFav(e)}
+                      disabled={favouriteUpdating}
+                    >
                       <svg
                         width="1em"
                         height="1em"
