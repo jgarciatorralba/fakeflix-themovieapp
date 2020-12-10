@@ -346,3 +346,235 @@ export function removeFavourite(movie_id) {
       );
   };
 }
+
+export const fetchLikesRequest = () => ({
+  type: MoviesTypes.FETCH_LIKES_REQUEST,
+});
+
+export const fetchLikesError = ({ errorMessage }) => ({
+  type: MoviesTypes.FETCH_LIKES_ERROR,
+  payload: errorMessage,
+});
+
+export const fetchLikesSuccess = ({ likes }) => ({
+  type: MoviesTypes.FETCH_LIKES_SUCCESS,
+  payload: likes,
+});
+
+export function fetchLikes(movie_id) {
+  return function fetchLikesThunk(dispatch, getState) {
+    const token = getState().user.currentUser.token;
+
+    dispatch(fetchLikesRequest());
+
+    fetch(`/api/like/${movie_id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          dispatch(
+            fetchLikesSuccess({
+              likes: data.data,
+            })
+          );
+        } else {
+          dispatch(fetchLikesError({ errorMessage: data.error }));
+        }
+      })
+      .catch((error) =>
+        dispatch(fetchLikesError({ errorMessage: error.message }))
+      );
+  };
+}
+
+export const fetchDislikesRequest = () => ({
+  type: MoviesTypes.FETCH_DISLIKES_REQUEST,
+});
+
+export const fetchDislikesError = ({ errorMessage }) => ({
+  type: MoviesTypes.FETCH_DISLIKES_ERROR,
+  payload: errorMessage,
+});
+
+export const fetchDislikesSuccess = ({ dislikes }) => ({
+  type: MoviesTypes.FETCH_DISLIKES_SUCCESS,
+  payload: dislikes,
+});
+
+export function fetchDislikes(movie_id) {
+  return function fetchDislikesThunk(dispatch, getState) {
+    const token = getState().user.currentUser.token;
+
+    dispatch(fetchDislikesRequest());
+
+    fetch(`/api/dislike/${movie_id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          dispatch(
+            fetchDislikesSuccess({
+              dislikes: data.data,
+            })
+          );
+        } else {
+          dispatch(fetchDislikesError({ errorMessage: data.error }));
+        }
+      })
+      .catch((error) =>
+        dispatch(fetchDislikesError({ errorMessage: error.message }))
+      );
+  };
+}
+
+export const updateLikeRequest = () => ({
+  type: MoviesTypes.LIKE_UPDATING,
+});
+
+export const updateLikeError = ({ errorMessage }) => ({
+  type: MoviesTypes.LIKE_UPDATING_ERROR,
+  payload: errorMessage,
+});
+
+export const addLikeSuccess = () => ({
+  type: MoviesTypes.ADD_LIKE,
+});
+
+export const removeLikeSuccess = () => ({
+  type: MoviesTypes.REMOVE_LIKE,
+});
+
+export function addLike(movie_id) {
+  return function addLikeThunk(dispatch, getState) {
+    const token = getState().user.currentUser.token;
+
+    dispatch(updateLikeRequest());
+
+    fetch(`/api/like/${movie_id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          dispatch(addLikeSuccess());
+        } else {
+          dispatch(updateLikeError({ errorMessage: data.error }));
+        }
+      })
+      .catch((error) =>
+        dispatch(updateLikeError({ errorMessage: error.message }))
+      );
+  };
+}
+
+export function removeLike(movie_id) {
+  return function removeLikeThunk(dispatch, getState) {
+    const token = getState().user.currentUser.token;
+
+    dispatch(updateLikeRequest());
+
+    fetch(`/api/like/${movie_id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          dispatch(removeLikeSuccess());
+        } else {
+          dispatch(updateLikeError({ errorMessage: data.error }));
+        }
+      })
+      .catch((error) =>
+        dispatch(updateLikeError({ errorMessage: error.message }))
+      );
+  };
+}
+
+export const updateDislikeRequest = () => ({
+  type: MoviesTypes.DISLIKE_UPDATING,
+});
+
+export const updateDislikeError = ({ errorMessage }) => ({
+  type: MoviesTypes.DISLIKE_UPDATING_ERROR,
+  payload: errorMessage,
+});
+
+export const addDislikeSuccess = () => ({
+  type: MoviesTypes.ADD_DISLIKE,
+});
+
+export const removeDislikeSuccess = () => ({
+  type: MoviesTypes.REMOVE_DISLIKE,
+});
+
+export function addDislike(movie_id) {
+  return function addDislikeThunk(dispatch, getState) {
+    const token = getState().user.currentUser.token;
+
+    dispatch(updateDislikeRequest());
+
+    fetch(`/api/dislike/${movie_id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          dispatch(addDislikeSuccess());
+        } else {
+          dispatch(updateDislikeError({ errorMessage: data.error }));
+        }
+      })
+      .catch((error) =>
+        dispatch(updateDislikeError({ errorMessage: error.message }))
+      );
+  };
+}
+
+export function removeDislike(movie_id) {
+  return function removeDislikeThunk(dispatch, getState) {
+    const token = getState().user.currentUser.token;
+
+    dispatch(updateDislikeRequest());
+
+    fetch(`/api/dislike/${movie_id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          dispatch(removeDislikeSuccess());
+        } else {
+          dispatch(updateDislikeError({ errorMessage: data.error }));
+        }
+      })
+      .catch((error) =>
+        dispatch(updateDislikeError({ errorMessage: error.message }))
+      );
+  };
+}
