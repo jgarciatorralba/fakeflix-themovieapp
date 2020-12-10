@@ -39,10 +39,25 @@ export const MoviesInitialState = {
   movieDetailsFetched: false,
   movieDetails: {},
 
-  movieTrailersLoading: false,
-  movieTrailersLoadingError: null,
-  movieTrailersFetched: false,
-  movieTrailers: [],
+  likesLoading: false,
+  likesLoadingError: null,
+  likesFetched: false,
+  likes: [],
+
+  likeUpdating: false,
+  likeUpdatingError: null,
+  likeAdded: false,
+  likeRemoved: false,
+
+  dislikesLoading: false,
+  dislikesLoadingError: null,
+  dislikesFetched: false,
+  dislikes: [],
+
+  dislikeUpdating: false,
+  dislikeUpdatingError: null,
+  dislikeAdded: false,
+  dislikeRemoved: false,
 
   commentsLoading: false,
   commentsLoadingError: null,
@@ -52,21 +67,10 @@ export const MoviesInitialState = {
   commentUpdating: false,
   commentUpdatingError: null,
 
-  likesLoading: false,
-  likesLoadingError: null,
-  likesFetched: false,
-  likes: [],
-
-  likeUpdating: false,
-  likeUpdatingError: null,
-
-  dislikesLoading: false,
-  dislikesLoadingError: null,
-  dislikesFetched: false,
-  dislikes: [],
-
-  dislikeUpdating: false,
-  dislikeUpdatingError: null,
+  movieTrailersLoading: false,
+  movieTrailersLoadingError: null,
+  movieTrailersFetched: false,
+  movieTrailers: [],
 };
 
 function MoviesReducer(state = MoviesInitialState, action) {
@@ -276,6 +280,132 @@ function MoviesReducer(state = MoviesInitialState, action) {
         favouriteUpdatingError: null,
         favouriteAdded: false,
         favouriteRemoved: true,
+      };
+    }
+    case MoviesTypes.FETCH_LIKES_REQUEST: {
+      return {
+        ...state,
+        likesLoading: true,
+        likesLoadingError: null,
+        likesFetched: false,
+        likes: [],
+      };
+    }
+    case MoviesTypes.FETCH_LIKES_SUCCESS: {
+      return {
+        ...state,
+        likesLoading: false,
+        likesLoadingError: null,
+        likesFetched: true,
+        likes: action.payload,
+      };
+    }
+    case MoviesTypes.FETCH_LIKES_ERROR: {
+      return {
+        ...state,
+        likesLoading: false,
+        likesLoadingError: action.payload,
+        likesFetched: false,
+        likes: [],
+      };
+    }
+    case MoviesTypes.LIKE_UPDATING: {
+      return {
+        ...state,
+        likeUpdating: true,
+        likeUpdatingError: null,
+        likeAdded: false,
+        likeRemoved: false,
+      };
+    }
+    case MoviesTypes.LIKE_UPDATING_ERROR: {
+      return {
+        ...state,
+        likeUpdating: false,
+        likeUpdatingError: action.payload,
+        likeAdded: false,
+        likeRemoved: false,
+      };
+    }
+    case MoviesTypes.ADD_LIKE: {
+      return {
+        ...state,
+        likeUpdating: false,
+        likeUpdatingError: null,
+        likeAdded: true,
+        likeRemoved: false,
+      };
+    }
+    case MoviesTypes.REMOVE_LIKE: {
+      return {
+        ...state,
+        likeUpdating: false,
+        likeUpdatingError: null,
+        likeAdded: false,
+        likeRemoved: true,
+      };
+    }
+    case MoviesTypes.FETCH_DISLIKES_REQUEST: {
+      return {
+        ...state,
+        dislikesLoading: true,
+        dislikesLoadingError: null,
+        dislikesFetched: false,
+        dislikes: [],
+      };
+    }
+    case MoviesTypes.FETCH_DISLIKES_SUCCESS: {
+      return {
+        ...state,
+        dislikesLoading: false,
+        dislikesLoadingError: null,
+        dislikesFetched: true,
+        dislikes: action.payload,
+      };
+    }
+    case MoviesTypes.FETCH_DISLIKES_ERROR: {
+      return {
+        ...state,
+        dislikesLoading: false,
+        dislikesLoadingError: action.payload,
+        dislikesFetched: false,
+        dislikes: [],
+      };
+    }
+    case MoviesTypes.DISLIKE_UPDATING: {
+      return {
+        ...state,
+        dislikeUpdating: true,
+        dislikeUpdatingError: null,
+        dislikeAdded: false,
+        dislikeRemoved: false,
+      };
+    }
+    case MoviesTypes.DISLIKE_UPDATING_ERROR: {
+      return {
+        ...state,
+        dislikeUpdating: false,
+        dislikeUpdatingError: action.payload,
+        dislikeAdded: false,
+        dislikeRemoved: false,
+      };
+    }
+    case MoviesTypes.ADD_DISLIKE: {
+      return {
+        ...state,
+        dislikeUpdating: false,
+        dislikeUpdatingError: null,
+        dislikeAdded: true,
+        dislikeRemoved: false,
+      };
+    }
+    case MoviesTypes.REMOVE_DISLIKE: {
+      return {
+        ...state,
+        dislikeUpdating: false,
+        dislikeUpdatingError: null,
+        dislikeAdded: false,
+        dislikeRemoved: true,
       };
     }
     default: {
