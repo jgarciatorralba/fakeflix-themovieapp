@@ -1,5 +1,12 @@
 @import "../../styles/settings/variables";
 
+.active {
+  background-color: $font-color !important;
+  svg {
+    color: $bg-color !important;
+  }
+}
+
 .details-cont {
   .error-cont,
   .loading-cont {
