@@ -35,16 +35,12 @@ function MovieDetails({
 }) {
   const releaseDate = new moment(details.release_date).format("MMMM Do, YYYY");
 
-  console.log(details);
-
-  // let movieIsInFavs;
-  // let favBtnActive = "";
-  // if (Object.entries(details).length > 0) {
-  //   movieIsInFavs = favourites.find((movie) => movie.id === details.id);
-  //   if (movieIsInFavs) {
-  //     favBtnActive = "active";
-  //   }
-  // }
+  let genres = [];
+  let production_countries = [];
+  if (Object.entries(details).length > 0) {
+    genres = details.genres;
+    production_countries = details.production_countries;
+  }
 
   function handleFav(e) {
     if (e.currentTarget.classList.contains("active")) {
@@ -219,8 +215,8 @@ function MovieDetails({
                     <p className="my-0 my-md-1">{releaseDate}</p>
                     <p className="my-0 my-md-1">{details.runtime} min</p>
                     <p className="my-0 my-md-1">
-                      {details.genres.length > 0 &&
-                        details.genres.map((genre, i, arr) => {
+                      {genres.length > 0 &&
+                        genres.map((genre, i, arr) => {
                           if (arr.length - 1 === i) {
                             return <span key={genre.id}> {genre.name}</span>;
                           } else {
@@ -231,8 +227,8 @@ function MovieDetails({
                         })}
                     </p>
                     <p className="my-0 my-md-1">
-                      {details.production_countries.length > 0 &&
-                        details.production_countries.map((country, i, arr) => {
+                      {production_countries.length > 0 &&
+                        production_countries.map((country, i, arr) => {
                           if (arr.length - 1 === i) {
                             return (
                               <span key={country.iso_3166_1}>
