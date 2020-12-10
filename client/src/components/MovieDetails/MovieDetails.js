@@ -100,7 +100,7 @@ function MovieDetails({
                       </svg>
                     </button>
                     <div className="d-flex justify-content-between align-items-center mt-1 mt-sm-2 mt-lg-3">
-                      <button className="btn btn-outline-light btn-like-dislike">
+                      <button className="btn btn-outline-light btn-like">
                         <svg
                           width="1em"
                           height="1em"
@@ -116,7 +116,7 @@ function MovieDetails({
                         </svg>
                       </button>
 
-                      <button className="btn btn-outline-light btn-like-dislike">
+                      <button className="btn btn-outline-light btn-dislike">
                         <svg
                           width="1em"
                           height="1em"
