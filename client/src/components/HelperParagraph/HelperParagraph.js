@@ -6,7 +6,7 @@ import "./HelperParagraph.scss";
 function HelperParagraph({ helperText = "", boldText, linkTo }) {
   return (
     <div className="helper-text">
-      <p className="my-1">
+      <p className="my-3">
         {helperText}{" "}
         <Link to={linkTo} className="text-decoration-none text-body">
           <b>{boldText}</b>.
