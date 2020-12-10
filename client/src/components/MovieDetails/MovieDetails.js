@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import moment from "moment";
 
@@ -16,8 +16,30 @@ function MovieDetails({
   favouriteUpdatingError,
   favouriteAdded,
   favouriteRemoved,
+  likes,
+  likesLoading,
+  addLike,
+  removeLike,
+  likeUpdating,
+  likeUpdatingError,
+  likeAdded,
+  likeRemoved,
+  dislikes,
+  dislikesLoading,
+  addDislike,
+  removeDislike,
+  dislikeUpdating,
+  dislikeUpdatingError,
+  dislikeAdded,
+  dislikeRemoved,
 }) {
   const releaseDate = new moment(details.release_date).format("MMMM Do, YYYY");
+
+  let likeCount = likes.likeCount;
+  const [numLikes, setNumLikes] = useState(likeCount);
+
+  let dislikeCount = dislikes.dislikeCount;
+  const [numDislikes, setNumDislikes] = useState(dislikeCount);
 
   let movieIsInFavs;
   let favBtnActive = "";
@@ -38,6 +60,44 @@ function MovieDetails({
       e.currentTarget.classList.toggle("active");
     }
     if (favouriteUpdatingError) console.log(favouriteUpdatingError);
+  }
+
+  function handleLike(e) {
+    if (e.currentTarget.classList.contains("active")) {
+      removeLike(details.id);
+      setNumLikes(numLikes - 1);
+    } else {
+      addLike(details.id);
+      setNumLikes(numLikes + 1);
+      const dislikeBtn = document.querySelector(".btn-dislike");
+      if (dislikeBtn.classList.contains("active")) {
+        dislikeBtn.classList.remove("active");
+        setNumDislikes(numDislikes - 1);
+      }
+    }
+    if (likeAdded || likeRemoved) {
+      e.currentTarget.classList.toggle("active");
+    }
+    if (likeUpdatingError) console.log(likeUpdatingError);
+  }
+
+  function handleDislike(e) {
+    if (e.currentTarget.classList.contains("active")) {
+      removeDislike(details.id);
+      setNumDislikes(numDislikes - 1);
+    } else {
+      addDislike(details.id);
+      setNumDislikes(numDislikes + 1);
+      const likeBtn = document.querySelector(".btn-like");
+      if (likeBtn.classList.contains("active")) {
+        likeBtn.classList.remove("active");
+        setNumLikes(numLikes - 1);
+      }
+    }
+    if (dislikeAdded || dislikeRemoved) {
+      e.currentTarget.classList.toggle("active");
+    }
+    if (dislikeUpdatingError) console.log(dislikeUpdatingError);
   }
 
   return (
@@ -102,8 +162,15 @@ function MovieDetails({
                     </button>
                     <div className="d-flex justify-content-between align-items-center mt-1 mt-sm-2 mt-lg-3">
                       <div className="likes">
-                        <p className="my-0 text-center">1000</p>
-                        <button className="btn btn-outline-light btn-like">
+                        <p className="my-0 text-center">{numLikes}</p>
+                        <button
+                          className={
+                            (likes.likedByUser ? "active" : "") +
+                            " btn btn-outline-light btn-like"
+                          }
+                          onClick={(e) => handleLike(e)}
+                          disabled={likesLoading || likeUpdating}
+                        >
                           <svg
                             width="1em"
                             height="1em"
@@ -121,8 +188,15 @@ function MovieDetails({
                       </div>
 
                       <div className="dislikes">
-                        <p className="my-0 text-center">1000</p>
-                        <button className="btn btn-outline-light btn-dislike">
+                        <p className="my-0 text-center">{numDislikes}</p>
+                        <button
+                          className={
+                            (dislikes.dislikedByUser ? "active" : "") +
+                            " btn btn-outline-light btn-dislike"
+                          }
+                          onClick={(e) => handleDislike(e)}
+                          disabled={dislikesLoading || dislikeUpdating}
+                        >
                           <svg
                             width="1em"
                             height="1em"
