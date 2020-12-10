@@ -150,7 +150,11 @@ function MovieDetails({
                     </button>
                     <div className="d-flex justify-content-between align-items-center mt-1 mt-sm-2 mt-lg-3">
                       <div className="likes">
-                        <p className="my-0 text-center">{likes.likeCount}</p>
+                        <p className="my-0 text-center counter-likes-dislikes">
+                          {likeUpdating || dislikeUpdating
+                            ? ""
+                            : likes.likeCount}
+                        </p>
                         <button
                           className={
                             (likes.likedByUser ? "active" : "") +
@@ -176,8 +180,10 @@ function MovieDetails({
                       </div>
 
                       <div className="dislikes">
-                        <p className="my-0 text-center">
-                          {dislikes.dislikeCount}
+                        <p className="my-0 text-center counter-likes-dislikes">
+                          {likeUpdating || dislikeUpdating
+                            ? ""
+                            : dislikes.dislikeCount}
                         </p>
                         <button
                           className={
