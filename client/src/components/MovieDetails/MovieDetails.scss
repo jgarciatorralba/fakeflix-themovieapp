@@ -5,6 +5,9 @@
   svg {
     color: $bg-color !important;
   }
+  .bi-heart-fill {
+    color: $netflix-red-light !important;
+  }
 }
 
 .details-cont {
@@ -42,7 +45,7 @@
         border-color: $font-color !important;
         background-color: rgba(229, 229, 229, 0.4);
         &:hover {
-          color: $bg-color !important;
+          color: $netflix-red-light !important;
           background-color: $font-color !important;
         }
       }
