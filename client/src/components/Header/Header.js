@@ -17,7 +17,7 @@ function Header({ isLoggingOut, currentUser, logout }) {
           src={currentUser.avatar}
           alt="Profile"
         />
-        <NavDropdown title="" id="basic-nav-dropdown">
+        <NavDropdown href="" title="" id="basic-nav-dropdown">
           <NavDropdown.Item className="username">
             {currentUser.username}
           </NavDropdown.Item>
