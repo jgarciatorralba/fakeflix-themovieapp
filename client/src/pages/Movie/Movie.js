@@ -26,13 +26,35 @@ function Movie({
   favouriteUpdatingError,
   favouriteAdded,
   favouriteRemoved,
+
+  likes,
+  likesLoading,
+  fetchLikes,
+  addLike,
+  removeLike,
+  likeUpdating,
+  likeUpdatingError,
+  likeAdded,
+  likeRemoved,
+
+  dislikes,
+  dislikesLoading,
+  fetchDislikes,
+  addDislike,
+  removeDislike,
+  dislikeUpdating,
+  dislikeUpdatingError,
+  dislikeAdded,
+  dislikeRemoved,
 }) {
   let { movie_id } = useParams();
 
   useEffect(() => {
     fetchMovieDetails(movie_id);
     fetchFavourites();
-  }, [fetchMovieDetails, fetchFavourites, movie_id]);
+    fetchLikes(movie_id);
+    fetchDislikes(movie_id);
+  }, [fetchMovieDetails, fetchFavourites, fetchLikes, fetchDislikes, movie_id]);
 
   if (!isAuthenticated) {
     return <Redirect to={ROUTES.LOGIN} />;
@@ -53,6 +75,22 @@ function Movie({
         favouriteUpdatingError={favouriteUpdatingError}
         favouriteAdded={favouriteAdded}
         favouriteRemoved={favouriteRemoved}
+        likes={likes}
+        likesLoading={likesLoading}
+        addLike={addLike}
+        removeLike={removeLike}
+        likeUpdating={likeUpdating}
+        likeUpdatingError={likeUpdatingError}
+        likeAdded={likeAdded}
+        likeRemoved={likeRemoved}
+        dislikes={dislikes}
+        dislikesLoading={dislikesLoading}
+        addDislike={addDislike}
+        removeDislike={removeDislike}
+        dislikeUpdating={dislikeUpdating}
+        dislikeUpdatingError={dislikeUpdatingError}
+        dislikeAdded={dislikeAdded}
+        dislikeRemoved={dislikeRemoved}
       />
       <Footer />
     </div>
