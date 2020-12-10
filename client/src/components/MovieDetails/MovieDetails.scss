@@ -25,11 +25,15 @@
     }
     .movie-poster {
       position: relative;
+      .likes,
+      .dislikes {
+        width: 47.5%;
+      }
       .btn-like,
       .btn-dislike {
         color: $font-color !important;
         border-color: $font-color !important;
-        width: 47.5%;
+        width: 100%;
         &:hover {
           color: $bg-color !important;
           background-color: $font-color !important;
