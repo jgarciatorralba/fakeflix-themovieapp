@@ -13,13 +13,51 @@
       height: auto;
       border: 1px solid $font-color;
     }
+    .movie-poster {
+      position: relative;
+      .btn-like-dislike {
+        color: $font-color !important;
+        border-color: $font-color !important;
+        width: 47.5%;
+        &:hover {
+          color: $bg-color !important;
+          background-color: $font-color !important;
+        }
+        svg {
+          position: relative;
+          bottom: 0.1rem;
+        }
+      }
+      .btn-favourite {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        color: $font-color !important;
+        border-color: $font-color !important;
+        background-color: rgba(229, 229, 229, 0.4);
+        &:hover {
+          color: $bg-color !important;
+          background-color: $font-color !important;
+        }
+      }
+    }
   }
 }
 
 @media screen and (max-width: 484px) {
   .details-cont {
-    p {
+    p,
+    button {
       font-size: 0.5rem;
+    }
+    .btn-like-dislike {
+      padding: 0.1875rem 0.375rem !important;
+      border-radius: 0.125rem;
+    }
+    .btn-favourite {
+      padding: 0.125rem 0.25rem;
+      position: absolute;
+      top: 0;
+      left: 0.5rem;
     }
     h1 {
       font-size: 0.75rem;
@@ -42,8 +80,19 @@
 
 @media screen and (min-width: 485px) {
   .details-cont {
-    p {
+    p,
+    button {
       font-size: 1rem;
+    }
+    .btn-like-dislike {
+      padding: 0.375rem 0.75rem !important;
+      border-radius: 0.25rem;
+    }
+    .btn-favourite {
+      padding: 0.25rem 0.5rem;
+      position: absolute;
+      top: 0;
+      left: 1rem;
     }
     h1 {
       font-size: 1.5rem;
