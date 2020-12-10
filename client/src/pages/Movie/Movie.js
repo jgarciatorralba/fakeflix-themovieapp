@@ -18,6 +18,7 @@ function Movie({
   fetchMovieDetails,
 
   favouriteMovies,
+  favouritesLoading,
   fetchFavourites,
   addFavourite,
   removeFavourite,
@@ -45,6 +46,7 @@ function Movie({
         loading={movieDetailsLoading}
         loadingError={movieDetailsLoadingError}
         favourites={favouriteMovies}
+        favouritesLoading={favouritesLoading}
         addFavourite={addFavourite}
         removeFavourite={removeFavourite}
         favouriteUpdating={favouriteUpdating}

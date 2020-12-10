@@ -23,6 +23,7 @@ const mapStateToProps = (state) => ({
   movieDetails: state.movies.movieDetails,
 
   favouriteMovies: state.movies.favouriteMovies,
+  favouritesLoading: state.movies.favouritesLoading,
   favouriteUpdating: state.movies.favouriteUpdating,
   favouriteUpdatingError: state.movies.favouriteUpdatingError,
   favouriteAdded: state.movies.favouriteAdded,

@@ -9,6 +9,7 @@ function MovieDetails({
   loading,
   loadingError,
   favourites,
+  favouritesLoading,
   addFavourite,
   removeFavourite,
   favouriteUpdating,
@@ -83,7 +84,7 @@ function MovieDetails({
                         favBtnActive
                       }
                       onClick={(e) => handleFav(e)}
-                      disabled={favouriteUpdating}
+                      disabled={favouriteUpdating || favouritesLoading}
                     >
                       <svg
                         width="1em"
