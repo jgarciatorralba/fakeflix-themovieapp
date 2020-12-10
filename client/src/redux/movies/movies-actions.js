@@ -275,3 +275,74 @@ export function fetchMovieDetails(movie_id) {
       );
   };
 }
+
+export const updateFavouriteRequest = () => ({
+  type: MoviesTypes.FAVOURITE_UPDATING,
+});
+
+export const updateFavouriteError = ({ errorMessage }) => ({
+  type: MoviesTypes.FAVOURITE_UPDATING_ERROR,
+  payload: errorMessage,
+});
+
+export const addFavouriteSuccess = () => ({
+  type: MoviesTypes.ADD_FAVOURITE,
+});
+
+export const removeFavouriteSuccess = () => ({
+  type: MoviesTypes.REMOVE_FAVOURITE,
+});
+
+export function addFavourite(movie_id) {
+  return function addFavouriteThunk(dispatch, getState) {
+    const token = getState().user.currentUser.token;
+
+    dispatch(updateFavouriteRequest());
+
+    fetch(`/api/favourite/${movie_id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          dispatch(addFavouriteSuccess());
+        } else {
+          dispatch(updateFavouriteError({ errorMessage: data.error }));
+        }
+      })
+      .catch((error) =>
+        dispatch(updateFavouriteError({ errorMessage: error.message }))
+      );
+  };
+}
+
+export function removeFavourite(movie_id) {
+  return function removeFavouriteThunk(dispatch, getState) {
+    const token = getState().user.currentUser.token;
+
+    dispatch(updateFavouriteRequest());
+
+    fetch(`/api/favourite/${movie_id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          dispatch(removeFavouriteSuccess());
+        } else {
+          dispatch(updateFavouriteError({ errorMessage: data.error }));
+        }
+      })
+      .catch((error) =>
+        dispatch(updateFavouriteError({ errorMessage: error.message }))
+      );
+  };
+}
