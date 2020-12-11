@@ -1,16 +1,15 @@
 @import "../../styles/settings/variables";
 
-.random-movie-poster {
-  width: 100%;
-  height: 40vh;
-  position: relative;
-}
-
 .RandomMovie {
+  .random-movie-poster {
+    width: 100%;
+    height: 60vh;
+    position: relative;
+  }
   .loading-cont,
   .error-cont {
     width: 95% !important;
-    height: 40vh;
+    height: 60vh;
   }
 }
 
@@ -39,14 +38,11 @@
 }
 
 @media (max-width: 484px) and (orientation: landscape) {
-  .random-movie-poster,
-  .loading-cont,
-  .error-cont {
-    height: 60vh;
-  }
-  .bi-info-circle {
-    position: relative;
-    bottom: 0.05rem;
+  .RandomMovie {
+    .bi-info-circle {
+      position: relative;
+      bottom: 0.05rem;
+    }
   }
 }
 
@@ -71,13 +67,15 @@
 }
 
 @media (min-width: 768px) {
-  .random-movie-poster,
-  .loading-cont,
-  .error-cont {
-    height: 70vh;
-  }
-  .bi-info-circle {
-    position: relative;
-    bottom: 0.1rem;
+  .RandomMovie {
+    .random-movie-poster,
+    .loading-cont,
+    .error-cont {
+      min-height: 70vh;
+    }
+    .bi-info-circle {
+      position: relative;
+      bottom: 0.1rem;
+    }
   }
 }
