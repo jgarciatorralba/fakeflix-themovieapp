@@ -59,6 +59,11 @@ export const MoviesInitialState = {
   dislikeAdded: false,
   dislikeRemoved: false,
 
+  movieTrailersLoading: false,
+  movieTrailersLoadingError: null,
+  movieTrailersFetched: false,
+  movieTrailers: [],
+
   commentsLoading: false,
   commentsLoadingError: null,
   commentsFetched: false,
@@ -66,11 +71,6 @@ export const MoviesInitialState = {
 
   commentUpdating: false,
   commentUpdatingError: null,
-
-  movieTrailersLoading: false,
-  movieTrailersLoadingError: null,
-  movieTrailersFetched: false,
-  movieTrailers: [],
 };
 
 function MoviesReducer(state = MoviesInitialState, action) {
@@ -406,6 +406,33 @@ function MoviesReducer(state = MoviesInitialState, action) {
         dislikeUpdatingError: null,
         dislikeAdded: false,
         dislikeRemoved: true,
+      };
+    }
+    case MoviesTypes.FETCH_MOVIE_TRAILERS_REQUEST: {
+      return {
+        ...state,
+        movieTrailersLoading: true,
+        movieTrailersLoadingError: null,
+        movieTrailersFetched: false,
+        movieTrailers: [],
+      };
+    }
+    case MoviesTypes.FETCH_MOVIE_TRAILERS_SUCCESS: {
+      return {
+        ...state,
+        movieTrailersLoading: false,
+        movieTrailersLoadingError: null,
+        movieTrailersFetched: true,
+        movieTrailers: action.payload,
+      };
+    }
+    case MoviesTypes.FETCH_MOVIE_TRAILERS_ERROR: {
+      return {
+        ...state,
+        movieTrailersLoading: false,
+        movieTrailersLoadingError: action.payload,
+        movieTrailersFetched: false,
+        movieTrailers: [],
       };
     }
     default: {
