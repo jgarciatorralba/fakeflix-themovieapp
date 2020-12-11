@@ -6,6 +6,7 @@ import ROUTES from "../../utils/routes";
 
 import HeaderContainer from "../../redux/containers/components/HeaderContainer";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
+import MovieTrailers from "../../components/MovieTrailers/MovieTrailers";
 import Footer from "../../components/Footer/Footer";
 
 import "./Movie.scss";
@@ -46,6 +47,11 @@ function Movie({
   dislikeUpdatingError,
   dislikeAdded,
   dislikeRemoved,
+
+  movieTrailers,
+  movieTrailersLoading,
+  movieTrailersLoadingError,
+  fetchMovieTrailers,
 }) {
   let { movie_id } = useParams();
 
@@ -54,7 +60,15 @@ function Movie({
     fetchFavourites();
     fetchLikes(movie_id);
     fetchDislikes(movie_id);
-  }, [fetchMovieDetails, fetchFavourites, fetchLikes, fetchDislikes, movie_id]);
+    fetchMovieTrailers(movie_id);
+  }, [
+    fetchMovieDetails,
+    fetchFavourites,
+    fetchLikes,
+    fetchDislikes,
+    fetchMovieTrailers,
+    movie_id,
+  ]);
 
   if (!isAuthenticated) {
     return <Redirect to={ROUTES.LOGIN} />;
@@ -91,6 +105,11 @@ function Movie({
         dislikeUpdatingError={dislikeUpdatingError}
         dislikeAdded={dislikeAdded}
         dislikeRemoved={dislikeRemoved}
+      />
+      <MovieTrailers
+        movieTrailers={movieTrailers}
+        movieTrailersLoading={movieTrailersLoading}
+        movieTrailersLoadingError={movieTrailersLoadingError}
       />
       <Footer />
     </div>
