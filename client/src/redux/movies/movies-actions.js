@@ -588,3 +588,48 @@ export function removeDislike(movie_id) {
       );
   };
 }
+
+export const fetchMovieTrailersRequest = () => ({
+  type: MoviesTypes.FETCH_MOVIE_TRAILERS_REQUEST,
+});
+
+export const fetchMovieTrailersError = ({ errorMessage }) => ({
+  type: MoviesTypes.FETCH_MOVIE_TRAILERS_ERROR,
+  payload: errorMessage,
+});
+
+export const fetchMovieTrailersSuccess = ({ movieTrailers }) => ({
+  type: MoviesTypes.FETCH_MOVIE_TRAILERS_SUCCESS,
+  payload: movieTrailers,
+});
+
+export function fetchMovieTrailers(movie_id) {
+  return function fetchMovieTrailersThunk(dispatch, getState) {
+    const token = getState().user.currentUser.token;
+
+    dispatch(fetchMovieTrailersRequest());
+
+    fetch(`/api/movie/trailers/${movie_id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          dispatch(
+            fetchMovieTrailersSuccess({
+              movieTrailers: data.data,
+            })
+          );
+        } else {
+          dispatch(fetchMovieTrailersError({ errorMessage: data.error }));
+        }
+      })
+      .catch((error) =>
+        dispatch(fetchMovieTrailersError({ errorMessage: error.message }))
+      );
+  };
+}
