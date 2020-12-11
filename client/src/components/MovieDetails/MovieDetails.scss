@@ -32,12 +32,9 @@
       .btn-like,
       .btn-dislike {
         color: $font-color !important;
+        background-color: $bg-color;
         border-color: $font-color !important;
         width: 100%;
-        &:hover {
-          color: $bg-color !important;
-          background-color: $font-color !important;
-        }
         svg {
           position: relative;
           bottom: 0.1rem;
@@ -128,6 +125,19 @@
     .error-cont,
     .loading-cont {
       height: 70vh;
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  .btn-like,
+  .btn-dislike {
+    &:hover {
+      color: $bg-color !important;
+      background-color: $font-color !important;
+      svg {
+        color: $bg-color !important;
+      }
     }
   }
 }
