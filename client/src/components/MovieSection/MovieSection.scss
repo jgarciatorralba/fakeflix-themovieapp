@@ -57,3 +57,9 @@
     font-size: 1rem;
   }
 }
+
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .movie-cont {
+    height: 38vh;
+  }
+}
