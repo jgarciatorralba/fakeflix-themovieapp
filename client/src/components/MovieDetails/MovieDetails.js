@@ -148,7 +148,7 @@ function MovieDetails({
                         />
                       </svg>
                     </button>
-                    <div className="d-flex justify-content-between align-items-center mt-1 mt-sm-2 mt-lg-3">
+                    <div className="d-flex justify-content-between align-items-center mt-1 mt-sm-2">
                       <div className="likes">
                         <p className="my-0 text-center counter-likes-dislikes">
                           {likeUpdating || dislikeUpdating
