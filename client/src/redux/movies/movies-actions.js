@@ -623,3 +623,119 @@ export function fetchMovieTrailers(movie_id) {
       );
   };
 }
+
+export const fetchCommentsRequest = () => ({
+  type: MoviesTypes.FETCH_COMMENTS_REQUEST,
+});
+
+export const fetchCommentsError = ({ errorMessage }) => ({
+  type: MoviesTypes.FETCH_COMMENTS_ERROR,
+  payload: errorMessage,
+});
+
+export const fetchCommentsSuccess = ({ comments }) => ({
+  type: MoviesTypes.FETCH_COMMENTS_SUCCESS,
+  payload: comments,
+});
+
+export function fetchComments(movie_id) {
+  return function fetchCommentsThunk(dispatch, getState) {
+    const token = getState().user.currentUser.token;
+
+    dispatch(fetchCommentsRequest());
+
+    fetch(`/api/comment/${movie_id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          dispatch(
+            fetchCommentsSuccess({
+              comments: data.data,
+            })
+          );
+        } else {
+          dispatch(fetchCommentsError({ errorMessage: data.error }));
+        }
+      })
+      .catch((error) =>
+        dispatch(fetchCommentsError({ errorMessage: error.message }))
+      );
+  };
+}
+
+export const updateCommentRequest = () => ({
+  type: MoviesTypes.COMMENT_UPDATING,
+});
+
+export const updateCommentError = ({ errorMessage }) => ({
+  type: MoviesTypes.COMMENT_UPDATING_ERROR,
+  payload: errorMessage,
+});
+
+export const addCommentSuccess = () => ({
+  type: MoviesTypes.ADD_COMMENT,
+});
+
+export const removeCommentSuccess = () => ({
+  type: MoviesTypes.REMOVE_COMMENT,
+});
+
+export function addComment(movie_id) {
+  return function addCommentThunk(dispatch, getState) {
+    const token = getState().user.currentUser.token;
+
+    dispatch(updateCommentRequest());
+
+    fetch(`/api/comment/${movie_id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          dispatch(addCommentSuccess());
+        } else {
+          dispatch(updateCommentError({ errorMessage: data.error }));
+        }
+      })
+      .catch((error) =>
+        dispatch(updateCommentError({ errorMessage: error.message }))
+      );
+  };
+}
+
+export function removeComment(comment_id) {
+  return function removeCommentThunk(dispatch, getState) {
+    const token = getState().user.currentUser.token;
+
+    dispatch(updateCommentRequest());
+
+    fetch(`/api/comment/${comment_id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          dispatch(removeCommentSuccess());
+        } else {
+          dispatch(updateCommentError({ errorMessage: data.error }));
+        }
+      })
+      .catch((error) =>
+        dispatch(updateCommentError({ errorMessage: error.message }))
+      );
+  };
+}
