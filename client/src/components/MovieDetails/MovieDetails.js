@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import moment from "moment";
 
@@ -37,6 +37,14 @@ function MovieDetails({
   const genres = details.genres;
   const production_countries = details.production_countries;
 
+  const [numLikes, setNumLikes] = useState(likes.likeCount);
+  const [numDislikes, setNumDislikes] = useState(dislikes.dislikeCount);
+
+  useEffect(() => {
+    setNumLikes(likes.likeCount);
+    setNumDislikes(dislikes.dislikeCount);
+  }, [likes.likeCount, dislikes.dislikeCount]);
+
   function handleFav(e) {
     if (e.currentTarget.classList.contains("active")) {
       removeFavourite(details.id);
@@ -52,11 +60,14 @@ function MovieDetails({
   function handleLike(e) {
     if (e.currentTarget.classList.contains("active")) {
       removeLike(details.id);
+      setNumLikes(numLikes - 1);
     } else {
       addLike(details.id);
+      setNumLikes(numLikes + 1);
       const dislikeBtn = document.querySelector(".btn-dislike");
       if (dislikeBtn.classList.contains("active")) {
         dislikeBtn.classList.remove("active");
+        setNumDislikes(numDislikes - 1);
       }
     }
     if (likeAdded || likeRemoved) {
@@ -68,11 +79,14 @@ function MovieDetails({
   function handleDislike(e) {
     if (e.currentTarget.classList.contains("active")) {
       removeDislike(details.id);
+      setNumDislikes(numDislikes - 1);
     } else {
       addDislike(details.id);
+      setNumDislikes(numDislikes + 1);
       const likeBtn = document.querySelector(".btn-like");
       if (likeBtn.classList.contains("active")) {
         likeBtn.classList.remove("active");
+        setNumLikes(numLikes - 1);
       }
     }
     if (dislikeAdded || dislikeRemoved) {
@@ -146,9 +160,7 @@ function MovieDetails({
                     <div className="d-flex justify-content-between align-items-center mt-1 mt-sm-2">
                       <div className="likes">
                         <p className="my-0 text-center counter-likes-dislikes">
-                          {likeUpdating || dislikeUpdating
-                            ? ""
-                            : likes.likeCount}
+                          {likeUpdating || dislikeUpdating ? "" : numLikes}
                         </p>
                         <button
                           className={
@@ -176,9 +188,7 @@ function MovieDetails({
 
                       <div className="dislikes">
                         <p className="my-0 text-center counter-likes-dislikes">
-                          {likeUpdating || dislikeUpdating
-                            ? ""
-                            : dislikes.dislikeCount}
+                          {likeUpdating || dislikeUpdating ? "" : numDislikes}
                         </p>
                         <button
                           className={
