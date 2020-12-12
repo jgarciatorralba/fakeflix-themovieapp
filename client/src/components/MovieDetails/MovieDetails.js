@@ -33,8 +33,6 @@ function MovieDetails({
   dislikeAdded,
   dislikeRemoved,
 }) {
-  window.scrollTo(0, 0);
-
   const releaseDate = new moment(details.release_date).format("MMMM Do, YYYY");
   const genres = details.genres;
   const production_countries = details.production_countries;

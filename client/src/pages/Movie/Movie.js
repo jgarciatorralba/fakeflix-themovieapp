@@ -66,6 +66,8 @@ function Movie({
   commentRemoved,
   currentUser,
 }) {
+  window.scrollTo(0, 0);
+
   let { movie_id } = useParams();
 
   useEffect(() => {
