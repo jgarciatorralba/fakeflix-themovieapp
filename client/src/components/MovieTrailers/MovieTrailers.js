@@ -20,7 +20,7 @@ function MovieTrailers({
     <div className="MovieTrailers">
       <div className="my-3 mt-sm-3 px-3">
         <h5 className="section-title my-0">Media</h5>
-        <div className="trailer-cont my-0 pt-2 pb-3">
+        <div className="trailer-cont my-0 pt-2 pb-0">
           {movieTrailersLoadingError && (
             <div className="d-flex justify-content-center align-items-center border rounded m-1 w-100 mx-auto p-3 error-cont">
               <div>
