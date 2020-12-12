@@ -7,6 +7,7 @@ import ROUTES from "../../utils/routes";
 import HeaderContainer from "../../redux/containers/components/HeaderContainer";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
 import MovieTrailers from "../../components/MovieTrailers/MovieTrailers";
+import Comments from "../../components/Comments/Comments";
 import Footer from "../../components/Footer/Footer";
 
 import "./Movie.scss";
@@ -52,6 +53,18 @@ function Movie({
   movieTrailersLoading,
   movieTrailersLoadingError,
   fetchMovieTrailers,
+
+  comments,
+  commentsLoading,
+  commentsLoadingError,
+  fetchComments,
+  addComment,
+  removeComment,
+  commentUpdating,
+  commentUpdatingError,
+  commentAdded,
+  commentRemoved,
+  currentUser,
 }) {
   let { movie_id } = useParams();
 
@@ -61,12 +74,14 @@ function Movie({
     fetchLikes(movie_id);
     fetchDislikes(movie_id);
     fetchMovieTrailers(movie_id);
+    fetchComments(movie_id);
   }, [
     fetchMovieDetails,
     fetchFavourites,
     fetchLikes,
     fetchDislikes,
     fetchMovieTrailers,
+    fetchComments,
     movie_id,
   ]);
 
@@ -110,6 +125,18 @@ function Movie({
         movieTrailers={movieTrailers}
         movieTrailersLoading={movieTrailersLoading}
         movieTrailersLoadingError={movieTrailersLoadingError}
+      />
+      <Comments
+        comments={comments}
+        commentsLoading={commentsLoading}
+        commentsLoadingError={commentsLoadingError}
+        addComment={addComment}
+        removeComment={removeComment}
+        commentUpdating={commentUpdating}
+        commentUpdatingError={commentUpdatingError}
+        commentAdded={commentAdded}
+        commentRemoved={commentRemoved}
+        currentUser={currentUser}
       />
       <Footer />
     </div>
