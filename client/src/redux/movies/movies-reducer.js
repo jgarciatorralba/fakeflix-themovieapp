@@ -71,6 +71,8 @@ export const MoviesInitialState = {
 
   commentUpdating: false,
   commentUpdatingError: null,
+  commentAdded: false,
+  commentRemoved: false,
 };
 
 function MoviesReducer(state = MoviesInitialState, action) {
@@ -433,6 +435,69 @@ function MoviesReducer(state = MoviesInitialState, action) {
         movieTrailersLoadingError: action.payload,
         movieTrailersFetched: false,
         movieTrailers: [],
+      };
+    }
+    case MoviesTypes.FETCH_COMMENTS_REQUEST: {
+      return {
+        ...state,
+        commentsLoading: true,
+        commentsLoadingError: null,
+        commentsFetched: false,
+        comments: [],
+      };
+    }
+    case MoviesTypes.FETCH_COMMENTS_SUCCESS: {
+      return {
+        ...state,
+        commentsLoading: false,
+        commentsLoadingError: null,
+        commentsFetched: true,
+        comments: action.payload,
+      };
+    }
+    case MoviesTypes.FETCH_COMMENTS_ERROR: {
+      return {
+        ...state,
+        commentsLoading: false,
+        commentsLoadingError: action.payload,
+        commentsFetched: false,
+        comments: [],
+      };
+    }
+    case MoviesTypes.COMMENT_UPDATING: {
+      return {
+        ...state,
+        commentUpdating: true,
+        commentUpdatingError: null,
+        commentAdded: false,
+        commentRemoved: false,
+      };
+    }
+    case MoviesTypes.COMMENT_UPDATING_ERROR: {
+      return {
+        ...state,
+        commentUpdating: false,
+        commentUpdatingError: action.payload,
+        commentAdded: false,
+        commentRemoved: false,
+      };
+    }
+    case MoviesTypes.ADD_COMMENT: {
+      return {
+        ...state,
+        commentUpdating: false,
+        commentUpdatingError: null,
+        commentAdded: true,
+        commentRemoved: false,
+      };
+    }
+    case MoviesTypes.REMOVE_COMMENT: {
+      return {
+        ...state,
+        commentUpdating: false,
+        commentUpdatingError: null,
+        commentAdded: false,
+        commentRemoved: true,
       };
     }
     default: {
