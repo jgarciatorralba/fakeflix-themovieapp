@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import MovieSection from "../MovieSection/MovieSection";
 
@@ -10,6 +10,10 @@ function Favourites({
   favouriteMovies,
   fetchFavourites,
 }) {
+  useEffect(() => {
+    fetchFavourites();
+  }, [fetchFavourites]);
+
   return (
     <MovieSection
       sectionClassName="Favourites"
