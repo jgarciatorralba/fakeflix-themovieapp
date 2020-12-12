@@ -34,13 +34,8 @@ function MovieDetails({
   dislikeRemoved,
 }) {
   const releaseDate = new moment(details.release_date).format("MMMM Do, YYYY");
-
-  let genres = [];
-  let production_countries = [];
-  if (Object.entries(details).length > 0) {
-    genres = details.genres;
-    production_countries = details.production_countries;
-  }
+  const genres = details.genres;
+  const production_countries = details.production_countries;
 
   function handleFav(e) {
     if (e.currentTarget.classList.contains("active")) {
@@ -221,7 +216,8 @@ function MovieDetails({
                     <p className="my-0 my-md-1">{releaseDate}</p>
                     <p className="my-0 my-md-1">{details.runtime} min</p>
                     <p className="my-0 my-md-1">
-                      {genres.length > 0 &&
+                      {genres &&
+                        genres.length > 0 &&
                         genres.map((genre, i, arr) => {
                           if (arr.length - 1 === i) {
                             return <span key={genre.id}> {genre.name}</span>;
@@ -233,7 +229,8 @@ function MovieDetails({
                         })}
                     </p>
                     <p className="my-0 my-md-1">
-                      {production_countries.length > 0 &&
+                      {production_countries &&
+                        production_countries.length > 0 &&
                         production_countries.map((country, i, arr) => {
                           if (arr.length - 1 === i) {
                             return (
