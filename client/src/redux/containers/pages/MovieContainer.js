@@ -12,6 +12,9 @@ import {
   addDislike,
   removeDislike,
   fetchMovieTrailers,
+  fetchComments,
+  addComment,
+  removeComment,
 } from "../../movies/movies-actions";
 
 import Movie from "../../../pages/Movie/Movie";
@@ -50,6 +53,15 @@ const mapStateToProps = (state) => ({
   movieTrailersLoadingError: state.movies.movieTrailersLoadingError,
   movieTrailersFetched: state.movies.movieTrailersFetched,
   movieTrailers: state.movies.movieTrailers,
+
+  comments: state.movies.comments,
+  commentsLoading: state.movies.commentsLoading,
+  commentsLoadingError: state.movies.commentsLoadingError,
+  commentUpdating: state.movies.commentUpdating,
+  commentUpdatingError: state.movies.commentUpdatingError,
+  commentAdded: state.movies.commentAdded,
+  commentRemoved: state.movies.commentRemoved,
+  currentUser: state.user.currentUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -68,6 +80,10 @@ const mapDispatchToProps = (dispatch) => ({
   removeDislike: (movie_id) => dispatch(removeDislike(movie_id)),
 
   fetchMovieTrailers: (movie_id) => dispatch(fetchMovieTrailers(movie_id)),
+
+  fetchComments: (movie_id) => dispatch(fetchComments(movie_id)),
+  addComment: (movie_id) => dispatch(addComment(movie_id)),
+  removeComment: (comment_id) => dispatch(removeComment(comment_id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Movie);
