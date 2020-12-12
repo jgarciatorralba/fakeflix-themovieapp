@@ -312,7 +312,6 @@ export function addFavourite(movie_id) {
           dispatch(addFavouriteSuccess());
         } else {
           dispatch(updateFavouriteError({ errorMessage: data.error }));
-          dispatch(fetchFavourites());
         }
       })
       .catch((error) =>
@@ -338,7 +337,6 @@ export function removeFavourite(movie_id) {
       .then((data) => {
         if (data.data) {
           dispatch(removeFavouriteSuccess());
-          dispatch(fetchFavourites());
         } else {
           dispatch(updateFavouriteError({ errorMessage: data.error }));
         }
