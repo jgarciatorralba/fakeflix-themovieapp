@@ -471,8 +471,6 @@ export function addLike(movie_id) {
       .then((data) => {
         if (data.data) {
           dispatch(addLikeSuccess());
-          dispatch(fetchLikes(movie_id));
-          dispatch(fetchDislikes(movie_id));
         } else {
           dispatch(updateLikeError({ errorMessage: data.error }));
         }
@@ -500,8 +498,6 @@ export function removeLike(movie_id) {
       .then((data) => {
         if (data.data) {
           dispatch(removeLikeSuccess());
-          dispatch(fetchLikes(movie_id));
-          dispatch(fetchDislikes(movie_id));
         } else {
           dispatch(updateLikeError({ errorMessage: data.error }));
         }
@@ -546,8 +542,6 @@ export function addDislike(movie_id) {
       .then((data) => {
         if (data.data) {
           dispatch(addDislikeSuccess());
-          dispatch(fetchLikes(movie_id));
-          dispatch(fetchDislikes(movie_id));
         } else {
           dispatch(updateDislikeError({ errorMessage: data.error }));
         }
@@ -575,8 +569,6 @@ export function removeDislike(movie_id) {
       .then((data) => {
         if (data.data) {
           dispatch(removeDislikeSuccess());
-          dispatch(fetchLikes(movie_id));
-          dispatch(fetchDislikes(movie_id));
         } else {
           dispatch(updateDislikeError({ errorMessage: data.error }));
         }
