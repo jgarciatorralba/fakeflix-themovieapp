@@ -23,6 +23,8 @@ function Comments({
     <div className="Comments my-3 px-3">
       <h5 className="section-title my-0">Comments</h5>
       <div className="comment-cont my-3">
+        {/* Add new comment section here */}
+
         {commentsLoadingError && (
           <div className="d-flex justify-content-center align-items-center border rounded m-1 w-100 mx-auto p-3 error-cont">
             <div>
