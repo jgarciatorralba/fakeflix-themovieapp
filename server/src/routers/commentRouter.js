@@ -50,7 +50,7 @@ router.post("/:movie_id", async (req, res) => {
   const movie_id = req.params.movie_id;
   const content = req.body.content;
 
-  const comment = await commentController.add({
+  let comment = await commentController.add({
     user_id,
     movie_id,
     content,
@@ -58,6 +58,16 @@ router.post("/:movie_id", async (req, res) => {
   if (comment == "error") {
     return res.status(500).json({ data: null, error: "Internal Server Error" });
   }
+
+  let user = await userController.findWithDeletedById(user_id);
+  user._doc.avatar = new URL(
+    "/img/user/" + user._doc.avatar,
+    config().app.SERVER_DOMAIN
+  ).href;
+
+  comment._doc.user = user;
+  delete comment._doc.user_id;
+
   res.json({ data: comment, error: null });
 });
 
