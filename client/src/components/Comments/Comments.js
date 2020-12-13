@@ -48,7 +48,7 @@ function Comments({
     <div className="Comments my-3 px-3">
       <h5 className="section-title my-0">Comments</h5>
       <div className="comment-cont my-3">
-        <div className="add-comment-cont row px-0 mx-0 py-3">
+        <div className="add-comment-cont row row-border px-0 mx-0 py-3">
           <div className="col-2 col-sm-1 px-1 px-sm-3 text-center">
             <img
               alt="User profile"
@@ -106,12 +106,20 @@ function Comments({
 
         {comments &&
           (comments.length === 0 ? (
-            <div className="d-flex justify-content-center align-items-center m-1 w-100 mx-auto empty-cont rounded">
-              <p className="p-3 my-0">This movie has no comments yet.</p>
+            <div className="row px-3 px-sm-3">
+              <div className="col-2 col-sm-1">&nbsp;</div>
+              <div className="col-10 col-sm-11 pr-0 pr-md-3 pl-0 pl-md-3 px-3">
+                <div className="d-flex justify-content-center align-items-center m-1 w-100 mx-auto empty-cont rounded">
+                  <p className="p-3 my-0">This movie has no comments yet.</p>
+                </div>
+              </div>
             </div>
           ) : (
             comments.map((comment) => (
-              <div key={comment._id} className="row px-0 mx-0 py-3 border-top">
+              <div
+                key={comment._id}
+                className="row row-border px-0 mx-0 py-3 border-top"
+              >
                 <div className="col-2 col-sm-1 px-1 px-sm-3 text-center">
                   <img
                     alt="User profile"

@@ -12,7 +12,7 @@
         text-transform: capitalize;
       }
     }
-    .row {
+    .row-border {
       border-top: 1px solid $font-color-disabled !important;
     }
     .btn-cont {
@@ -32,7 +32,7 @@
       min-height: 20vh;
     }
     .empty-cont {
-      min-height: 20vh;
+      min-height: 10vh;
       border: 1px solid $font-color-disabled;
       p {
         color: $font-color-disabled;
@@ -84,7 +84,7 @@
   .btn-delete {
     position: absolute;
     top: -0.5rem;
-    right: 0;
+    right: 1rem;
     padding: 0.25rem 0.5rem;
     svg {
       position: relative;
@@ -110,7 +110,7 @@
   .btn-delete {
     position: absolute;
     top: -0.2rem;
-    right: 0;
+    right: 1rem;
     padding: 0.25rem 0.5rem;
     svg {
       width: 1rem;
