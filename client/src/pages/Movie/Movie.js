@@ -127,6 +127,7 @@ function Movie({
         movieTrailersLoadingError={movieTrailersLoadingError}
       />
       <Comments
+        movieId={movie_id}
         movieComments={comments}
         commentsLoading={commentsLoading}
         commentsLoadingError={commentsLoadingError}
