@@ -59,7 +59,6 @@ function Comments({
           <div className="col-10 col-sm-11 pr-3">
             <textarea
               className="form-control text-area"
-              id="test"
               rows="1"
               placeholder="Add a comment about the movie..."
               value={commentContent}
