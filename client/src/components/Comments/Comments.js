@@ -35,7 +35,7 @@ function Comments({
   }
 
   function handleAdd() {
-    if (commentContent !== "") {
+    if (commentContent.trim() !== "") {
       addComment(movieId, commentContent);
       if (commentUpdatingError) {
         console.log(commentUpdatingError);
@@ -59,6 +59,7 @@ function Comments({
           <div className="col-10 col-sm-11 pr-3">
             <textarea
               className="form-control text-area"
+              id="test"
               rows="1"
               placeholder="Add a comment about the movie..."
               value={commentContent}
@@ -148,7 +149,12 @@ function Comments({
                   <p className="d-inline-block comment-time">
                     {new moment(comment.createdAt).fromNow()}
                   </p>
-                  <p className="comment-content my-0">{comment.content}</p>
+                  <p
+                    className="comment-content my-0"
+                    style={{ whiteSpace: "pre-wrap" }}
+                  >
+                    {comment.content}
+                  </p>
                 </div>
               </div>
             ))
