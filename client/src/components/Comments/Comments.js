@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 
+import Button from "../Button/Button";
+
 import moment from "moment";
+import autosize from "autosize";
 
 import "./Comments.scss";
 
@@ -16,14 +19,14 @@ function Comments({
   commentRemoved,
   currentUser,
 }) {
+  autosize(document.querySelector(".text-area"));
+
   const [comments, setComments] = useState(movieComments);
+  const [newComment, setNewComment] = useState("");
 
   useEffect(() => {
     setComments(movieComments);
   }, [movieComments]);
-
-  console.log(currentUser);
-  console.log(comments);
 
   function handleDelete(e, comment_id) {
     removeComment(comment_id);
@@ -35,11 +38,43 @@ function Comments({
     }
   }
 
+  function handleAdd() {
+    if (newComment !== "") {
+      console.log(newComment);
+      setNewComment("");
+    }
+  }
+
   return (
     <div className="Comments my-3 px-3">
       <h5 className="section-title my-0">Comments</h5>
       <div className="comment-cont my-3">
-        {/* Add new comment section here */}
+        <div className="add-comment-cont row px-0 mx-0 py-3">
+          <div className="col-2 col-sm-1 px-1 px-sm-3 text-center">
+            <img
+              alt="User profile"
+              src={currentUser.avatar}
+              className="avatar rounded"
+            />
+          </div>
+          <div className="col-10 col-sm-11 pr-3">
+            <textarea
+              className="form-control text-area"
+              rows="1"
+              placeholder="Add a comment about the movie..."
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+            />
+            <Button
+              htmlType="button"
+              additionalClasses="mt-2 mt-sm-3 float-right float-md-left btn-add-comment"
+              disabled={commentUpdating}
+              onClick={handleAdd}
+            >
+              Comment
+            </Button>
+          </div>
+        </div>
 
         {commentsLoadingError && (
           <div className="d-flex justify-content-center align-items-center border rounded m-1 w-100 mx-auto p-3 error-cont">

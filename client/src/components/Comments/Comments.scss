@@ -38,10 +38,17 @@
         color: $font-color-disabled;
       }
     }
+    .add-comment-cont {
+      .text-area {
+        background-color: $bg-color;
+        color: $font-color;
+      }
+    }
   }
 }
 
 @media screen and (max-width: 484px) {
+  .text-area,
   .error-cont,
   .loading-cont,
   .empty-cont,
@@ -60,9 +67,14 @@
       height: 0.75rem;
     }
   }
+  .btn-add-comment {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.5rem;
+  }
 }
 
 @media screen and (min-width: 485px) {
+  .text-area,
   .error-cont,
   .loading-cont,
   .empty-cont,
@@ -81,9 +93,14 @@
       height: 0.75rem;
     }
   }
+  .btn-add-comment {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+  }
 }
 
 @media (min-width: 768px) {
+  .text-area,
   .error-cont,
   .loading-cont,
   .empty-cont,
@@ -99,5 +116,9 @@
       width: 1rem;
       height: 1rem;
     }
+  }
+  .btn-add-comment {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
   }
 }
