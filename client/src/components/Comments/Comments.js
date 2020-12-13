@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import moment from "moment";
 
 import "./Comments.scss";
 
 function Comments({
-  comments,
+  movieComments,
   commentsLoading,
   commentsLoadingError,
   addComment,
@@ -16,8 +16,24 @@ function Comments({
   commentRemoved,
   currentUser,
 }) {
+  const [comments, setComments] = useState(movieComments);
+
+  useEffect(() => {
+    setComments(movieComments);
+  }, [movieComments]);
+
   console.log(currentUser);
   console.log(comments);
+
+  function handleDelete(e, comment_id) {
+    removeComment(comment_id);
+    if (commentUpdatingError) {
+      console.log(commentUpdatingError);
+    }
+    if (commentRemoved) {
+      setComments(comments.filter((comment) => comment._id !== comment_id));
+    }
+  }
 
   return (
     <div className="Comments my-3 px-3">
@@ -71,7 +87,11 @@ function Comments({
                 </div>
                 <div className="col-10 col-sm-11 pr-3 btn-cont">
                   {comment.user.username === currentUser.username && (
-                    <button className="btn btn-sm btn-outline-light rounded btn-delete">
+                    <button
+                      className="btn btn-sm btn-outline-light rounded btn-delete"
+                      onClick={(e) => handleDelete(e, comment._id)}
+                      disabled={commentUpdating}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="1rem"
