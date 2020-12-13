@@ -489,6 +489,7 @@ function MoviesReducer(state = MoviesInitialState, action) {
         commentUpdatingError: null,
         commentAdded: true,
         commentRemoved: false,
+        comments: [action.payload, ...state.comments],
       };
     }
     case MoviesTypes.REMOVE_COMMENT: {
@@ -498,6 +499,9 @@ function MoviesReducer(state = MoviesInitialState, action) {
         commentUpdatingError: null,
         commentAdded: false,
         commentRemoved: true,
+        comments: state.comments.filter(
+          (comment) => comment._id !== action.payload
+        ),
       };
     }
     default: {
