@@ -8,6 +8,7 @@ import autosize from "autosize";
 import "./Comments.scss";
 
 function Comments({
+  movieId,
   movieComments,
   commentsLoading,
   commentsLoadingError,
@@ -15,14 +16,12 @@ function Comments({
   removeComment,
   commentUpdating,
   commentUpdatingError,
-  commentAdded,
-  commentRemoved,
   currentUser,
 }) {
   autosize(document.querySelector(".text-area"));
 
   const [comments, setComments] = useState(movieComments);
-  const [newComment, setNewComment] = useState("");
+  const [commentContent, setCommentContent] = useState("");
 
   useEffect(() => {
     setComments(movieComments);
@@ -33,15 +32,15 @@ function Comments({
     if (commentUpdatingError) {
       console.log(commentUpdatingError);
     }
-    if (commentRemoved) {
-      setComments(comments.filter((comment) => comment._id !== comment_id));
-    }
   }
 
   function handleAdd() {
-    if (newComment !== "") {
-      console.log(newComment);
-      setNewComment("");
+    if (commentContent !== "") {
+      addComment(movieId, commentContent);
+      if (commentUpdatingError) {
+        console.log(commentUpdatingError);
+      }
+      setCommentContent("");
     }
   }
 
@@ -62,8 +61,8 @@ function Comments({
               className="form-control text-area"
               rows="1"
               placeholder="Add a comment about the movie..."
-              value={newComment}
-              onChange={(e) => setNewComment(e.target.value)}
+              value={commentContent}
+              onChange={(e) => setCommentContent(e.target.value)}
             />
             <Button
               htmlType="button"
