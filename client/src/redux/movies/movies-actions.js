@@ -678,15 +678,17 @@ export const updateCommentError = ({ errorMessage }) => ({
   payload: errorMessage,
 });
 
-export const addCommentSuccess = () => ({
+export const addCommentSuccess = ({ newComment }) => ({
   type: MoviesTypes.ADD_COMMENT,
+  payload: newComment,
 });
 
-export const removeCommentSuccess = () => ({
+export const removeCommentSuccess = ({ removedCommentId }) => ({
   type: MoviesTypes.REMOVE_COMMENT,
+  payload: removedCommentId,
 });
 
-export function addComment(movie_id) {
+export function addComment(movie_id, content) {
   return function addCommentThunk(dispatch, getState) {
     const token = getState().user.currentUser.token;
 
@@ -698,11 +700,14 @@ export function addComment(movie_id) {
         "Content-Type": "application/json",
         Authorization: "Bearer " + token,
       },
+      body: JSON.stringify({
+        content: content,
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.data) {
-          dispatch(addCommentSuccess());
+          dispatch(addCommentSuccess({ newComment: data.data }));
         } else {
           dispatch(updateCommentError({ errorMessage: data.error }));
         }
@@ -729,7 +734,7 @@ export function removeComment(comment_id) {
       .then((res) => res.json())
       .then((data) => {
         if (data.data) {
-          dispatch(removeCommentSuccess());
+          dispatch(removeCommentSuccess({ removedCommentId: comment_id }));
         } else {
           dispatch(updateCommentError({ errorMessage: data.error }));
         }
