@@ -66,8 +66,6 @@ function Movie({
   commentRemoved,
   currentUser,
 }) {
-  window.scrollTo(0, 0);
-
   let { movie_id } = useParams();
 
   useEffect(() => {
@@ -129,7 +127,7 @@ function Movie({
         movieTrailersLoadingError={movieTrailersLoadingError}
       />
       <Comments
-        comments={comments}
+        movieComments={comments}
         commentsLoading={commentsLoading}
         commentsLoadingError={commentsLoadingError}
         addComment={addComment}
