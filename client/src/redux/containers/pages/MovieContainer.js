@@ -82,7 +82,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchMovieTrailers: (movie_id) => dispatch(fetchMovieTrailers(movie_id)),
 
   fetchComments: (movie_id) => dispatch(fetchComments(movie_id)),
-  addComment: (movie_id) => dispatch(addComment(movie_id)),
+  addComment: (movie_id, content) => dispatch(addComment(movie_id, content)),
   removeComment: (comment_id) => dispatch(removeComment(comment_id)),
 });
 
