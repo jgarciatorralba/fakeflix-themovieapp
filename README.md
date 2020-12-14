@@ -60,5 +60,3 @@ All endpoints return a **JSON** object with the following format:
 ## Author
 
 - **Jorge García Torralba** &#8594; [jorge-garcia](https://github.com/jgarciatorralba)
-
----
