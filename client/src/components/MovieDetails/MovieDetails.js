@@ -51,9 +51,9 @@ function MovieDetails({
     } else {
       addFavourite(details.id);
     }
-    if (favouriteAdded || favouriteRemoved) {
-      e.currentTarget.classList.toggle("active");
-    }
+    // if (favouriteAdded || favouriteRemoved) {
+    e.currentTarget.classList.toggle("active");
+    // }
     if (favouriteUpdatingError) console.log(favouriteUpdatingError);
   }
 
@@ -70,9 +70,9 @@ function MovieDetails({
         setNumDislikes(numDislikes - 1);
       }
     }
-    if (likeAdded || likeRemoved) {
-      e.currentTarget.classList.toggle("active");
-    }
+    // if (likeAdded || likeRemoved) {
+    e.currentTarget.classList.toggle("active");
+    // }
     if (likeUpdatingError) console.log(likeUpdatingError);
   }
 
@@ -89,9 +89,9 @@ function MovieDetails({
         setNumLikes(numLikes - 1);
       }
     }
-    if (dislikeAdded || dislikeRemoved) {
-      e.currentTarget.classList.toggle("active");
-    }
+    // if (dislikeAdded || dislikeRemoved) {
+    e.currentTarget.classList.toggle("active");
+    // }
     if (dislikeUpdatingError) console.log(dislikeUpdatingError);
   }
 
