@@ -2,8 +2,6 @@
 
 _React, Redux, Javascript, node.js, Express, MongoDB, Mongoose, Axios, JWT, Jest, TMDb API, Heroku_
 
----
-
 ## Description
 
 The project consists on a movie app with a Netflix-like visual style where, once logged in, users are able to:
