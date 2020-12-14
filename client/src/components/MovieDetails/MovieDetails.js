@@ -14,24 +14,18 @@ function MovieDetails({
   removeFavourite,
   favouriteUpdating,
   favouriteUpdatingError,
-  favouriteAdded,
-  favouriteRemoved,
   likes,
   likesLoading,
   addLike,
   removeLike,
   likeUpdating,
   likeUpdatingError,
-  likeAdded,
-  likeRemoved,
   dislikes,
   dislikesLoading,
   addDislike,
   removeDislike,
   dislikeUpdating,
   dislikeUpdatingError,
-  dislikeAdded,
-  dislikeRemoved,
 }) {
   const releaseDate = new moment(details.release_date).format("MMMM Do, YYYY");
   const genres = details.genres;
@@ -51,9 +45,7 @@ function MovieDetails({
     } else {
       addFavourite(details.id);
     }
-    // if (favouriteAdded || favouriteRemoved) {
     e.currentTarget.classList.toggle("active");
-    // }
     if (favouriteUpdatingError) console.log(favouriteUpdatingError);
   }
 
@@ -70,9 +62,7 @@ function MovieDetails({
         setNumDislikes(numDislikes - 1);
       }
     }
-    // if (likeAdded || likeRemoved) {
     e.currentTarget.classList.toggle("active");
-    // }
     if (likeUpdatingError) console.log(likeUpdatingError);
   }
 
@@ -89,9 +79,7 @@ function MovieDetails({
         setNumLikes(numLikes - 1);
       }
     }
-    // if (dislikeAdded || dislikeRemoved) {
     e.currentTarget.classList.toggle("active");
-    // }
     if (dislikeUpdatingError) console.log(dislikeUpdatingError);
   }
 
