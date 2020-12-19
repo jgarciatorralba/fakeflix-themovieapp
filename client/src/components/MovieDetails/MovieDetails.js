@@ -110,7 +110,7 @@ function MovieDetails({
             className="cover p-3"
             style={{
               backgroundColor: "#141414",
-              backgroundImage: `linear-gradient(rgba(20, 20, 20, 0.9), rgba(20, 20, 20, 0.9)), url(${details.backdrop_path})`,
+              backgroundImage: `linear-gradient(rgba(20, 20, 20, 0.8), rgba(20, 20, 20, 0.8)), url(${details.backdrop_path})`,
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
