@@ -80,10 +80,10 @@ export const resetMessages = () => ({
 });
 
 export function register({ username, email, password }) {
-  return function registerThunk(dispatch) {
+  return async function registerThunk(dispatch) {
     dispatch(registerRequest());
 
-    fetch("/api/register", {
+    const res = await fetch("/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -93,30 +93,28 @@ export function register({ username, email, password }) {
         email,
         password,
       }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.data) {
-          dispatch(
-            registerSuccess({
-              successMessage: data.data,
-            })
-          );
-        } else {
-          dispatch(registerError({ errorMessage: data.error }));
-        }
-      })
-      .catch((error) =>
-        dispatch(registerError({ errorMessage: error.message }))
+    }).catch((error) => {
+      dispatch(registerError({ errorMessage: error.message }));
+    });
+
+    const data = await res.json();
+    if (data.data) {
+      dispatch(
+        registerSuccess({
+          successMessage: data.data,
+        })
       );
+    } else {
+      dispatch(registerError({ errorMessage: data.error }));
+    }
   };
 }
 
 export function login({ email, password }) {
-  return function loginThunk(dispatch) {
+  return async function loginThunk(dispatch) {
     dispatch(loginRequest());
 
-    fetch("/api/login", {
+    const res = await fetch("/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -125,23 +123,23 @@ export function login({ email, password }) {
         email,
         password,
       }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.data) {
-          dispatch(
-            loginSuccess({
-              username: data.data.username,
-              email: data.data.email,
-              avatar: data.data.avatar,
-              token: data.data.token,
-            })
-          );
-        } else {
-          dispatch(loginError({ errorMessage: data.error }));
-        }
-      })
-      .catch((error) => dispatch(loginError({ errorMessage: error.message })));
+    }).catch((error) => {
+      dispatch(loginError({ errorMessage: error.message }));
+    });
+
+    const data = await res.json();
+    if (data.data) {
+      dispatch(
+        loginSuccess({
+          username: data.data.username,
+          email: data.data.email,
+          avatar: data.data.avatar,
+          token: data.data.token,
+        })
+      );
+    } else {
+      dispatch(loginError({ errorMessage: data.error }));
+    }
   };
 }
 
@@ -209,30 +207,30 @@ export function resetPassword({ password, token }) {
 }
 
 export function logout() {
-  return function logoutThunk(dispatch, getState) {
+  return async function logoutThunk(dispatch, getState) {
     const token = getState().user.currentUser.token;
 
     dispatch(logoutRequest());
 
-    fetch("/api/user/logout", {
+    const res = await fetch("/api/user/logout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + token,
       },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.data) {
-          dispatch(
-            logoutSuccess({
-              successMessage: data.data,
-            })
-          );
-        } else {
-          dispatch(logoutError({ errorMessage: data.error }));
-        }
-      })
-      .catch((error) => dispatch(logoutError({ errorMessage: error.message })));
+    }).catch((error) => {
+      dispatch(logoutError({ errorMessage: error.message }));
+    });
+
+    const data = await res.json();
+    if (data.data) {
+      dispatch(
+        logoutSuccess({
+          successMessage: data.data,
+        })
+      );
+    } else {
+      dispatch(logoutError({ errorMessage: data.error }));
+    }
   };
 }
