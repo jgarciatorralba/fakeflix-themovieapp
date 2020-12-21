@@ -15,33 +15,31 @@ export const fetchRandomSuccess = ({ randomMovie }) => ({
 });
 
 export function fetchRandomMovie() {
-  return function fetchRandomMovieThunk(dispatch, getState) {
+  return async function fetchRandomMovieThunk(dispatch, getState) {
     const token = getState().user.currentUser.token;
 
     dispatch(fetchRandomRequest());
 
-    fetch("/api/movie/random", {
+    const res = await fetch("/api/movie/random", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + token,
       },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.data) {
-          dispatch(
-            fetchRandomSuccess({
-              randomMovie: data.data,
-            })
-          );
-        } else {
-          dispatch(fetchRandomError({ errorMessage: data.error }));
-        }
-      })
-      .catch((error) =>
-        dispatch(fetchRandomError({ errorMessage: error.message }))
+    }).catch((error) => {
+      dispatch(fetchRandomError({ errorMessage: error.message }));
+    });
+
+    const data = await res.json();
+    if (data.data) {
+      dispatch(
+        fetchRandomSuccess({
+          randomMovie: data.data,
+        })
       );
+    } else {
+      dispatch(fetchRandomError({ errorMessage: data.error }));
+    }
   };
 }
 
@@ -60,34 +58,32 @@ export const fetchTopRatedSuccess = ({ topRatedMovies, topRatedPages }) => ({
 });
 
 export function fetchTopRated(page) {
-  return function fetchTopRatedThunk(dispatch, getState) {
+  return async function fetchTopRatedThunk(dispatch, getState) {
     const token = getState().user.currentUser.token;
 
     dispatch(fetchTopRatedRequest());
 
-    fetch(`/api/movie/top-rated?page=${page}`, {
+    const res = await fetch(`/api/movie/top-rated?page=${page}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + token,
       },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.data) {
-          dispatch(
-            fetchTopRatedSuccess({
-              topRatedMovies: data.data.results,
-              topRatedPages: data.data.totalPages,
-            })
-          );
-        } else {
-          dispatch(fetchTopRatedError({ errorMessage: data.error }));
-        }
-      })
-      .catch((error) =>
-        dispatch(fetchTopRatedError({ errorMessage: error.message }))
+    }).catch((error) => {
+      dispatch(fetchTopRatedError({ errorMessage: error.message }));
+    });
+
+    const data = await res.json();
+    if (data.data) {
+      dispatch(
+        fetchTopRatedSuccess({
+          topRatedMovies: data.data.results,
+          topRatedPages: data.data.totalPages,
+        })
       );
+    } else {
+      dispatch(fetchTopRatedError({ errorMessage: data.error }));
+    }
   };
 }
 
@@ -294,29 +290,27 @@ export const removeFavouriteSuccess = () => ({
 });
 
 export function addFavourite(movie_id) {
-  return function addFavouriteThunk(dispatch, getState) {
+  return async function addFavouriteThunk(dispatch, getState) {
     const token = getState().user.currentUser.token;
 
     dispatch(updateFavouriteRequest());
 
-    fetch(`/api/favourite/${movie_id}`, {
+    const res = await fetch(`/api/favourite/${movie_id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + token,
       },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.data) {
-          dispatch(addFavouriteSuccess());
-        } else {
-          dispatch(updateFavouriteError({ errorMessage: data.error }));
-        }
-      })
-      .catch((error) =>
-        dispatch(updateFavouriteError({ errorMessage: error.message }))
-      );
+    }).catch((error) => {
+      dispatch(updateFavouriteError({ errorMessage: error.message }));
+    });
+
+    const data = await res.json();
+    if (data.data) {
+      dispatch(addFavouriteSuccess());
+    } else {
+      dispatch(updateFavouriteError({ errorMessage: data.error }));
+    }
   };
 }
 
