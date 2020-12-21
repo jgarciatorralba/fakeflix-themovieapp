@@ -46,10 +46,28 @@
         color: $font-color !important;
         border-color: $font-color !important;
         background-color: rgba(229, 229, 229, 0.4);
-        &:hover {
-          color: $netflix-red-light !important;
-          background-color: $font-color !important;
-        }
+      }
+    }
+  }
+}
+
+@media (hover: hover) {
+  .btn-favourite {
+    &:hover {
+      color: $netflix-red-light !important;
+      background-color: $font-color !important;
+      .bi-heart-fill {
+        color: $netflix-red-light !important;
+      }
+    }
+  }
+  .btn-like,
+  .btn-dislike {
+    &:hover {
+      color: $bg-color !important;
+      background-color: $font-color !important;
+      svg {
+        color: $bg-color !important;
       }
     }
   }
@@ -146,19 +164,6 @@
     }
     h1 {
       font-size: 1.5rem;
-    }
-  }
-}
-
-@media (min-width: 769px) {
-  .btn-like,
-  .btn-dislike {
-    &:hover {
-      color: $bg-color !important;
-      background-color: $font-color !important;
-      svg {
-        color: $bg-color !important;
-      }
     }
   }
 }
