@@ -37,7 +37,7 @@ describe("Movies thunk actions tests", () => {
       },
       {
         type: MoviesTypes.FETCH_RANDOM_SUCCESS,
-        payload: moviesData.randomMovieResponse,
+        payload: moviesData.randomMovieResponse.data,
       },
     ];
 
