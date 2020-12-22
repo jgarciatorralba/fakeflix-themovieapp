@@ -5,10 +5,8 @@ const makeHandlers = ({ moviesData }) => [
   rest.get(`/api/movie/random`, (req, res, ctx) => {
     return res(
       ctx.json({
-        data: {
-          data: moviesData.randomMovieResponse.data,
-          error: null,
-        },
+        data: moviesData.randomMovieResponse.data,
+        error: null,
       }),
       ctx.status(200)
     );
@@ -53,10 +51,8 @@ const makeHandlers = ({ moviesData }) => [
   rest.get(`/api/movie/favourites`, (req, res, ctx) => {
     return res(
       ctx.json({
-        data: {
-          data: [],
-          error: null,
-        },
+        data: [],
+        error: null,
       }),
       ctx.status(200)
     );
