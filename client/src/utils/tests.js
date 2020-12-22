@@ -15,7 +15,7 @@ export function renderWithReduxAndRouter(
   route = "/",
   {
     initialState,
-    store = createStore(rootReducer, applyMiddleware(thunk), initialState),
+    store = createStore(rootReducer, initialState, applyMiddleware(thunk)),
   } = {}
 ) {
   window.history.pushState({}, "Test page", route);
