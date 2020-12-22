@@ -26,6 +26,42 @@ const makeHandlers = ({ moviesData }) => [
     );
   }),
 
+  rest.get(`/api/movie/now-playing`, (req, res, ctx) => {
+    return res(
+      ctx.json({
+        data: {
+          results: [],
+          totalPages: "1",
+        },
+      }),
+      ctx.status(200)
+    );
+  }),
+
+  rest.get(`/api/movie/upcoming`, (req, res, ctx) => {
+    return res(
+      ctx.json({
+        data: {
+          results: [],
+          totalPages: "1",
+        },
+      }),
+      ctx.status(200)
+    );
+  }),
+
+  rest.get(`/api/movie/favourites`, (req, res, ctx) => {
+    return res(
+      ctx.json({
+        data: {
+          data: [],
+          error: null,
+        },
+      }),
+      ctx.status(200)
+    );
+  }),
+
   rest.post(`/api/favourite/:movieId`, (req, res, ctx) => {
     return res(
       ctx.json({
