@@ -72,7 +72,33 @@ describe("Overall app behaviour", () => {
       });
     });
 
-    describe("Top Rated", () => {
+    describe("Banner", () => {
+      test("should contain information about a random movie", async () => {
+        const { getByText } = renderWithReduxAndRouter(<App />, undefined, {
+          initialState: {
+            user: {
+              isAuthenticated: true,
+              currentUser: {
+                avatar: testPayload.avatar,
+              },
+            },
+            movies: {
+              favouriteMovies: [],
+              topRatedMovies: [],
+              nowPlayingMovies: [],
+              upcomingMovies: [],
+              randomMovie: {},
+            },
+          },
+        });
+
+        await waitFor(() =>
+          expect(getByText("Chick Fight")).toBeInTheDocument()
+        );
+      });
+    });
+
+    describe("Movie section", () => {
       test("should contain top rated movies", async () => {
         const { getAllByAltText } = renderWithReduxAndRouter(
           <App />,
@@ -99,6 +125,159 @@ describe("Overall app behaviour", () => {
         await waitFor(() =>
           expect(getAllByAltText("Movie poster")).toHaveLength(20)
         );
+      });
+    });
+  });
+
+  describe("Login page", () => {
+    describe("Login form", () => {
+      test("should contain the right input fields", () => {
+        const { getByPlaceholderText, getByRole } = renderWithReduxAndRouter(
+          <App />,
+          undefined,
+          {
+            initialState: {
+              user: {
+                isAuthenticated: false,
+                currentUser: {
+                  username: null,
+                  email: null,
+                  avatar: null,
+                  token: null,
+                },
+              },
+            },
+          }
+        );
+
+        expect(
+          getByPlaceholderText("Email address", { exact: false })
+        ).toBeInTheDocument();
+        expect(
+          getByPlaceholderText("Password", { exact: false })
+        ).toBeInTheDocument();
+        expect(getByRole("button", { name: "Sign in" })).toBeInTheDocument();
+      });
+
+      test("should be able to log in a user", async () => {
+        const {
+          getByPlaceholderText,
+          getByRole,
+          getByText,
+        } = renderWithReduxAndRouter(<App />, undefined, {
+          initialState: {
+            user: {
+              isAuthenticated: false,
+              currentUser: {
+                username: null,
+                email: null,
+                avatar: null,
+                token: null,
+              },
+            },
+          },
+        });
+
+        userEvent.type(
+          getByPlaceholderText("Email address", { exact: false }),
+          "invented_email@mail.com"
+        );
+        userEvent.type(
+          getByPlaceholderText("Password", { exact: false }),
+          "password"
+        );
+
+        userEvent.click(getByRole("button", { name: "Sign in" }));
+
+        await waitFor(() => {
+          expect(
+            getByText("More information", { exact: false })
+          ).toBeInTheDocument();
+        });
+
+        expect(getByText("Favourites")).toBeInTheDocument();
+        expect(getByText("Top Rated")).toBeInTheDocument();
+        expect(getByText("Now Playing")).toBeInTheDocument();
+        expect(getByText("Upcoming")).toBeInTheDocument();
+      });
+    });
+
+    describe("Register link", () => {
+      test("should be able to redirect to the Register page", async () => {
+        const { getByPlaceholderText, getByRole } = renderWithReduxAndRouter(
+          <App />,
+          undefined,
+          {
+            initialState: {
+              user: {
+                isAuthenticated: false,
+                currentUser: {
+                  username: null,
+                  email: null,
+                  avatar: null,
+                  token: null,
+                },
+              },
+            },
+          }
+        );
+
+        userEvent.click(getByRole("link", { name: "Register here ." }));
+
+        await waitFor(() => {
+          expect(
+            getByPlaceholderText("Username", { exact: false })
+          ).toBeInTheDocument();
+        });
+
+        expect(
+          getByRole("button", { name: "Create account" })
+        ).toBeInTheDocument();
+      });
+    });
+  });
+
+  describe("Register page", () => {
+    describe("Register form", () => {
+      test("should be able to register a new user", async () => {
+        const {
+          getByPlaceholderText,
+          getByRole,
+          getByText,
+        } = renderWithReduxAndRouter(<App />, "/register", {
+          initialState: {
+            user: {
+              isAuthenticated: false,
+              currentUser: {
+                username: null,
+                email: null,
+                avatar: null,
+                token: null,
+              },
+            },
+          },
+        });
+
+        userEvent.type(
+          getByPlaceholderText("Username", { exact: false }),
+          "a_random_username"
+        );
+        userEvent.type(
+          getByPlaceholderText("Email address", { exact: false }),
+          "valid-email-address@domain.com"
+        );
+        userEvent.type(
+          getByPlaceholderText("Password", { exact: false }),
+          "my_private_password"
+        );
+
+        userEvent.click(getByRole("button", { name: "Create account" }));
+
+        await waitFor(() => {
+          expect(
+            getByText("Register was successful!", { exact: false })
+          ).toBeInTheDocument();
+        });
       });
     });
   });
