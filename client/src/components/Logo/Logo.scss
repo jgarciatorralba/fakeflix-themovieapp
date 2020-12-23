@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+
+@import "../../styles/settings/variables";
+
+.logo {
+  color: $netflix-red-dark;
+  font-family: "Monoton", cursive;
+  animation-name: brokenBulb;
+  animation-timing-function: linear;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+  pointer-events: none;
+}
+
+@keyframes brokenBulb {
+  0% {
+    text-shadow: none;
+  }
+
+  5% {
+    text-shadow: 0 0 2px $netflix-red-light;
+  }
+
+  10% {
+    text-shadow: 0 0 2px $netflix-red-light;
+  }
+
+  15% {
+    text-shadow: 0 0 2px $netflix-red-light;
+  }
+
+  20% {
+    text-shadow: 0 0 2px $netflix-red-light;
+  }
+
+  25% {
+    text-shadow: 0 0 2px $netflix-red-light;
+  }
+
+  30% {
+    text-shadow: 0 0 2px $netflix-red-light;
+  }
+
+  35% {
+    text-shadow: 0 0 2px $netflix-red-light;
+  }
+
+  40% {
+    text-shadow: 0 0 2px $netflix-red-light;
+  }
+
+  45% {
+    text-shadow: 0 0 2px $netflix-red-light;
+  }
+
+  50% {
+    text-shadow: 0 0 2px $netflix-red-light;
+  }
+
+  55% {
+    text-shadow: 0 0 2px $netflix-red-light;
+  }
+
+  60% {
+    text-shadow: 0 0 2px $netflix-red-light;
+  }
+
+  65% {
+    text-shadow: 0 0 2px $netflix-red-light;
+  }
+
+  70% {
+    text-shadow: 0 0 2px $netflix-red-light;
+  }
+
+  74% {
+    text-shadow: none;
+  }
+
+  75% {
+    text-shadow: 0 0 2px $netflix-red-light;
+  }
+
+  76% {
+    text-shadow: none;
+  }
+
+  77% {
+    text-shadow: 0 0 2px $netflix-red-light;
+  }
+
+  78% {
+    text-shadow: 0 0 2px $netflix-red-light;
+  }
+
+  79% {
+    text-shadow: 0 0 2px $netflix-red-light;
+  }
+
+  85% {
+    text-shadow: none;
+  }
+
+  98% {
+    text-shadow: none;
+  }
+
+  99% {
+    text-shadow: 0 0 2px $netflix-red-light;
+  }
+
+  100% {
+    text-shadow: none;
+  }
+}

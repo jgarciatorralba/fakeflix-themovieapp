@@ -1,0 +1,19 @@
+.cont-register {
+  min-height: 100vh;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  .form-register {
+    width: 100%;
+    max-width: 330px;
+    padding: 0 15px;
+    margin: auto;
+    .alert {
+      margin-bottom: 10px;
+    }
+  }
+}

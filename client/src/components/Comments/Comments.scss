@@ -1,0 +1,124 @@
+@import "../../styles/settings/variables";
+
+.Comments {
+  .comment-cont {
+    .avatar {
+      width: 100%;
+      max-width: 40px;
+    }
+    .comment-time {
+      color: $font-color-disabled;
+      &:first-letter {
+        text-transform: capitalize;
+      }
+    }
+    .row-border {
+      border-top: 1px solid $font-color-disabled !important;
+    }
+    .btn-cont {
+      position: relative;
+      .btn-delete {
+        color: $font-color !important;
+        background-color: $bg-color;
+        border-color: $font-color !important;
+        &:hover {
+          color: $bg-color !important;
+          background-color: $font-color !important;
+        }
+      }
+    }
+    .error-cont,
+    .loading-cont {
+      min-height: 20vh;
+    }
+    .empty-cont {
+      min-height: 10vh;
+      border: 1px solid $font-color-disabled;
+      p {
+        color: $font-color-disabled;
+      }
+    }
+    .add-comment-cont {
+      .text-area {
+        background-color: $bg-color;
+        color: $font-color;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 484px) {
+  .text-area,
+  .error-cont,
+  .loading-cont,
+  .empty-cont,
+  .comment-cont {
+    font-size: 0.5rem;
+  }
+  .btn-delete {
+    position: absolute;
+    top: -0.45rem;
+    right: 0;
+    padding: 0.125rem 0.375rem;
+    svg {
+      position: relative;
+      top: -0.05rem;
+      width: 0.75rem;
+      height: 0.75rem;
+    }
+  }
+  .btn-add-comment {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 485px) {
+  .text-area,
+  .error-cont,
+  .loading-cont,
+  .empty-cont,
+  .comment-cont {
+    font-size: 0.75rem;
+  }
+  .btn-delete {
+    position: absolute;
+    top: -0.5rem;
+    right: 1rem;
+    padding: 0.25rem 0.5rem;
+    svg {
+      position: relative;
+      top: -0.05rem;
+      width: 0.75rem;
+      height: 0.75rem;
+    }
+  }
+  .btn-add-comment {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .text-area,
+  .error-cont,
+  .loading-cont,
+  .empty-cont,
+  .comment-cont {
+    font-size: 1rem;
+  }
+  .btn-delete {
+    position: absolute;
+    top: -0.2rem;
+    right: 1rem;
+    padding: 0.25rem 0.5rem;
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+  .btn-add-comment {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+  }
+}

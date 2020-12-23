@@ -1,0 +1,104 @@
+@import "../../styles/settings/variables";
+
+.trailer-cont {
+  overflow: auto;
+  white-space: nowrap;
+  & > div {
+    display: inline-block;
+    margin: 1rem 2rem 1rem 0;
+    &:last-child {
+      margin: 1rem 0 1rem 0;
+    }
+  }
+  .empty-cont {
+    border: 1px solid $font-color-disabled;
+    p {
+      color: $font-color-disabled;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  iframe {
+    width: 250px;
+    height: 140px;
+  }
+  .MovieTrailers {
+    .empty-cont,
+    .loading-cont,
+    .error-cont {
+      height: 140px;
+      p {
+        font-size: 0.5rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 321px) and (max-width: 375px) {
+  iframe {
+    width: 280px;
+    height: 160px;
+  }
+  .MovieTrailers {
+    .empty-cont,
+    .loading-cont,
+    .error-cont {
+      height: 160px;
+      p {
+        font-size: 0.5rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 376px) and (max-width: 425px) {
+  iframe {
+    width: 320px;
+    height: 180px;
+  }
+  .MovieTrailers {
+    .empty-cont,
+    .loading-cont,
+    .error-cont {
+      height: 180px;
+      p {
+        font-size: 0.5rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 426px) and (max-width: 767px) {
+  iframe {
+    width: 360px;
+    height: 200px;
+  }
+  .MovieTrailers {
+    .empty-cont,
+    .loading-cont,
+    .error-cont {
+      height: 200px;
+      p {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  iframe {
+    width: 500px;
+    height: 280px;
+  }
+  .MovieTrailers {
+    .empty-cont,
+    .loading-cont,
+    .error-cont {
+      height: 280px;
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+@import "../../styles/settings/variables";
+
+.movie-cont {
+  overflow: auto;
+  white-space: nowrap;
+  height: 28vh;
+  .movie-item {
+    display: inline-block;
+    height: 100%;
+    border: 1px solid $font-color;
+    img {
+      max-height: 100%;
+      max-width: auto;
+    }
+    transition: box-shadow 0.4s ease-in-out;
+    &:hover {
+      box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2),
+        0 6px 20px 0 rgba(255, 255, 255, 0.19);
+    }
+  }
+  .next-prev-cont {
+    display: inline-block;
+  }
+  .btn-next,
+  .btn-prev {
+    border: none;
+    background-color: transparent;
+    color: $font-color;
+    &:focus {
+      outline: none !important;
+    }
+    &:hover {
+      color: white;
+      text-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2),
+        0 6px 20px 0 rgba(255, 255, 255, 0.19);
+    }
+    &:disabled {
+      color: $font-color-disabled;
+    }
+  }
+  .error-cont,
+  .loading-cont,
+  .empty-cont,
+  .hider-cont {
+    height: 94%;
+  }
+
+  .empty-cont {
+    border: 1px solid $font-color-disabled;
+    p {
+      color: $font-color-disabled;
+    }
+  }
+}
+
+@media screen and (max-width: 484px) {
+  .section-title {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .movie-cont {
+    height: 38vh;
+  }
+}

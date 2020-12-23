@@ -1,0 +1,60 @@
+@import "../../styles/settings/variables";
+
+.Header {
+  display: initial;
+}
+
+.navbar {
+  background-color: $bg-color !important;
+  img {
+    height: 30px;
+  }
+}
+
+.dropdown-menu {
+  background-color: $bg-color !important;
+  position: absolute;
+  left: -12rem;
+  top: 3.75rem;
+  direction: rtl !important;
+  &.show {
+    border: 1px solid rgba(0, 0, 0, 0.6) !important;
+  }
+}
+
+@media (max-width: 484px) and (orientation: landscape) {
+  .dropdown-menu {
+    position: absolute;
+    top: 3.4rem;
+  }
+}
+
+.dropdown-item {
+  &.username {
+    color: $font-color !important;
+    &:hover {
+      cursor: auto !important;
+    }
+  }
+  margin-right: 0 !important;
+  width: 14rem !important;
+  text-align: right !important;
+  padding-right: 1rem !important;
+  background-color: $bg-color !important;
+  color: rgba(255, 255, 255, 0.5);
+  &:hover {
+    color: $font-color;
+    background-color: $bg-color !important;
+  }
+}
+
+.nav-link {
+  padding-right: 0rem !important;
+  color: rgba(255, 255, 255, 0.5);
+  &:hover {
+    color: $font-color;
+  }
+  &::after {
+    color: $font-color;
+  }
+}

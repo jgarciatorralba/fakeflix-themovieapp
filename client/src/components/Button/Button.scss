@@ -1,0 +1,9 @@
+@import "../../styles/settings/variables";
+
+.btn-netflix {
+  background-color: $netflix-red-dark;
+  color: $font-color !important;
+  &:hover {
+    background-color: $netflix-red-light;
+  }
+}

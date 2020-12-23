@@ -1,0 +1,169 @@
+@import "../../styles/settings/variables";
+
+.active {
+  background-color: $font-color !important;
+  svg {
+    color: $bg-color !important;
+  }
+  .bi-heart-fill {
+    color: $netflix-red-light !important;
+  }
+}
+
+.details-cont {
+  .error-cont,
+  .loading-cont {
+    width: 95% !important;
+  }
+
+  .cover {
+    height: 100%;
+    img {
+      width: 100%;
+      height: auto;
+      border: 1px solid $font-color;
+    }
+    .movie-poster {
+      position: relative;
+      .likes,
+      .dislikes {
+        width: 47.5%;
+      }
+      .btn-like,
+      .btn-dislike {
+        color: $font-color !important;
+        background-color: $bg-color;
+        border-color: $font-color !important;
+        width: 100%;
+        svg {
+          position: relative;
+          bottom: 0.1rem;
+        }
+      }
+      .btn-favourite {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        color: $font-color !important;
+        border-color: $font-color !important;
+        background-color: rgba(229, 229, 229, 0.4);
+      }
+    }
+  }
+}
+
+@media (hover: hover) {
+  .btn-favourite {
+    &:hover {
+      color: $netflix-red-light !important;
+      background-color: $font-color !important;
+      .bi-heart-fill {
+        color: $netflix-red-light !important;
+      }
+    }
+  }
+  .btn-like,
+  .btn-dislike {
+    &:hover {
+      color: $bg-color !important;
+      background-color: $font-color !important;
+      svg {
+        color: $bg-color !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 484px) {
+  .details-cont {
+    p,
+    button {
+      font-size: 0.5rem;
+    }
+    .counter-likes-dislikes {
+      min-height: 0.75rem;
+    }
+    .btn-like,
+    .btn-dislike {
+      padding: 0.1875rem 0.375rem !important;
+      border-radius: 0.125rem;
+    }
+    .btn-favourite {
+      padding: 0.125rem 0.25rem;
+      position: absolute;
+      top: 0;
+      left: 0.5rem;
+    }
+    h1 {
+      font-size: 0.75rem;
+    }
+    .error-cont,
+    .loading-cont {
+      height: 50vh;
+    }
+  }
+}
+
+@media (max-width: 484px) and (orientation: landscape) {
+  .details-cont {
+    .error-cont,
+    .loading-cont {
+      height: 60vh;
+    }
+  }
+}
+
+@media screen and (min-width: 485px) {
+  .details-cont {
+    p,
+    button {
+      font-size: 0.75rem;
+    }
+    .counter-likes-dislikes {
+      min-height: 0.84375rem;
+    }
+    .btn-like,
+    .btn-dislike {
+      padding: 0.28125rem 0.5625rem !important;
+      border-radius: 0.33rem;
+    }
+    .btn-favourite {
+      padding: 0.1875rem 0.375rem;
+      position: absolute;
+      top: 0;
+      left: 0.75rem;
+    }
+    h1 {
+      font-size: 1.125rem;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .details-cont {
+    .error-cont,
+    .loading-cont {
+      height: 70vh;
+    }
+    p,
+    button {
+      font-size: 1rem;
+    }
+    .counter-likes-dislikes {
+      min-height: 1.5rem;
+    }
+    .btn-like,
+    .btn-dislike {
+      padding: 0.375rem 0.75rem !important;
+      border-radius: 0.25rem;
+    }
+    .btn-favourite {
+      padding: 0.25rem 0.5rem;
+      position: absolute;
+      top: 0;
+      left: 1rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+}

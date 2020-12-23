@@ -1,16 +1,33 @@
 {
   "name": "tfm-movie-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Final project: The Movie App",
+  "engine": {
+    "node": "14.3.0",
+    "npm": "6.14.8"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cd server && npm run start",
+    "build": "(cd server && npm install) && (cd ..) && (cd client && npm run build)"
   },
   "repository": {
     "type": "git",
     "url": "https://code.assemblerschool.com/jorge-garcia/tfm-movie-app.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "React",
+    "Redux",
+    "Axios",
+    "Jest",
+    "Javascript",
+    "node.js",
+    "Express",
+    "MongoDB",
+    "Mongoose",
+    "JWT",
+    "TMDb API",
+    "Heroku"
+  ],
+  "author": "Jorge García Torralba",
   "license": "ISC"
 }
