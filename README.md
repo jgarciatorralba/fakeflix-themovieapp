@@ -12,7 +12,7 @@ The project consists on a movie app with a Netflix-like visual style where, once
 - Leave comments
 - Add movies to their favourites section
 
-You will find it deployed to Heroku under the url: [www.heroku-invented.com](https://github.com/jgarciatorralba)
+You will find it deployed on Heroku under the url: [https://fakeflix-themovieapp.herokuapp.com](https://fakeflix-themovieapp.herokuapp.com)
 
 ---
 
