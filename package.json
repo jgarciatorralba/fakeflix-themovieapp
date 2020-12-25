@@ -4,7 +4,7 @@
   "description": "Final project: The Movie App",
   "engines": {
     "node": "14.3.0",
-    "npm": "6.14.8"
+    "npm": "6.14.9"
   },
   "scripts": {
     "start": "cd server && npm run start",
