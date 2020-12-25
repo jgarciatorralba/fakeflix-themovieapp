@@ -10,6 +10,7 @@ import makeTestingServer from "../__mocks__/make-testing-server";
 import randomMovieResponse from "../__mocks__/movies/responses/random-movie.json";
 import topRatedResponse from "../__mocks__/movies/responses/top-rated.json";
 import favouriteResponse from "../__mocks__/movies/responses/favourite.json";
+import movieDetailsResponse from "../__mocks__/movies/responses/movie-details.json";
 
 const testUser = {
   username: "test_username",
@@ -38,6 +39,7 @@ describe("Overall app behaviour", () => {
       randomMovieResponse,
       topRatedResponse,
       favouriteResponse,
+      movieDetailsResponse,
     },
   });
 
@@ -125,6 +127,55 @@ describe("Overall app behaviour", () => {
         await waitFor(() =>
           expect(getAllByAltText("Movie poster")).toHaveLength(20)
         );
+      });
+
+      test("should be able to navigate to movie details", async () => {
+        const { getAllByAltText, getByText } = renderWithReduxAndRouter(
+          <App />,
+          undefined,
+          {
+            initialState: {
+              user: {
+                isAuthenticated: true,
+                currentUser: {
+                  avatar: testPayload.avatar,
+                },
+              },
+              movies: {
+                favouriteMovies: [],
+                topRatedMovies: [],
+                nowPlayingMovies: [],
+                upcomingMovies: [],
+                randomMovie: {},
+                movieDetails: {},
+                likes: [],
+                dislikes: [],
+                movieTrailers: [],
+                comments: [],
+              },
+            },
+          }
+        );
+
+        await waitFor(() => {
+          const movies = getAllByAltText("Movie poster");
+          userEvent.click(movies[5]);
+        });
+
+        await waitFor(() => {
+          expect(getByText("Star Wars", { exact: false })).toBeInTheDocument();
+        });
+
+        expect(
+          getByText("May 25th, 1977", { exact: false })
+        ).toBeInTheDocument();
+
+        expect(
+          getByText(
+            "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.",
+            { exact: false }
+          )
+        ).toBeInTheDocument();
       });
     });
   });
