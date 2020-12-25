@@ -13,7 +13,7 @@ import makeTestingServer from "../../../__mocks__/movies/mock-movies-service";
 
 import randomMovieResponse from "../../../__mocks__/movies/responses/random-movie.json";
 import topRatedResponse from "../../../__mocks__/movies/responses/top-rated.json";
-import favouriteResponse from "../../../__mocks__/movies/responses/favourite.json";
+import favouriteResponse from "../../../__mocks__/movies/responses/add-favourite.json";
 
 const moviesData = {
   randomMovieResponse,
