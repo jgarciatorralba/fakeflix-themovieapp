@@ -7,9 +7,9 @@ import userEvent from "@testing-library/user-event";
 
 import makeTestingServer from "../__mocks__/make-testing-server";
 
-import randomMovieResponse from "../__mocks__/movies/random-movie.json";
-import topRatedResponse from "../__mocks__/movies/top-rated.json";
-import favouriteResponse from "../__mocks__/movies/favourite.json";
+import randomMovieResponse from "../__mocks__/movies/responses/random-movie.json";
+import topRatedResponse from "../__mocks__/movies/responses/top-rated.json";
+import favouriteResponse from "../__mocks__/movies/responses/favourite.json";
 
 const testUser = {
   username: "test_username",
