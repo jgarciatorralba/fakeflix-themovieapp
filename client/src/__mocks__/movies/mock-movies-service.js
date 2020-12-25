@@ -67,6 +67,56 @@ const makeHandlers = ({ moviesData }) => [
       ctx.status(200)
     );
   }),
+
+  rest.get(`/api/movie/details/:movieId`, (req, res, ctx) => {
+    return res(
+      ctx.json({
+        data: moviesData.movieDetailsResponse.data,
+        error: null,
+      }),
+      ctx.status(200)
+    );
+  }),
+
+  rest.get(`/api/like/:movieId`, (req, res, ctx) => {
+    return res(
+      ctx.json({
+        data: [],
+        error: null,
+      }),
+      ctx.status(200)
+    );
+  }),
+
+  rest.get(`/api/dislike/:movieId`, (req, res, ctx) => {
+    return res(
+      ctx.json({
+        data: [],
+        error: null,
+      }),
+      ctx.status(200)
+    );
+  }),
+
+  rest.get(`/api/movie/trailers/:movieId`, (req, res, ctx) => {
+    return res(
+      ctx.json({
+        data: [],
+        error: null,
+      }),
+      ctx.status(200)
+    );
+  }),
+
+  rest.get(`/api/comment/:movieId`, (req, res, ctx) => {
+    return res(
+      ctx.json({
+        data: [],
+        error: null,
+      }),
+      ctx.status(200)
+    );
+  }),
 ];
 
 const makeTestingServer = (data) => setupServer(...makeHandlers(data));
