@@ -2,7 +2,7 @@
   "name": "tfm-movie-app",
   "version": "1.0.0",
   "description": "Final project: The Movie App",
-  "engine": {
+  "engines": {
     "node": "14.3.0",
     "npm": "6.14.8"
   },
