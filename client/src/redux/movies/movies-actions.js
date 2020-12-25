@@ -242,33 +242,31 @@ export const fetchMovieDetailsSuccess = ({ movieDetails }) => ({
 });
 
 export function fetchMovieDetails(movie_id) {
-  return function fetchMovieDetailsThunk(dispatch, getState) {
+  return async function fetchMovieDetailsThunk(dispatch, getState) {
     const token = getState().user.currentUser.token;
 
     dispatch(fetchMovieDetailsRequest());
 
-    fetch(`/api/movie/details/${movie_id}`, {
+    const res = await fetch(`/api/movie/details/${movie_id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + token,
       },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.data) {
-          dispatch(
-            fetchMovieDetailsSuccess({
-              movieDetails: data.data,
-            })
-          );
-        } else {
-          dispatch(fetchMovieDetailsError({ errorMessage: data.error }));
-        }
-      })
-      .catch((error) =>
-        dispatch(fetchMovieDetailsError({ errorMessage: error.message }))
+    }).catch((error) => {
+      dispatch(fetchMovieDetailsError({ errorMessage: error.message }));
+    });
+
+    const data = await res.json();
+    if (data.data) {
+      dispatch(
+        fetchMovieDetailsSuccess({
+          movieDetails: data.data,
+        })
       );
+    } else {
+      dispatch(fetchMovieDetailsError({ errorMessage: data.error }));
+    }
   };
 }
 
