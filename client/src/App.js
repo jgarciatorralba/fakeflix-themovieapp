@@ -11,6 +11,7 @@ import ResetPasswordContainer from "./redux/containers/pages/ResetPasswordContai
 
 import HomeContainer from "./redux/containers/pages/HomeContainer";
 import MovieContainer from "./redux/containers/pages/MovieContainer";
+import SearchContainer from "./redux/containers/pages/SearchContainer";
 import NotFound from "./pages/NotFound/NotFound";
 import { Fragment } from "react";
 
@@ -33,6 +34,9 @@ function App() {
         </Route>
         <Route path={ROUTES.MOVIE}>
           <MovieContainer />
+        </Route>
+        <Route path={ROUTES.SEARCH}>
+          <SearchContainer />
         </Route>
         <Route path={ROUTES.HOME} exact>
           <HomeContainer />
