@@ -96,4 +96,17 @@ router.get("/trailers/:movie_id", async (req, res) => {
   res.json({ data: trailers, error: null });
 });
 
+// Search movies
+router.get("/search", async (req, res) => {
+  const query = req.query.query;
+  const page = req.query.page || 1;
+
+  const movies = await movieController.getSearch(query, page);
+  if (movies == "error") {
+    return res.status(500).json({ data: null, error: "Internal Server Error" });
+  }
+
+  res.json({ data: movies, error: null });
+});
+
 export default router;
