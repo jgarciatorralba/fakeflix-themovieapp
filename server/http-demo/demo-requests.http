@@ -193,3 +193,8 @@ Content-Type: application/json
 GET http://localhost:5000/api/movie/upcoming?page=3
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
 Content-Type: application/json
+
+### Get search results for "The Godfather"
+GET http://localhost:5000/api/movie/search?query=the%20godfather&page=3&include_adult=false
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYjdiNmU5Y2IwNjNlMTRiNzFmYTNkZiIsImlhdCI6MTYwNTg3NjcxOH0.Cxs5KfefaR455naUkEg9xT43Y66oVe6ihaeNq4-DaU0
+Content-Type: application/json
