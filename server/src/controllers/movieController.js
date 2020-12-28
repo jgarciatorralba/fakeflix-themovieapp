@@ -285,4 +285,47 @@ export default {
       return "error";
     }
   },
+
+  getSearch: async function (search_query, page) {
+    try {
+      const response = await axios.get(
+        config().app.API_BASE_URL +
+          `search/movie?query=${search_query}&page=${page}&include_adult=false`,
+        {
+          headers: {
+            Authorization: "Bearer " + config().app.API_TOKEN,
+          },
+        }
+      );
+
+      if (response.data.results.length > 0) {
+        response.data.results.forEach((result) => {
+          if (result.backdrop_path != null) {
+            result.backdrop_path = new URL(
+              "t/p/w1280" + result.backdrop_path,
+              "https://image.tmdb.org/"
+            );
+          }
+
+          if (result.poster_path != null) {
+            result.poster_path = new URL(
+              "t/p/w780" + result.poster_path,
+              "https://image.tmdb.org/"
+            );
+          } else {
+            result.poster_path = new URL(
+              "/img/movie/default-poster.png",
+              config().app.SERVER_DOMAIN
+            );
+          }
+        });
+      }
+      return {
+        results: response.data.results,
+        totalPages: response.data.total_pages,
+      };
+    } catch (error) {
+      return "error";
+    }
+  },
 };
