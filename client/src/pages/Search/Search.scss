@@ -18,6 +18,10 @@
     }
   }
 
+  .empty-cont {
+    border: none;
+  }
+
   @include placeholder {
     color: $font-color;
   }
