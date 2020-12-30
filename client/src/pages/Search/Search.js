@@ -11,67 +11,88 @@ import "./Search.scss";
 
 function Search({ isAuthenticated, currentUser }) {
   const [page, setPage] = useState(1);
-  const [search, setSearch] = useState("");
+  const [input, setInput] = useState("");
   const [movies, setMovies] = useState([]);
   const [pages, setPages] = useState(null);
   const [loading, setLoading] = useState(false);
   const [loadingError, setLoadingError] = useState(null);
-  const [query, setQuery] = useState("");
-
-  // console.log(loading);
-  // console.log(loadingError);
-  // console.log(movies);
-  // console.log(movies.length);
-  // console.log(pages);
-  console.log(page);
+  const [queryString, setQueryString] = useState("");
 
   const searchMovies = useCallback(async () => {
-    if (query && query !== "") {
+    if (currentUser.token && queryString) {
       setLoading(true);
-      const res = await fetch(`/api/movie/search?query=${query}&page=${page}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + currentUser.token,
-        },
-      }).catch((error) => {
+      const res = await fetch(
+        `/api/movie/search?query=${queryString}&page=${page}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + currentUser.token,
+          },
+        }
+      ).catch((error) => {
         setLoadingError(error.message);
         setLoading(false);
       });
 
       const data = await res.json();
-      console.log(data);
-      setMovies(data.data.results);
-      setPages(data.data.totalPages);
+      if (data.data) {
+        setMovies(data.data.results);
+        setPages(data.data.totalPages);
+      } else {
+        setLoadingError(data.error);
+      }
       setLoading(false);
     }
-  }, [currentUser, query, page]);
+  }, [currentUser, queryString, page]);
 
-  // async function searchMovies() {
-  //   if (query && query !== "") {
-  //     setLoading(true);
-  //     const res = await fetch(`/api/movie/search?query=${query}&page=${page}`, {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: "Bearer " + currentUser.token,
-  //       },
-  //     }).catch((error) => {
-  //       setLoadingError(error.message);
-  //       setLoading(false);
-  //     });
+  const handleEmptyInput = useCallback(() => {
+    if (input === "") {
+      setMovies([]);
+      setPages(null);
+      setPage(1);
+      setQueryString("");
+    }
+  }, [input]);
 
-  //     const data = await res.json();
-  //     setMovies(data.data.results);
-  //     setPages(data.data.totalPages);
-  //     setLoading(false);
-  //   }
-  // }
+  const getQueryParams = useCallback(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const query = urlParams.get("query");
+    if (query) {
+      setQueryString(query);
+      setInput(query);
+    }
+  }, []);
 
-  function handleSearch() {
-    if (search !== "") {
-      const searchInput = encodeURI(search.toLowerCase());
-      setQuery(searchInput);
+  function handleClick() {
+    if (input !== "") {
+      const sanitizedInput = encodeURI(input.trim().toLowerCase());
+
+      const url = window.location.href;
+      if (url.includes("?")) {
+        const index = url.indexOf("?");
+        const newUrl = url.slice(0, index) + `?query=${sanitizedInput}`;
+        window.location.replace(newUrl);
+      } else {
+        window.location.replace(window.location + `?query=${sanitizedInput}`);
+      }
+    }
+  }
+
+  function handleKeyDown(e) {
+    if (e.key === "Enter") {
+      if (input !== "") {
+        const sanitizedInput = encodeURI(input.trim().toLowerCase());
+
+        const url = window.location.href;
+        if (url.includes("?")) {
+          const index = url.indexOf("?");
+          const newUrl = url.slice(0, index) + `?query=${sanitizedInput}`;
+          window.location.replace(newUrl);
+        } else {
+          window.location.replace(window.location + `?query=${sanitizedInput}`);
+        }
+      }
     }
   }
 
@@ -84,15 +105,19 @@ function Search({ isAuthenticated, currentUser }) {
         });
       }
     }, 700);
-
-    // return () => {
-    //   setQuery("");
-    // };
   });
 
   useEffect(() => {
     searchMovies();
   }, [searchMovies, page]);
+
+  useEffect(() => {
+    handleEmptyInput();
+  }, [handleEmptyInput, input]);
+
+  useEffect(() => {
+    getQueryParams();
+  }, [getQueryParams]);
 
   if (!isAuthenticated) {
     return <Redirect to={ROUTES.LOGIN} />;
@@ -102,6 +127,7 @@ function Search({ isAuthenticated, currentUser }) {
     <div className="Search">
       <HeaderContainer />
 
+      {/* Search bar */}
       <div className="my-3 p-3 row mx-auto">
         <div className="col-md-2"></div>
         <div className="col-md-8">
@@ -112,15 +138,16 @@ function Search({ isAuthenticated, currentUser }) {
               placeholder="Type a movie name..."
               aria-label="Movie to search"
               aria-describedby="button-search"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => handleKeyDown(e)}
               autoFocus
             />
             <button
               className="btn btn-search"
               type="button"
               id="button-search"
-              onClick={handleSearch}
+              onClick={handleClick}
             >
               Search
             </button>
@@ -129,8 +156,13 @@ function Search({ isAuthenticated, currentUser }) {
         <div className="col-md-2"></div>
       </div>
 
-      <div className="my-3 mt-sm-3 px-3">
-        <h5 className="section-title my-0">Results</h5>
+      {/* Results box */}
+      <div className="my-3 px-3">
+        {!loadingError && !loading && movies.length === 0 ? (
+          <h5 className="section-title my-0">&nbsp;</h5>
+        ) : (
+          <h5 className="section-title my-0">Results</h5>
+        )}
         <div className="movie-cont my-0 pt-2 pb-3">
           {loadingError && (
             <div className="d-flex justify-content-center align-items-center border rounded m-1 w-100 mx-auto error-cont">
@@ -165,7 +197,7 @@ function Search({ isAuthenticated, currentUser }) {
             !loading &&
             (movies.length === 0 ? (
               <div className="d-flex justify-content-center align-items-center m-1 w-100 mx-auto empty-cont rounded">
-                <p className="p-3 my-0">
+                <p className="p-3 my-0 no-results">
                   The results of your search will be displayed here.
                 </p>
               </div>
