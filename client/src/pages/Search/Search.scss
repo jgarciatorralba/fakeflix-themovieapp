@@ -32,13 +32,17 @@
       background-color: $netflix-red-light;
       border: 1px solid $netflix-red-light;
     }
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba(229, 9, 20, 0.25);
+    }
   }
 }
 
 @media screen and (max-width: 767px) {
   .Search {
     input,
-    button {
+    button,
+    .no-results {
       font-size: 0.75rem;
     }
   }
@@ -47,7 +51,8 @@
 @media (min-width: 768px) {
   .Search {
     input,
-    button {
+    button,
+    .no-results {
       font-size: 1rem;
     }
   }
