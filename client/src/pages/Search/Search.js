@@ -17,6 +17,7 @@ function Search({ isAuthenticated, currentUser }) {
   const [loading, setLoading] = useState(false);
   const [loadingError, setLoadingError] = useState(null);
   const [queryString, setQueryString] = useState("");
+  const [noResults, setNoResults] = useState(false);
 
   const searchMovies = useCallback(async () => {
     if (currentUser.token && queryString) {
@@ -39,6 +40,11 @@ function Search({ isAuthenticated, currentUser }) {
       if (data.data) {
         setMovies(data.data.results);
         setPages(data.data.totalPages);
+        if (data.data.results.length === 0) {
+          setNoResults(true);
+        } else {
+          setNoResults(false);
+        }
       } else {
         setLoadingError(data.error);
       }
@@ -52,6 +58,7 @@ function Search({ isAuthenticated, currentUser }) {
       setPages(null);
       setPage(1);
       setQueryString("");
+      setNoResults(false);
     }
   }, [input]);
 
@@ -66,7 +73,7 @@ function Search({ isAuthenticated, currentUser }) {
 
   function handleClick() {
     if (input !== "") {
-      const sanitizedInput = encodeURI(input.trim().toLowerCase());
+      const sanitizedInput = encodeURI(input.trim());
 
       const url = window.location.href;
       if (url.includes("?")) {
@@ -82,7 +89,7 @@ function Search({ isAuthenticated, currentUser }) {
   function handleKeyDown(e) {
     if (e.key === "Enter") {
       if (input !== "") {
-        const sanitizedInput = encodeURI(input.trim().toLowerCase());
+        const sanitizedInput = encodeURI(input.trim());
 
         const url = window.location.href;
         if (url.includes("?")) {
@@ -196,10 +203,16 @@ function Search({ isAuthenticated, currentUser }) {
           {!loadingError &&
             !loading &&
             (movies.length === 0 ? (
-              <div className="d-flex justify-content-center align-items-center m-1 w-100 mx-auto empty-cont rounded">
-                <p className="p-3 my-0 no-results">
-                  The results of your search will be displayed here.
-                </p>
+              <div className="d-flex justify-content-center align-items-center m-1 w-100 mx-auto empty-cont">
+                {noResults ? (
+                  <p className="p-3 my-0 no-results">
+                    Your search returned no results.
+                  </p>
+                ) : (
+                  <p className="p-3 my-0 no-results">
+                    The results of your search will appear here.
+                  </p>
+                )}
               </div>
             ) : (
               <div className="hider-cont invisible">
