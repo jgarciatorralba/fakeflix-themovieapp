@@ -142,7 +142,7 @@ function Search({ isAuthenticated, currentUser }) {
             <input
               type="text"
               className="form-control input-search"
-              placeholder="Type a movie name..."
+              placeholder="Type a movie title..."
               aria-label="Movie to search"
               aria-describedby="button-search"
               value={input}
