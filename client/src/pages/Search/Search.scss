@@ -5,15 +5,23 @@
   .input-search {
     background-color: $bg-color;
     color: $font-color;
-    border: 1px solid $font-color;
-    border: 1px solid $netflix-red-dark;
+    border-left: 1px solid $netflix-red-dark !important;
+    border-top: 1px solid $netflix-red-dark !important;
+    border-right: none !important;
+    border-bottom: 1px solid $netflix-red-dark !important;
     &:focus {
       background-color: $bg-color;
-      border: 1px solid $netflix-red-light !important;
+      border-left: 1px solid $netflix-red-dark !important;
+      border-top: 1px solid $netflix-red-dark !important;
+      border-right: none !important;
+      border-bottom: 1px solid $netflix-red-dark !important;
       box-shadow: none !important;
     }
     &:active {
-      border: 1px solid $netflix-red-light !important;
+      border-left: 1px solid $netflix-red-dark !important;
+      border-top: 1px solid $netflix-red-dark !important;
+      border-right: none !important;
+      border-bottom: 1px solid $netflix-red-dark !important;
       box-shadow: none !important;
     }
   }
@@ -38,9 +46,6 @@
     }
     &:focus {
       box-shadow: 0 0 0 0.2rem rgba(229, 9, 20, 0.25);
-    }
-    &:disabled {
-      opacity: 1;
     }
   }
 }
