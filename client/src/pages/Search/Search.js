@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 
 import ROUTES from "../../utils/routes";
 
@@ -18,6 +18,8 @@ function Search({ isAuthenticated, currentUser }) {
   const [loadingError, setLoadingError] = useState(null);
   const [queryString, setQueryString] = useState("");
   const [noResults, setNoResults] = useState(false);
+
+  const history = useHistory();
 
   const searchMovies = useCallback(async () => {
     if (currentUser.token && queryString) {
@@ -74,15 +76,8 @@ function Search({ isAuthenticated, currentUser }) {
   function handleClick() {
     if (input !== "" && input !== queryString) {
       const sanitizedInput = encodeURI(input.trim());
-
-      const url = window.location.href;
-      if (url.includes("?")) {
-        const index = url.indexOf("?");
-        const newUrl = url.slice(0, index) + `?query=${sanitizedInput}`;
-        window.location.replace(newUrl);
-      } else {
-        window.location.replace(window.location + `?query=${sanitizedInput}`);
-      }
+      setQueryString(sanitizedInput);
+      history.push(`?query=${sanitizedInput}`);
     }
   }
 
@@ -90,15 +85,8 @@ function Search({ isAuthenticated, currentUser }) {
     if (e.key === "Enter") {
       if (input !== "" && input !== queryString) {
         const sanitizedInput = encodeURI(input.trim());
-
-        const url = window.location.href;
-        if (url.includes("?")) {
-          const index = url.indexOf("?");
-          const newUrl = url.slice(0, index) + `?query=${sanitizedInput}`;
-          window.location.replace(newUrl);
-        } else {
-          window.location.replace(window.location + `?query=${sanitizedInput}`);
-        }
+        setQueryString(sanitizedInput);
+        history.push(`?query=${sanitizedInput}`);
       }
     }
   }
