@@ -72,7 +72,7 @@ function Search({ isAuthenticated, currentUser }) {
   }, []);
 
   function handleClick() {
-    if (input !== "") {
+    if (input !== "" && input !== queryString) {
       const sanitizedInput = encodeURI(input.trim());
 
       const url = window.location.href;
@@ -88,7 +88,7 @@ function Search({ isAuthenticated, currentUser }) {
 
   function handleKeyDown(e) {
     if (e.key === "Enter") {
-      if (input !== "") {
+      if (input !== "" && input !== queryString) {
         const sanitizedInput = encodeURI(input.trim());
 
         const url = window.location.href;
@@ -155,6 +155,7 @@ function Search({ isAuthenticated, currentUser }) {
               type="button"
               id="button-search"
               onClick={handleClick}
+              disabled={loading}
             >
               Search
             </button>
