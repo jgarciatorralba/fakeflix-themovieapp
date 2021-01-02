@@ -39,6 +39,9 @@
     &:focus {
       box-shadow: 0 0 0 0.2rem rgba(229, 9, 20, 0.25);
     }
+    &:disabled {
+      opacity: 1;
+    }
   }
 }
 
