@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Link } from "react-router-dom";
-import { Redirect, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 
 import ROUTES from "../../utils/routes";
 
@@ -137,6 +136,8 @@ function Search({ isAuthenticated, currentUser }) {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => handleKeyDown(e)}
               autoFocus
+              spellCheck="false"
+              autoCorrect="off"
             />
             <button
               className="btn btn-search"
