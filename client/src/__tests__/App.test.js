@@ -32,6 +32,8 @@ const userData = {
   testPayload,
 };
 
+window.scrollTo = jest.fn();
+
 describe("Overall app behaviour", () => {
   const server = makeTestingServer({
     userData,
@@ -44,8 +46,14 @@ describe("Overall app behaviour", () => {
   });
 
   beforeAll(() => server.listen());
-  afterEach(() => server.resetHandlers());
-  afterAll(() => server.close());
+  afterEach(() => {
+    server.resetHandlers();
+    jest.resetAllMocks();
+  });
+  afterAll(() => {
+    server.close();
+    jest.clearAllMocks();
+  });
 
   test("should be defined", () => {
     expect(App).toBeDefined();
