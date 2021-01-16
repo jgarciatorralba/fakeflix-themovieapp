@@ -36,7 +36,7 @@ function RandomMovie({
           style={{
             backgroundImage: `url(${randomMovie.backdrop_path})`,
             backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
+            backgroundPosition: "center 35%",
             backgroundSize: "cover",
           }}
         >
