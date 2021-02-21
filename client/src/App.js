@@ -1,4 +1,6 @@
 import React from "react";
+import { Fragment } from "react";
+
 import { Switch, Route } from "react-router-dom";
 
 import ROUTES from "./utils/routes";
@@ -12,8 +14,8 @@ import ResetPasswordContainer from "./redux/containers/pages/ResetPasswordContai
 import HomeContainer from "./redux/containers/pages/HomeContainer";
 import MovieContainer from "./redux/containers/pages/MovieContainer";
 import SearchContainer from "./redux/containers/pages/SearchContainer";
+import ProfileContainer from "./redux/containers/pages/ProfileContainer";
 import NotFound from "./pages/NotFound/NotFound";
-import { Fragment } from "react";
 
 function App() {
   return (
@@ -37,6 +39,9 @@ function App() {
         </Route>
         <Route path={ROUTES.SEARCH}>
           <SearchContainer />
+        </Route>
+        <Route path={ROUTES.PROFILE}>
+          <ProfileContainer />
         </Route>
         <Route path={ROUTES.HOME} exact>
           <HomeContainer />
