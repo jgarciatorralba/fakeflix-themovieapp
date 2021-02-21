@@ -6,6 +6,7 @@ const ROUTES = {
   PASS_RESET: "/password/reset",
   MOVIE: "/movie/:movie_id",
   SEARCH: "/search",
+  PROFILE: "/profile",
 };
 
 export default ROUTES;
