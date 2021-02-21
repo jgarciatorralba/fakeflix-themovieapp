@@ -13,7 +13,7 @@ function Profile({ isAuthenticated }) {
   }
 
   return (
-    <div className="cont-profile">
+    <div className="Profile">
       <HeaderContainer />
 
       <h1>Profile</h1>
