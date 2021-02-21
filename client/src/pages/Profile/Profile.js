@@ -33,13 +33,13 @@ function Profile({ isAuthenticated }) {
       <div className="cont-profile-options mx-3 mb-3 ">
         <ul className="p-0">
           <li
-            className={`d-inline py-3 mr-3 ${sectionDetails}`}
+            className={`d-inline py-3 mr-4 ${sectionDetails}`}
             onClick={(e) => handleClick(e)}
           >
             Contact details
           </li>
           <li
-            className={`d-inline py-3 mr-3 ${sectionPassword}`}
+            className={`d-inline py-3 mr-4 ${sectionPassword}`}
             onClick={(e) => handleClick(e)}
           >
             Password
