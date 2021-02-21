@@ -21,9 +21,7 @@ function Header({ isLoggingOut, currentUser, logout }) {
           <NavDropdown.Item className="username">
             {currentUser.username}
           </NavDropdown.Item>
-          <NavDropdown.Item href="" disabled>
-            Profile
-          </NavDropdown.Item>
+          <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
           <NavDropdown.Item href="/search">Search</NavDropdown.Item>
           <NavDropdown.Item onClick={logout} disabled={isLoggingOut} href="">
             Logout
