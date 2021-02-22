@@ -7,7 +7,7 @@
       li {
         color: $font-color-disabled;
         position: relative;
-        bottom: -3px;
+        bottom: -4px;
         cursor: pointer;
         &:hover {
           color: $font-color !important;
@@ -19,7 +19,5 @@
   .active-option {
     color: $font-color !important;
     border-bottom: 3px solid $font-color;
-    position: relative;
-    bottom: -3px;
   }
 }

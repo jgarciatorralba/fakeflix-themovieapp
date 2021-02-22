@@ -8,16 +8,23 @@ import HeaderContainer from "../../redux/containers/components/HeaderContainer";
 import "./Profile.scss";
 
 function Profile({ isAuthenticated }) {
-  const [sectionDetails, setSectionDetails] = useState("active-option");
-  const [sectionPassword, setSectionPassword] = useState("");
+  const [classDetails, setClassDetails] = useState("active-option");
+  const [classAvatar, setClassAvatar] = useState("");
+  const [classPassword, setClassPassword] = useState("");
 
   function handleClick(e) {
     if (e.target.innerText === "Contact details") {
-      setSectionDetails("active-option");
-      setSectionPassword("");
+      setClassDetails("active-option");
+      setClassAvatar("");
+      setClassPassword("");
+    } else if (e.target.innerText === "Avatar") {
+      setClassDetails("");
+      setClassAvatar("active-option");
+      setClassPassword("");
     } else if (e.target.innerText === "Password") {
-      setSectionDetails("");
-      setSectionPassword("active-option");
+      setClassDetails("");
+      setClassAvatar("");
+      setClassPassword("active-option");
     }
   }
 
@@ -33,21 +40,28 @@ function Profile({ isAuthenticated }) {
       <div className="cont-profile-options mx-3 mb-3 ">
         <ul className="p-0">
           <li
-            className={`d-inline py-3 mr-4 ${sectionDetails}`}
+            className={`d-inline py-3 mr-4 ${classDetails}`}
             onClick={(e) => handleClick(e)}
           >
             Contact details
           </li>
           <li
-            className={`d-inline py-3 mr-4 ${sectionPassword}`}
+            className={`d-inline py-3 mr-4 ${classAvatar}`}
+            onClick={(e) => handleClick(e)}
+          >
+            Avatar
+          </li>
+          <li
+            className={`d-inline py-3 mr-4 ${classPassword}`}
             onClick={(e) => handleClick(e)}
           >
             Password
           </li>
         </ul>
       </div>
-      {sectionDetails !== "" && <div>Contact</div>}
-      {sectionPassword !== "" && <div>Password</div>}
+      {classDetails === "active-option" && <div>Contact</div>}
+      {classAvatar === "active-option" && <div>Avatar</div>}
+      {classPassword === "active-option" && <div>Password</div>}
     </div>
   );
 }
