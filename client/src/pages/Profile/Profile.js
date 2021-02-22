@@ -5,6 +5,11 @@ import ROUTES from "../../utils/routes";
 
 import HeaderContainer from "../../redux/containers/components/HeaderContainer";
 
+import Alert from "react-bootstrap/Alert";
+import Input from "../../components/Input/Input";
+import Button from "../../components/Button/Button";
+import Footer from "../../components/Footer/Footer";
+
 import "./Profile.scss";
 
 function Profile({ isAuthenticated }) {
@@ -36,7 +41,7 @@ function Profile({ isAuthenticated }) {
     <div className="Profile">
       <HeaderContainer />
 
-      <h5 className="p-3 mx-auto">Your Profile</h5>
+      <h5 className="p-3 mx-auto mb-0">Your Profile</h5>
       <div className="cont-profile-options mx-3 mb-3 ">
         <ul className="p-0">
           <li
@@ -59,9 +64,96 @@ function Profile({ isAuthenticated }) {
           </li>
         </ul>
       </div>
-      {classDetails === "active-option" && <div>Contact</div>}
+
+      {classDetails === "active-option" && (
+        <form className="form-profile-contact-details" autoComplete="off">
+          <label htmlFor="profileUsername" className="px-4">
+            <b>Username</b>
+          </label>
+          <div className="input-group px-4 mb-2">
+            <Input
+              htmlType="text"
+              id="profileUsername"
+              name="profileUsername"
+              additionalClasses="single"
+              autoFocus
+            />
+          </div>
+
+          <label htmlFor="profileEmail" className="px-4">
+            <b>Email address</b>
+          </label>
+          <div className="input-group px-4 mb-2">
+            <Input
+              htmlType="email"
+              id="profileEmail"
+              name="profileEmail"
+              additionalClasses="single"
+            />
+          </div>
+
+          {/* Alert message here */}
+
+          <span>&nbsp;</span>
+          <div className="input-group px-4 mb-4">
+            <Button htmlType="submit" additionalClasses="btn-lg btn-block">
+              Save
+            </Button>
+          </div>
+        </form>
+      )}
       {classAvatar === "active-option" && <div>Avatar</div>}
-      {classPassword === "active-option" && <div>Password</div>}
+      {classPassword === "active-option" && (
+        <form className="form-profile-password" autoComplete="off">
+          <label htmlFor="profileCurrentPassword" className="px-4">
+            <b>Current Password</b>
+          </label>
+          <div className="input-group px-4 mb-2">
+            <Input
+              htmlType="password"
+              id="profileCurrentPassword"
+              name="profileCurrentPassword"
+              additionalClasses="single"
+              autoFocus
+            />
+          </div>
+
+          <label htmlFor="profileNewPassword" className="px-4">
+            <b>New Password</b>
+          </label>
+          <div className="input-group px-4 mb-2">
+            <Input
+              htmlType="password"
+              id="profileNewPassword"
+              name="profileNewPassword"
+              additionalClasses="single"
+            />
+          </div>
+
+          <label htmlFor="profileRepeatPassword" className="px-4">
+            <b>Confirm New Password</b>
+          </label>
+          <div className="input-group px-4 mb-2">
+            <Input
+              htmlType="password"
+              id="profileRepeatPassword"
+              name="profileRepeatPassword"
+              additionalClasses="single"
+            />
+          </div>
+
+          {/* Alert message here */}
+
+          <span>&nbsp;</span>
+          <div className="input-group px-4 mb-4">
+            <Button htmlType="submit" additionalClasses="btn-lg btn-block">
+              Save
+            </Button>
+          </div>
+        </form>
+      )}
+
+      <Footer />
     </div>
   );
 }

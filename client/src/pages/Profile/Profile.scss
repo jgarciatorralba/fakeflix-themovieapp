@@ -20,4 +20,8 @@
     color: $font-color !important;
     border-bottom: 3px solid $font-color;
   }
+  input,
+  button {
+    max-width: 350px;
+  }
 }
