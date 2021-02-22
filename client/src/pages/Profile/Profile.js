@@ -41,7 +41,7 @@ function Profile({ isAuthenticated }) {
     <div className="Profile">
       <HeaderContainer />
 
-      <h5 className="p-3 mx-auto mb-0">Your Profile</h5>
+      <h5 className="p-3 mx-auto mb-0 my-sm-3">Your Profile</h5>
       <div className="cont-profile-options mx-3 mb-3">
         <ul className="p-0">
           <li
