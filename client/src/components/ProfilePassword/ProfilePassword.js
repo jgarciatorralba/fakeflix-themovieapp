@@ -106,7 +106,7 @@ function ProfilePassword({ resetMessages }) {
       )}
       <div className="input-group px-4 px-sm-5 mb-2 mb-sm-5">
         <Button htmlType="submit" additionalClasses="btn-lg btn-block">
-          Save
+          Update
         </Button>
       </div>
     </form>
