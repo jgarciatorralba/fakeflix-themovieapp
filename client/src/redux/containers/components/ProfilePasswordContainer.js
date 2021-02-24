@@ -1,11 +1,13 @@
 import { connect } from "react-redux";
 
+import { resetMessages } from "../../user/user-actions";
+
 import ProfilePassword from "../../../components/ProfilePassword/ProfilePassword";
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
-});
+const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  resetMessages: () => dispatch(resetMessages()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfilePassword);
