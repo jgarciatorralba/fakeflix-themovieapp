@@ -31,44 +31,55 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Update a user
+// Update a user (except password)
 router.patch("/", avatarMiddleware.single("avatar"), async (req, res) => {
   const updatedUser = {};
-  if (req.body.email && req.body.email !== "")
-    updatedUser.email = req.body.email;
-  if (req.body.password && req.body.password !== "")
-    updatedUser.password = await bcrypt.hash(
-      req.body.password,
-      config().app.SALT_ROUNDS
-    );
   if (req.body.username && req.body.username !== "")
     updatedUser.username = req.body.username;
+  if (req.body.email && req.body.email !== "")
+    updatedUser.email = req.body.email;
   if (req.file) updatedUser.avatar = req.file.filename;
 
-  const deletedUser = await userController.findOnlyDeletedById(req.user.id);
-  if (deletedUser) {
-    return res
-      .status(400)
-      .json({ data: null, error: "User account was deactivated" });
+  const error = await userController.updateUserById(req.user.id, updatedUser);
+  if (error) {
+    if (error.name == "MongoError") {
+      if (Object.keys(error.keyValue).includes("email"))
+        return res
+          .status(400)
+          .json({ data: null, error: "That email is already registered" });
+      if (Object.keys(error.keyValue).includes("username"))
+        return res
+          .status(400)
+          .json({ data: null, error: "That username is already registered" });
+    } else {
+      return res
+        .status(500)
+        .json({ data: null, error: "Internal Server Error" });
+    }
   } else {
+    res.json({ data: "User data updated!", error: null });
+  }
+});
+
+// Update user's password
+router.patch("/password", async (req, res) => {
+  const user = await userController.findById(req.user.id);
+  const match = await bcrypt.compare(req.body.currentPassword, user.password);
+  if (!match) {
+    return res.status(400).json({ data: null, error: "Password incorrect" });
+  } else {
+    const updatedUser = {};
+    updatedUser.password = await bcrypt.hash(
+      req.body.newPassword,
+      config().app.SALT_ROUNDS
+    );
     const error = await userController.updateUserById(req.user.id, updatedUser);
     if (error) {
-      if (error.name == "MongoError") {
-        if (Object.keys(error.keyValue).includes("email"))
-          return res
-            .status(400)
-            .json({ data: null, error: "That email is already registered" });
-        if (Object.keys(error.keyValue).includes("username"))
-          return res
-            .status(400)
-            .json({ data: null, error: "That username is already registered" });
-      } else {
-        return res
-          .status(500)
-          .json({ data: null, error: "Internal Server Error" });
-      }
+      return res
+        .status(500)
+        .json({ data: null, error: "Internal Server Error" });
     } else {
-      res.json({ data: "User data updated!", error: null });
+      res.json({ data: "Password updated!", error: null });
     }
   }
 });
