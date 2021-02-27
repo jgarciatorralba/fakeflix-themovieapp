@@ -17,8 +17,6 @@ function ProfileContactDetails({
   const [username, setUsername] = useState(currentUser.username);
   const [email, setEmail] = useState(currentUser.email);
 
-  console.log(currentUser);
-
   useEffect(() => {
     resetMessages();
   }, [resetMessages]);
@@ -62,6 +60,7 @@ function ProfileContactDetails({
           onChange={(e) => setUsername(e.target.value)}
           required
           spellCheck="false"
+          maxLength="18"
           autoFocus
         />
       </div>
@@ -118,10 +117,7 @@ function ProfileContactDetails({
         <Button
           htmlType="submit"
           additionalClasses="btn-lg btn-block"
-          disabled={
-            isUpdatingProfile ||
-            (username === currentUser.username && email === currentUser.email)
-          }
+          disabled={isUpdatingProfile}
         >
           Update
         </Button>
