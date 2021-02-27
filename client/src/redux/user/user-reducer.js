@@ -26,6 +26,7 @@ export const UserInitialState = {
     username: null,
     email: null,
     avatar: null,
+    defaultAvatar: null,
     token: null,
   },
 };
@@ -73,6 +74,7 @@ const UserReducer = (state = UserInitialState, action) => {
           username: action.payload.username,
           email: action.payload.email,
           avatar: action.payload.avatar,
+          defaultAvatar: action.payload.defaultAvatar,
           token: action.payload.token,
         },
       };
@@ -151,6 +153,7 @@ const UserReducer = (state = UserInitialState, action) => {
           username: null,
           email: null,
           avatar: null,
+          defaultAvatar: null,
           token: null,
         },
       };
@@ -229,6 +232,7 @@ const UserReducer = (state = UserInitialState, action) => {
           username: action.payload.username,
           email: action.payload.email,
           avatar: action.payload.avatar,
+          defaultAvatar: action.payload.defaultAvatar,
           token: action.payload.token,
         },
       };
