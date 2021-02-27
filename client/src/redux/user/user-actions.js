@@ -18,12 +18,19 @@ export const loginRequest = () => ({
   type: UserTypes.LOGIN_REQUEST,
 });
 
-export const loginSuccess = ({ username, email, avatar, token }) => ({
+export const loginSuccess = ({
+  username,
+  email,
+  avatar,
+  defaultAvatar,
+  token,
+}) => ({
   type: UserTypes.LOGIN_SUCCESS,
   payload: {
     username: username,
     email: email,
     avatar: avatar,
+    defaultAvatar: defaultAvatar,
     token: token,
   },
 });
@@ -134,6 +141,7 @@ export function login({ email, password }) {
           username: data.data.username,
           email: data.data.email,
           avatar: data.data.avatar,
+          defaultAvatar: data.data.defaultAvatar,
           token: data.data.token,
         })
       );
@@ -296,6 +304,7 @@ export const updateContactSuccess = ({
   username,
   email,
   avatar,
+  defaultAvatar,
   token,
 }) => ({
   type: UserTypes.UPDATE_CONTACT_SUCCESS,
@@ -304,6 +313,7 @@ export const updateContactSuccess = ({
     username,
     email,
     avatar,
+    defaultAvatar,
     token,
   },
 });
@@ -343,6 +353,7 @@ export function updateContact({ username = "", email = "" }) {
           username: newUsername,
           email: newEmail,
           avatar: currentUser.avatar,
+          defaultAvatar: currentUser.defaultAvatar,
           token: currentUser.token,
         })
       );
