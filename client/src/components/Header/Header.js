@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar, NavDropdown } from "react-bootstrap";
 
 import Logo from "../../components/Logo/Logo";
@@ -6,6 +6,8 @@ import Logo from "../../components/Logo/Logo";
 import "./Header.scss";
 
 function Header({ isLoggingOut, currentUser, logout }) {
+  const [avatar, setAvatar] = useState(currentUser.avatar);
+
   return (
     <div className="Header">
       <Navbar sticky="top" bg="black" variant="dark" expand="lg">
@@ -14,8 +16,9 @@ function Header({ isLoggingOut, currentUser, logout }) {
         </Navbar.Brand>
         <img
           className="rounded ml-auto mr-1"
-          src={currentUser.avatar}
+          src={avatar}
           alt="Profile"
+          onError={() => setAvatar(currentUser.defaultAvatar)}
         />
         <NavDropdown href="" title="" id="basic-nav-dropdown">
           <NavDropdown.Item className="username">
