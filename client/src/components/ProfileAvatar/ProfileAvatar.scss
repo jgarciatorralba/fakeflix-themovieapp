@@ -1,8 +1,41 @@
 @import "../../styles/settings/variables";
 
 .form-profile-avatar {
-  input,
   button {
     max-width: 350px;
+  }
+
+  .input-group {
+    margin-bottom: 34px !important;
+  }
+
+  .custom-file-input,
+  .custom-file-label {
+    max-width: 350px;
+    background-color: $input-bg-color;
+    padding: 10px;
+    height: auto;
+    border-color: $input-focus-border;
+    &::after {
+      padding: 10px;
+      height: auto;
+      background-color: $netflix-red-dark;
+      color: $font-color;
+    }
+  }
+
+  .custom-file-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 85px;
+  }
+
+  .picture-wrapper {
+    max-width: 350px;
+    .profile-picture {
+      width: 168px;
+      height: 168px;
+    }
   }
 }
