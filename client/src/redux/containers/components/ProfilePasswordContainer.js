@@ -1,12 +1,18 @@
 import { connect } from "react-redux";
 
-import { resetMessages } from "../../user/user-actions";
+import { updatePassword, resetMessages } from "../../user/user-actions";
 
 import ProfilePassword from "../../../components/ProfilePassword/ProfilePassword";
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  isUpdatingProfile: state.user.isUpdatingProfile,
+  updateProfileError: state.user.updateProfileError,
+  updateProfileSuccess: state.user.updateProfileSuccess,
+});
 
 const mapDispatchToProps = (dispatch) => ({
+  updatePassword: ({ currentPassword, newPassword, confirmPassword }) =>
+    dispatch(updatePassword({ currentPassword, newPassword, confirmPassword })),
   resetMessages: () => dispatch(resetMessages()),
 });
 
