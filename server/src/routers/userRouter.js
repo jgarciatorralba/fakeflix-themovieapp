@@ -63,10 +63,15 @@ router.patch("/", avatarMiddleware.single("avatar"), async (req, res) => {
 
 // Update user's password
 router.patch("/password", async (req, res) => {
+  if (req.body.newPassword !== req.body.confirmPassword) {
+    return res
+      .status(400)
+      .json({ data: null, error: "New passwords do not match!" });
+  }
   const user = await userController.findById(req.user.id);
   const match = await bcrypt.compare(req.body.currentPassword, user.password);
   if (!match) {
-    return res.status(400).json({ data: null, error: "Password incorrect" });
+    return res.status(400).json({ data: null, error: "Password incorrect!" });
   } else {
     const updatedUser = {};
     updatedUser.password = await bcrypt.hash(
