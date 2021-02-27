@@ -6,11 +6,16 @@ import Alert from "react-bootstrap/Alert";
 
 import "./ProfilePassword.scss";
 
-function ProfilePassword({ resetMessages }) {
+function ProfilePassword({
+  isUpdatingProfile,
+  updateProfileError,
+  updateProfileSuccess,
+  updatePassword,
+  resetMessages,
+}) {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [newPasswordsError, setNewPasswordsError] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -20,17 +25,7 @@ function ProfilePassword({ resetMessages }) {
       newPassword !== "" &&
       confirmPassword !== ""
     ) {
-      if (newPassword !== confirmPassword) {
-        setNewPasswordsError("New passwords do not match!");
-      } else {
-        /* TODO: Check current password in database.
-         ** If correct, update new password and show confirmation message,
-         ** else show error message.
-         */
-
-        // * To be deleted
-        setNewPasswordsError("Fine!");
-      }
+      updatePassword({ currentPassword, newPassword, confirmPassword });
     }
   }
 
@@ -88,24 +83,43 @@ function ProfilePassword({ resetMessages }) {
       </div>
 
       <span>&nbsp;</span>
-      {/* Alert messages here */}
 
-      {newPasswordsError !== "" && (
+      {updateProfileError && (
         <div className="alert-wrapper mx-4 mx-sm-5">
           <Alert
             show={true}
-            onClose={() => setNewPasswordsError("")}
+            onClose={resetMessages}
             variant="danger"
             closeLabel="Close Alert"
             dismissible
             fade="true"
           >
-            {newPasswordsError}
+            {updateProfileError}
           </Alert>
         </div>
       )}
+
+      {updateProfileSuccess && (
+        <div className="alert-wrapper mx-4 mx-sm-5">
+          <Alert
+            show={true}
+            onClose={resetMessages}
+            variant="success"
+            closeLabel="Close Alert"
+            dismissible
+            fade="true"
+          >
+            {updateProfileSuccess}
+          </Alert>
+        </div>
+      )}
+
       <div className="input-group px-4 px-sm-5 mb-2 mb-sm-5">
-        <Button htmlType="submit" additionalClasses="btn-lg btn-block">
+        <Button
+          htmlType="submit"
+          additionalClasses="btn-lg btn-block"
+          disabled={isUpdatingProfile}
+        >
           Update
         </Button>
       </div>
