@@ -203,6 +203,36 @@ const UserReducer = (state = UserInitialState, action) => {
         updateProfileSuccess: action.payload,
       };
     }
+    case UserTypes.UPDATE_CONTACT_REQUEST: {
+      return {
+        ...state,
+        isUpdatingProfile: true,
+        updateProfileError: null,
+        updateProfileSuccess: null,
+      };
+    }
+    case UserTypes.UPDATE_CONTACT_ERROR: {
+      return {
+        ...state,
+        isUpdatingProfile: false,
+        updateProfileError: action.payload,
+        updateProfileSuccess: null,
+      };
+    }
+    case UserTypes.UPDATE_CONTACT_SUCCESS: {
+      return {
+        ...state,
+        isUpdatingProfile: false,
+        updateProfileError: null,
+        updateProfileSuccess: action.payload.successMessage,
+        currentUser: {
+          username: action.payload.username,
+          email: action.payload.email,
+          avatar: action.payload.avatar,
+          token: action.payload.token,
+        },
+      };
+    }
     default: {
       return state;
     }

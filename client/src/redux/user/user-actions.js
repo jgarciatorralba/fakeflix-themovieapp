@@ -286,3 +286,68 @@ export function updatePassword({
     }
   };
 }
+
+export const updateContactRequest = () => ({
+  type: UserTypes.UPDATE_CONTACT_REQUEST,
+});
+
+export const updateContactSuccess = ({
+  successMessage,
+  username,
+  email,
+  avatar,
+  token,
+}) => ({
+  type: UserTypes.UPDATE_CONTACT_SUCCESS,
+  payload: {
+    successMessage,
+    username,
+    email,
+    avatar,
+    token,
+  },
+});
+
+export const updateContactError = ({ errorMessage }) => ({
+  type: UserTypes.UPDATE_CONTACT_ERROR,
+  payload: errorMessage,
+});
+
+export function updateContact({ username = "", email = "" }) {
+  return async function updateContactThunk(dispatch, getState) {
+    const currentUser = getState().user.currentUser;
+    const newUsername = username === "" ? currentUser.username : username;
+    const newEmail = email === "" ? currentUser.email : email;
+
+    dispatch(updateContactRequest());
+
+    const res = await fetch("/api/user", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + currentUser.token,
+      },
+      body: JSON.stringify({
+        username,
+        email,
+      }),
+    }).catch((error) => {
+      dispatch(updateContactError({ errorMessage: error.message }));
+    });
+
+    const data = await res.json();
+    if (data.data) {
+      dispatch(
+        updateContactSuccess({
+          successMessage: data.data,
+          username: newUsername,
+          email: newEmail,
+          avatar: currentUser.avatar,
+          token: currentUser.token,
+        })
+      );
+    } else {
+      dispatch(updateContactError({ errorMessage: data.error }));
+    }
+  };
+}
