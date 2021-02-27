@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
@@ -16,6 +16,10 @@ function ProfilePassword({
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  useEffect(() => {
+    resetMessages();
+  }, [resetMessages]);
 
   function handleSubmit(e) {
     e.preventDefault();
