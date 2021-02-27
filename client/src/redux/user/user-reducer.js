@@ -16,6 +16,12 @@ export const UserInitialState = {
   isLoggingOut: false,
   logoutError: null,
   logoutSuccess: null,
+  isUpdatingProfile: false,
+  updateProfileError: null,
+  updateProfileSuccess: null,
+  isDeactivatingAccount: false,
+  deactivateAccountError: null,
+  deactivateAccountSuccess: null,
   currentUser: {
     username: null,
     email: null,
@@ -169,6 +175,32 @@ const UserReducer = (state = UserInitialState, action) => {
         resetPasswordSuccess: null,
         forgetPasswordError: null,
         forgetPasswordSuccess: null,
+        updateProfileError: null,
+        updateProfileSuccess: null,
+      };
+    }
+    case UserTypes.UPDATE_PASS_REQUEST: {
+      return {
+        ...state,
+        isUpdatingProfile: true,
+        updateProfileError: null,
+        updateProfileSuccess: null,
+      };
+    }
+    case UserTypes.UPDATE_PASS_ERROR: {
+      return {
+        ...state,
+        isUpdatingProfile: false,
+        updateProfileError: action.payload,
+        updateProfileSuccess: null,
+      };
+    }
+    case UserTypes.UPDATE_PASS_SUCCESS: {
+      return {
+        ...state,
+        isUpdatingProfile: false,
+        updateProfileError: null,
+        updateProfileSuccess: action.payload,
       };
     }
     default: {

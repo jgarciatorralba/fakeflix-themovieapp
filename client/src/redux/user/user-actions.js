@@ -234,3 +234,55 @@ export function logout() {
     }
   };
 }
+
+export const updatePassRequest = () => ({
+  type: UserTypes.UPDATE_PASS_REQUEST,
+});
+
+export const updatePassSuccess = ({ successMessage }) => ({
+  type: UserTypes.UPDATE_PASS_SUCCESS,
+  payload: successMessage,
+});
+
+export const updatePassError = ({ errorMessage }) => ({
+  type: UserTypes.UPDATE_PASS_ERROR,
+  payload: errorMessage,
+});
+
+export function updatePassword({
+  currentPassword,
+  newPassword,
+  confirmPassword,
+}) {
+  return async function updatePasswordThunk(dispatch, getState) {
+    const token = getState().user.currentUser.token;
+
+    dispatch(updatePassRequest());
+
+    const res = await fetch("/api/user/password", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify({
+        currentPassword,
+        newPassword,
+        confirmPassword,
+      }),
+    }).catch((error) => {
+      dispatch(updatePassError({ errorMessage: error.message }));
+    });
+
+    const data = await res.json();
+    if (data.data) {
+      dispatch(
+        updatePassSuccess({
+          successMessage: data.data,
+        })
+      );
+    } else {
+      dispatch(updatePassError({ errorMessage: data.error }));
+    }
+  };
+}
