@@ -35,6 +35,7 @@ export default {
       "email",
       "username",
       "avatar",
+      "password",
     ]);
     return user;
   },
