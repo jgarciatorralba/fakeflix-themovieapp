@@ -5,7 +5,15 @@ import Alert from "react-bootstrap/Alert";
 
 import "./ProfileAvatar.scss";
 
-function ProfileAvatar({ currentUser, defaultAvatar }) {
+function ProfileAvatar({
+  currentUser,
+  defaultAvatar,
+  isUpdatingProfile,
+  updateProfileError,
+  updateProfileSuccess,
+  resetMessages,
+  updateAvatar,
+}) {
   const [avatar, setAvatar] = useState(currentUser.avatar);
   const [label, setLabel] = useState("Choose file");
   const [file, setFile] = useState({});
@@ -25,7 +33,7 @@ function ProfileAvatar({ currentUser, defaultAvatar }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (file) {
-      console.log(file);
+      updateAvatar({ avatarFile: file });
     }
   }
 
@@ -34,6 +42,7 @@ function ProfileAvatar({ currentUser, defaultAvatar }) {
       className="form-profile-avatar"
       autoComplete="off"
       onSubmit={handleSubmit}
+      encType="multipart/form-data"
     >
       <div className="px-4 px-sm-5 mb-2">
         <b>Avatar</b>
@@ -54,6 +63,7 @@ function ProfileAvatar({ currentUser, defaultAvatar }) {
             type="file"
             className="custom-file-input"
             id="profileAvatar"
+            name="profileAvatar"
             onChange={handleChange}
             required
           />
@@ -65,8 +75,42 @@ function ProfileAvatar({ currentUser, defaultAvatar }) {
 
       <span>&nbsp;</span>
 
+      {updateProfileError && (
+        <div className="alert-wrapper mx-4 mx-sm-5">
+          <Alert
+            show={true}
+            onClose={resetMessages}
+            variant="danger"
+            closeLabel="Close Alert"
+            dismissible
+            fade="true"
+          >
+            {updateProfileError}
+          </Alert>
+        </div>
+      )}
+
+      {updateProfileSuccess && (
+        <div className="alert-wrapper mx-4 mx-sm-5">
+          <Alert
+            show={true}
+            onClose={resetMessages}
+            variant="success"
+            closeLabel="Close Alert"
+            dismissible
+            fade="true"
+          >
+            {updateProfileSuccess}
+          </Alert>
+        </div>
+      )}
+
       <div className="px-4 px-sm-5 mb-2 mb-sm-5">
-        <Button htmlType="submit" additionalClasses="btn-lg btn-block">
+        <Button
+          htmlType="submit"
+          additionalClasses="btn-lg btn-block"
+          disabled={isUpdatingProfile}
+        >
           Update
         </Button>
       </div>
