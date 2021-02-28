@@ -347,10 +347,46 @@ export function updateContact({ username = "", email = "" }) {
     if (data.data) {
       dispatch(
         updateContactSuccess({
-          successMessage: data.data,
+          successMessage: data.data.message,
           username: newUsername,
           email: newEmail,
           avatar: currentUser.avatar,
+          token: currentUser.token,
+        })
+      );
+    } else {
+      dispatch(updateContactError({ errorMessage: data.error }));
+    }
+  };
+}
+
+export function updateAvatar({ avatarFile }) {
+  return async function updateContactThunk(dispatch, getState) {
+    const currentUser = getState().user.currentUser;
+
+    let formData = new FormData();
+    formData.append("avatar", avatarFile);
+
+    dispatch(updateContactRequest());
+
+    const res = await fetch("/api/user", {
+      method: "PATCH",
+      headers: {
+        Authorization: "Bearer " + currentUser.token,
+      },
+      body: formData,
+    }).catch((error) => {
+      dispatch(updateContactError({ errorMessage: error.message }));
+    });
+
+    const data = await res.json();
+    if (data.data) {
+      dispatch(
+        updateContactSuccess({
+          successMessage: data.data.message,
+          username: currentUser.username,
+          email: currentUser.email,
+          avatar: data.data.newAvatar,
           token: currentUser.token,
         })
       );
