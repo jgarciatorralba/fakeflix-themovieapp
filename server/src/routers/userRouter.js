@@ -57,7 +57,18 @@ router.patch("/", avatarMiddleware.single("avatar"), async (req, res) => {
         .json({ data: null, error: "Internal Server Error" });
     }
   } else {
-    res.json({ data: "User data updated!", error: null });
+    res.json({
+      data: {
+        message: "User data updated!",
+        newAvatar: updatedUser.avatar
+          ? new URL(
+              "/img/user/" + updatedUser.avatar,
+              config().app.SERVER_DOMAIN
+            ).href
+          : null,
+      },
+      error: null,
+    });
   }
 });
 
