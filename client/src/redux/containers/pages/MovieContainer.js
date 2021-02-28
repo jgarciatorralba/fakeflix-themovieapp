@@ -62,6 +62,7 @@ const mapStateToProps = (state) => ({
   commentAdded: state.movies.commentAdded,
   commentRemoved: state.movies.commentRemoved,
   currentUser: state.user.currentUser,
+  defaultAvatar: state.user.defaultAvatar,
 });
 
 const mapDispatchToProps = (dispatch) => ({

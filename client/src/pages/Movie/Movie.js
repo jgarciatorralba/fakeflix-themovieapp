@@ -65,6 +65,7 @@ function Movie({
   commentAdded,
   commentRemoved,
   currentUser,
+  defaultAvatar,
 }) {
   let { movie_id } = useParams();
 
@@ -138,6 +139,7 @@ function Movie({
         commentAdded={commentAdded}
         commentRemoved={commentRemoved}
         currentUser={currentUser}
+        defaultAvatar={defaultAvatar}
       />
       <Footer />
     </div>

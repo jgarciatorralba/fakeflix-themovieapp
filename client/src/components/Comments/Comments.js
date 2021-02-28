@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import Button from "../Button/Button";
 
@@ -17,11 +17,15 @@ function Comments({
   commentUpdating,
   commentUpdatingError,
   currentUser,
+  defaultAvatar,
 }) {
   autosize(document.querySelector(".text-area"));
 
   const [comments, setComments] = useState(movieComments);
   const [commentContent, setCommentContent] = useState("");
+  const [userAvatar, setUserAvatar] = useState(currentUser.avatar);
+
+  const imgRef = useRef();
 
   useEffect(() => {
     setComments(movieComments);
@@ -52,8 +56,9 @@ function Comments({
           <div className="col-2 col-sm-1 px-1 px-sm-3 text-center">
             <img
               alt="User profile"
-              src={currentUser.avatar}
+              src={userAvatar}
               className="avatar rounded"
+              onError={() => setUserAvatar(defaultAvatar)}
             />
           </div>
           <div className="col-10 col-sm-11 pr-3">
@@ -125,6 +130,8 @@ function Comments({
                     alt="User profile"
                     src={comment.user.avatar}
                     className="avatar rounded"
+                    ref={imgRef}
+                    onError={() => (imgRef.current.src = defaultAvatar)}
                   />
                 </div>
                 <div className="col-10 col-sm-11 pr-3 btn-cont">
