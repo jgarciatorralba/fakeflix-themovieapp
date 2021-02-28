@@ -5,7 +5,7 @@ import Logo from "../../components/Logo/Logo";
 
 import "./Header.scss";
 
-function Header({ isLoggingOut, currentUser, logout }) {
+function Header({ isLoggingOut, currentUser, defaultAvatar, logout }) {
   const [avatar, setAvatar] = useState(currentUser.avatar);
 
   return (
@@ -18,7 +18,7 @@ function Header({ isLoggingOut, currentUser, logout }) {
           className="rounded ml-auto mr-1"
           src={avatar}
           alt="Profile"
-          onError={() => setAvatar(currentUser.defaultAvatar)}
+          onError={() => setAvatar(defaultAvatar)}
         />
         <NavDropdown href="" title="" id="basic-nav-dropdown">
           <NavDropdown.Item className="username">
