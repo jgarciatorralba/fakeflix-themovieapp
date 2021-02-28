@@ -5,7 +5,7 @@ import Alert from "react-bootstrap/Alert";
 
 import "./ProfileAvatar.scss";
 
-function ProfileAvatar({ currentUser }) {
+function ProfileAvatar({ currentUser, defaultAvatar }) {
   const [avatar, setAvatar] = useState(currentUser.avatar);
   const [label, setLabel] = useState("Choose file");
   const [file, setFile] = useState({});
@@ -40,15 +40,12 @@ function ProfileAvatar({ currentUser }) {
       </div>
 
       <div className="mx-4 mx-sm-5 mb-4 picture-wrapper d-flex justify-content-center">
-        <div
+        <img
           className="profile-picture rounded"
-          style={{
-            backgroundImage: `url(${avatar})`,
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-          }}
-        ></div>
+          alt="Selected avatar"
+          src={avatar}
+          onError={() => setAvatar(defaultAvatar)}
+        />
       </div>
 
       <div className="input-group px-4 px-sm-5 mb-2">
