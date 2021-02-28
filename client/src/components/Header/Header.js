@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar, NavDropdown } from "react-bootstrap";
 
 import Logo from "../../components/Logo/Logo";
@@ -7,6 +7,10 @@ import "./Header.scss";
 
 function Header({ isLoggingOut, currentUser, defaultAvatar, logout }) {
   const [avatar, setAvatar] = useState(currentUser.avatar);
+
+  useEffect(() => {
+    setAvatar(currentUser.avatar);
+  }, [currentUser]);
 
   return (
     <div className="Header">
