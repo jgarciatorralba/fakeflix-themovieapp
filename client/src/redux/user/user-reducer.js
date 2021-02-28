@@ -26,9 +26,9 @@ export const UserInitialState = {
     username: null,
     email: null,
     avatar: null,
-    defaultAvatar: null,
     token: null,
   },
+  defaultAvatar: null,
 };
 
 const UserReducer = (state = UserInitialState, action) => {
@@ -74,9 +74,9 @@ const UserReducer = (state = UserInitialState, action) => {
           username: action.payload.username,
           email: action.payload.email,
           avatar: action.payload.avatar,
-          defaultAvatar: action.payload.defaultAvatar,
           token: action.payload.token,
         },
+        defaultAvatar: action.payload.defaultAvatar,
       };
     }
     case UserTypes.LOGIN_ERROR: {
@@ -153,9 +153,9 @@ const UserReducer = (state = UserInitialState, action) => {
           username: null,
           email: null,
           avatar: null,
-          defaultAvatar: null,
           token: null,
         },
+        defaultAvatar: null,
       };
     }
     case UserTypes.LOGOUT_ERROR: {
@@ -232,7 +232,6 @@ const UserReducer = (state = UserInitialState, action) => {
           username: action.payload.username,
           email: action.payload.email,
           avatar: action.payload.avatar,
-          defaultAvatar: action.payload.defaultAvatar,
           token: action.payload.token,
         },
       };

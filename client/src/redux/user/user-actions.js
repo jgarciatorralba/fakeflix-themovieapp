@@ -138,11 +138,11 @@ export function login({ email, password }) {
     if (data.data) {
       dispatch(
         loginSuccess({
-          username: data.data.username,
-          email: data.data.email,
-          avatar: data.data.avatar,
+          username: data.data.retrievedUser.username,
+          email: data.data.retrievedUser.email,
+          avatar: data.data.retrievedUser.avatar,
+          token: data.data.retrievedUser.token,
           defaultAvatar: data.data.defaultAvatar,
-          token: data.data.token,
         })
       );
     } else {
@@ -304,7 +304,6 @@ export const updateContactSuccess = ({
   username,
   email,
   avatar,
-  defaultAvatar,
   token,
 }) => ({
   type: UserTypes.UPDATE_CONTACT_SUCCESS,
@@ -313,7 +312,6 @@ export const updateContactSuccess = ({
     username,
     email,
     avatar,
-    defaultAvatar,
     token,
   },
 });
@@ -353,7 +351,6 @@ export function updateContact({ username = "", email = "" }) {
           username: newUsername,
           email: newEmail,
           avatar: currentUser.avatar,
-          defaultAvatar: currentUser.defaultAvatar,
           token: currentUser.token,
         })
       );
