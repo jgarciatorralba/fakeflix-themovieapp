@@ -105,14 +105,21 @@ router.post("/login", async (req, res) => {
       username: user.username,
       avatar: new URL("/img/user/" + user.avatar, config().app.SERVER_DOMAIN)
         .href,
-      defaultAvatar: new URL(
-        "/img/user/default.jpg",
-        config().app.SERVER_DOMAIN
-      ).href,
       token: accessToken,
     };
 
-    res.json({ data: retrievedUser, error: null });
+    const defaultAvatar = new URL(
+      "/img/user/default.jpg",
+      config().app.SERVER_DOMAIN
+    ).href;
+
+    res.json({
+      data: {
+        retrievedUser,
+        defaultAvatar,
+      },
+      error: null,
+    });
   }
 });
 
