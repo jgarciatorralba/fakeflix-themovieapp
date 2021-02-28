@@ -8,21 +8,33 @@ import "./ProfileAvatar.scss";
 function ProfileAvatar({ currentUser }) {
   const [avatar, setAvatar] = useState(currentUser.avatar);
   const [label, setLabel] = useState("Choose file");
+  const [file, setFile] = useState({});
 
   function handleChange(e) {
-    let files = e.target.files;
-    if (files.length > 0) {
-      let newSrc = URL.createObjectURL(files[0]);
-      setAvatar(newSrc);
-      setLabel(files[0].name);
+    if (e.target.files.length > 0) {
+      setFile(e.target.files[0]);
+      setAvatar(URL.createObjectURL(e.target.files[0]));
+      setLabel(e.target.files[0].name);
     } else {
+      setFile({});
       setAvatar(currentUser.avatar);
       setLabel("Choose file");
     }
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (file) {
+      console.log(file);
+    }
+  }
+
   return (
-    <form className="form-profile-avatar" autoComplete="off">
+    <form
+      className="form-profile-avatar"
+      autoComplete="off"
+      onSubmit={handleSubmit}
+    >
       <div className="px-4 px-sm-5 mb-2">
         <b>Avatar</b>
       </div>
