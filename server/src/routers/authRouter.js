@@ -113,7 +113,7 @@ router.post("/login", async (req, res) => {
       config().app.SERVER_DOMAIN
     ).href;
 
-    res.json({
+    return res.json({
       data: {
         retrievedUser,
         defaultAvatar,
