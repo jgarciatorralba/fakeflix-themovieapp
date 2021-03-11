@@ -65,7 +65,7 @@ describe("Testing user routes...", () => {
   });
 
   test("PATCH - Update an existing user", async () => {
-    expect.assertions(4);
+    expect.assertions(3);
 
     const response = await request(app)
       .patch("/user-test")
@@ -75,11 +75,13 @@ describe("Testing user routes...", () => {
       );
 
     expect(response.status).toEqual(200);
-    expect(userController.findOnlyDeletedById).toHaveBeenCalledTimes(1);
     expect(userController.updateUserById).toHaveBeenCalledTimes(1);
     expect(JSON.parse(response.text)).toMatchObject({
+      data: {
+        message: "User data updated!",
+        newAvatar: null,
+      },
       error: null,
-      data: "User data updated!",
     });
   });
 
