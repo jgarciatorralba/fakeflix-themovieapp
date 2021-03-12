@@ -16,10 +16,13 @@ const makeHandlers = ({ userData: { testUser, testPayload } }) => [
     return res(
       ctx.json({
         data: {
-          username: testPayload.username,
-          email: testPayload.email,
-          avatar: testPayload.avatar,
-          token: testPayload.token,
+          retrievedUser: {
+            username: testPayload.username,
+            email: testPayload.email,
+            avatar: testPayload.avatar,
+            token: testPayload.token,
+          },
+          defaultAvatar: testPayload.defaultAvatar,
         },
         error: null,
       }),

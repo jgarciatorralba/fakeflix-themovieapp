@@ -17,6 +17,7 @@ const testPayload = {
   username: "test_username",
   email: "test_email",
   avatar: "test_avatar",
+  defaultAvatar: "test_default_avatar",
   token: "test_token",
   successMessage: "Register was successful!",
   logoutMessage: "User logged out!",
@@ -71,6 +72,7 @@ describe("User thunk actions tests", () => {
           email: testPayload.email,
           avatar: testPayload.avatar,
           token: testPayload.token,
+          defaultAvatar: testPayload.defaultAvatar,
         },
       },
     ];
