@@ -27,6 +27,7 @@ describe("Testing user routes...", () => {
       email: "jest-test@emaildomain.com",
       username: "jest-test",
       avatar: "default.jpg",
+      password: "$2b$12$lwexCqLLe6cJqAMzMkUjCuP0J8UqWHEAk9map0tcqSX//zj681LWK",
     });
 
     userController.findOnlyDeletedById = jest.fn().mockResolvedValue(null);
