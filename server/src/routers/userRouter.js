@@ -104,13 +104,22 @@ router.patch("/password", async (req, res) => {
 router.delete("/", async (req, res) => {
   const user = await userController.findById(req.user.id);
   if (user) {
-    const error = await userController.deleteUser(user);
-    if (error) {
+    const error_update = await userController.updateUserById(req.user.id, {
+      token: "",
+    });
+    if (!error_update) {
+      const error_delete = await userController.deleteUser(user);
+      if (!error_delete) {
+        res.json({ data: "User deleted!", error: null });
+      } else {
+        return res
+          .status(500)
+          .json({ data: null, error: "Internal Server Error" });
+      }
+    } else {
       return res
         .status(500)
         .json({ data: null, error: "Internal Server Error" });
-    } else {
-      res.json({ data: "User deleted!", error: null });
     }
   } else {
     return res.status(400).json({ data: null, error: "User not found" });
