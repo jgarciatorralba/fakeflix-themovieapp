@@ -36,22 +36,12 @@ function ProfileDeactivateAccount() {
         </Button>
       </div>
 
-      {/* React-Bootstrap modal */}
-      <Modal
-        show={show}
-        onHide={handleClose}
-        centered
-        // backdrop="static"
-        // keyboard={false}
-      >
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>&nbsp;</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure you want to delete your account?</Modal.Body>
+        <Modal.Body>Do you really want to delete your account?</Modal.Body>
         <Modal.Footer>
-          {/* <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button> */}
           <Button variant="primary" onClick={handleDelete}>
             Delete
           </Button>

@@ -9,3 +9,24 @@
     max-width: 350px;
   }
 }
+
+.modal-dialog {
+  .modal-content {
+    margin: 1rem;
+    color: $bg-color;
+    span {
+      color: $bg-color;
+    }
+    .modal-header {
+      border-bottom: none;
+    }
+    .modal-footer {
+      border-top: none;
+    }
+    .modal-body {
+      margin: 0 1rem;
+      border-top: 1px solid rgba(20, 20, 20, 0.25);
+      border-bottom: 1px solid rgba(20, 20, 20, 0.25);
+    }
+  }
+}
