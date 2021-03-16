@@ -180,6 +180,8 @@ const UserReducer = (state = UserInitialState, action) => {
         forgetPasswordSuccess: null,
         updateProfileError: null,
         updateProfileSuccess: null,
+        deactivateAccountError: null,
+        deactivateAccountSuccess: null,
       };
     }
     case UserTypes.UPDATE_PASS_REQUEST: {
@@ -234,6 +236,38 @@ const UserReducer = (state = UserInitialState, action) => {
           avatar: action.payload.avatar,
           token: action.payload.token,
         },
+      };
+    }
+    case UserTypes.DEACTIVATE_ACCOUNT_REQUEST: {
+      return {
+        ...state,
+        isDeactivatingAccount: true,
+        deactivateAccountError: null,
+        deactivateAccountSuccess: null,
+      };
+    }
+    case UserTypes.DEACTIVATE_ACCOUNT_ERROR: {
+      return {
+        ...state,
+        isDeactivatingAccount: false,
+        deactivateAccountError: action.payload,
+        deactivateAccountSuccess: null,
+      };
+    }
+    case UserTypes.DEACTIVATE_ACCOUNT_SUCCESS: {
+      return {
+        ...state,
+        isDeactivatingAccount: false,
+        deactivateAccountError: null,
+        deactivateAccountSuccess: action.payload,
+        isAuthenticated: false,
+        currentUser: {
+          username: null,
+          email: null,
+          avatar: null,
+          token: null,
+        },
+        defaultAvatar: null,
       };
     }
     default: {
