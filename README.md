@@ -11,6 +11,12 @@ The project consists on a movie app with a Netflix-like visual style where, once
 - Like and dislike movies
 - Leave comments
 - Add movies to their favourites section
+- Update their account settings:
+  - Username
+  - Email
+  - Password
+  - Avatar
+- Deactivate their account
 
 You will find it deployed on Heroku under the url: [https://fakeflix-themovieapp.herokuapp.com](https://fakeflix-themovieapp.herokuapp.com)
 
