@@ -395,3 +395,46 @@ export function updateAvatar({ avatarFile }) {
     }
   };
 }
+
+export const deactivateRequest = () => ({
+  type: UserTypes.DEACTIVATE_ACCOUNT_REQUEST,
+});
+
+export const deactivateSuccess = ({ successMessage }) => ({
+  type: UserTypes.DEACTIVATE_ACCOUNT_SUCCESS,
+  payload: successMessage,
+});
+
+export const deactivateError = ({ errorMessage }) => ({
+  type: UserTypes.DEACTIVATE_ACCOUNT_ERROR,
+  payload: errorMessage,
+});
+
+export function deactivateAccount() {
+  return async function deactivateThunk(dispatch, getState) {
+    const token = getState().user.currentUser.token;
+
+    dispatch(deactivateRequest());
+
+    const res = await fetch("/api/user/", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    }).catch((error) => {
+      dispatch(deactivateError({ errorMessage: error.message }));
+    });
+
+    const data = await res.json();
+    if (data.data) {
+      dispatch(
+        deactivateSuccess({
+          successMessage: data.data,
+        })
+      );
+    } else {
+      dispatch(deactivateError({ errorMessage: data.error }));
+    }
+  };
+}
