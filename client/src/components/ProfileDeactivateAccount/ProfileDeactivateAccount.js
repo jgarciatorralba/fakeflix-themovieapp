@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 
 import Button from "../../components/Button/Button";
+import Alert from "react-bootstrap/Alert";
 
 import "./ProfileDeactivateAccount.scss";
 
-function ProfileDeactivateAccount() {
+function ProfileDeactivateAccount({
+  isDeactivatingAccount,
+  deactivateAccountError,
+  deactivateAccount,
+  resetMessages,
+}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  function handleDelete() {
-    console.log("Delete account here!");
-  }
 
   return (
     <div className="cont-profile-deactivate-account">
@@ -24,6 +26,21 @@ function ProfileDeactivateAccount() {
       </p>
 
       <span>&nbsp;</span>
+
+      {deactivateAccountError && (
+        <div className="alert-wrapper mx-4 mx-sm-5">
+          <Alert
+            show={true}
+            onClose={resetMessages}
+            variant="danger"
+            closeLabel="Close Alert"
+            dismissible
+            fade="true"
+          >
+            {deactivateAccountError}
+          </Alert>
+        </div>
+      )}
 
       <div className="input-group px-4 px-sm-5 mb-2 mb-sm-5">
         <Button
@@ -42,7 +59,11 @@ function ProfileDeactivateAccount() {
         </Modal.Header>
         <Modal.Body>Do you really want to delete your account?</Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleDelete}>
+          <Button
+            variant="primary"
+            onClick={deactivateAccount}
+            disabled={isDeactivatingAccount}
+          >
             Delete
           </Button>
         </Modal.Footer>
