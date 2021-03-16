@@ -10,6 +10,7 @@ const mapStateToProps = (state) => ({
   loginError: state.user.loginError,
   logoutError: state.user.logoutError,
   logoutSuccess: state.user.logoutSuccess,
+  deactivateAccountSuccess: state.user.deactivateAccountSuccess,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -19,6 +19,7 @@ function Login({
   isLoggingIn,
   login,
   logoutError,
+  deactivateAccountSuccess,
   logoutSuccess,
   resetMessages,
 }) {
@@ -111,6 +112,19 @@ function Login({
                 fade="true"
               >
                 {logoutSuccess}
+              </Alert>
+            )}
+
+            {deactivateAccountSuccess && (
+              <Alert
+                show={true}
+                onClose={resetMessages}
+                variant="success"
+                closeLabel="Close Alert"
+                dismissible
+                fade="true"
+              >
+                {deactivateAccountSuccess}
               </Alert>
             )}
 
